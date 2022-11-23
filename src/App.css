@@ -1,3 +1,62 @@
-.selected {
-   color: red;
+/* Generic CSS Classes: */
+
+.main-with-nav {
+    position: relative;
+    padding:30px 60px;
+}
+
+
+/* GENERIC CURVED CSS Classes: */
+
+.curved {
+    width: 70px;
+    height: 60px;
+    overflow: hidden;
+    position: absolute;  
+ }
+
+ .curved:before {
+    content: "";
+    display: block;
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    border-radius: 50%;
+}
+
+/* CURVED CSS Classes: */
+
+ .corner-t-right, .corner-t-right:before {
+    top: 0;
+    right: 0;
+}
+
+.corner-b-left, .corner-b-left:before {
+    bottom: 0;
+    left: 0;
+}
+
+.corner-b-right, .corner-b-right:before {
+    bottom: 0;
+    right: 0;
+}
+
+.corner-t-left, .corner-t-left:before {
+    top: 0;
+    left: 0;
+}
+
+/* CURVED COLOR CSS Classes: */
+
+.b-left-white:before {
+    box-shadow: -50px 50px 0 0 white;
+}
+.t-right-grey:before {
+    box-shadow: 50px -50px 0 0 #d9d9d9; ;
+}
+.b-rigth-rose:before {
+    box-shadow: 50px 50px 0 0 #f8f3f3;
+}
+.t-left-white:before {
+    box-shadow: -50px -50px 0 0 white;
 }
