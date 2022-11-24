@@ -29,7 +29,7 @@ export default function Login() {
          toast.success('Welcome back!')
          storeToken(response.data.authToken);
          authenticateUser();
-         navigate('/');
+         navigate('/profile');
       } catch (error) {
          setErrorMessage(error.response.data.error)
       }
