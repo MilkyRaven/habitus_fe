@@ -1,0 +1,31 @@
+#nav-menue {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 80px;
+    position: fixed;
+    bottom: 0;
+    background-color: #f8f3f3;
+    width: 100%;
+    border-top-right-radius: 70px 60px;
+    z-index: 2;
+}
+
+.menue-icon-container {
+    background-color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+
+}
+
+.menue-icon {
+    min-height:100%; 
+    min-width: 100%; 
+    object-fit: cover; 
+}

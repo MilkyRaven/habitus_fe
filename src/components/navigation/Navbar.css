@@ -1,6 +1,9 @@
 #navbar {
     background-color: #d9d9d9;
-    position: relative;
+    position: fixed;
+    width:100%;
+    border-bottom-left-radius: 70px 60px;
+    z-index: 2;
 }
 .navitem-container {
     list-style: none;

@@ -1,7 +1,7 @@
 import './Navbar.css'
 import React, { useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 
 export default function Navbar() {
    const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
@@ -17,7 +17,7 @@ export default function Navbar() {
             {isLoggedIn && <li><button onClick={() => logOutUser()}>Log out</button></li>}
             <li><button onClick={() => navigate(-1)} className="navbar-button"  >Go back</button></li>
          </ul>
-         <div className="curved corner-b-left b-left-white"></div>
+         <div className="curved corner-t-right t-right-grey"></div>
       </nav>
    )
 }
