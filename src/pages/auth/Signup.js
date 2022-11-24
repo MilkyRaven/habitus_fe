@@ -27,7 +27,6 @@ export default function Signup() {
       } else {
          setErrorMessage(undefined)
       }
-      // eslint-disable-next-line
    }, [passwordControl])
 
    const handleSubmit = async (e) => {
