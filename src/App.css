@@ -1,3 +1,79 @@
-.selected {
-   color: red;
+/* Generic CSS Classes: */
+
+.main-with-nav {
+    position: relative;
+    padding-top: 120px;
 }
+
+.page-relative {
+    position: relative;
+    min-height: 100vh;
+}
+
+
+/* GENERIC added CURVE CSS Classes: */
+
+.curved {
+    width: 70px;
+    height: 60px;
+    overflow: hidden;
+    position: absolute;  
+ }
+
+ .curved:before {
+    content: "";
+    display: block;
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+/* added CURVE CSS Classes: */
+
+ .corner-t-right {
+    right: 0;
+}
+.corner-t-right:before {
+    top: 0;
+    right: 0;
+}
+
+.corner-b-left {
+    top: -60px;
+    left: 0;
+}
+.corner-b-left:before {
+    top: -60px;
+    left: 0;
+}
+
+/* .corner-b-right, .corner-b-right:before {
+    bottom: 0;
+    right: 0;
+}
+
+.corner-t-left, .corner-t-left:before {
+    top: 0;
+    left: 0;
+} */
+
+/* CURVED COLOR CSS Classes: */
+
+
+.b-left-grey:before {
+    box-shadow: -50px 50px 0 0 #f8f3f3;
+}
+.t-right-grey:before {
+    box-shadow: 50px -50px 0 0 #d9d9d9; ;
+}
+/* .b-rigth-rose:before {
+    box-shadow: 50px 50px 0 0 #f8f3f3;
+}
+.t-left-white:before {
+    box-shadow: -50px -50px 0 0 white;
+}
+.b-left-white:before {
+    box-shadow: -50px 50px 0 0 white;
+} */
