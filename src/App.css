@@ -32,35 +32,28 @@
 
 /* added CURVE CSS Classes: */
 
- .corner-t-right {
-    right: 0;
-}
-.corner-t-right:before {
-    top: 0;
+ .corner-t-right, .corner-t-right:before  {
+    bottom:-60px;
     right: 0;
 }
 
-.corner-b-left {
-    top: -60px;
-    left: 0;
-}
-.corner-b-left:before {
+.corner-b-left , .corner-b-left:before {
     top: -60px;
     left: 0;
 }
 
-/* .corner-b-right, .corner-b-right:before {
-    bottom: 0;
+.corner-b-right, .corner-b-right:before {
+    top: -60px;
     right: 0;
 }
 
-.corner-t-left, .corner-t-left:before {
+/* .corner-t-left, .corner-t-left:before {
     top: 0;
     left: 0;
 } */
 
-/* CURVED COLOR CSS Classes: */
 
+/* CURVED COLOR CSS Classes: */
 
 .b-left-grey:before {
     box-shadow: -50px 50px 0 0 #f8f3f3;
@@ -68,9 +61,16 @@
 .t-right-grey:before {
     box-shadow: 50px -50px 0 0 #d9d9d9; ;
 }
-/* .b-rigth-rose:before {
+.t-right-grey2:before {
+    box-shadow: 50px -50px 0 0 #c4c4c4; ;
+}
+.t-right-rose:before {
+    box-shadow: 50px -50px 0 0 #f8f3f3; ;
+}
+.b-right-rose:before {
     box-shadow: 50px 50px 0 0 #f8f3f3;
 }
+/* 
 .t-left-white:before {
     box-shadow: -50px -50px 0 0 white;
 }
