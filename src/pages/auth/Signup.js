@@ -33,8 +33,8 @@ export default function Signup() {
    const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-         await axios.post(`http://localhost:8000/api/v1/auth/signup`, { username: user.username, email: user.email, password });
-         navigate('/login');
+         await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/auth/signup`, { username: user.username, email: user.email, password });
+         navigate('/create-profile');
       } catch (error) {
          setErrorMessage(error.response.data.error)
       }
