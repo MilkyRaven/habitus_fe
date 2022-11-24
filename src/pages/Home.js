@@ -1,20 +1,22 @@
 import React from 'react'
 import Navbar from '../components/navigation/Navbar'
 import './Home.css'
+import Chat from '../components/Chat'
 
 export default function Home() {
    return (
       <div>
-         <Navbar/>
+         <Navbar />
          <main className="main-with-nav">
             <h1>Home</h1>
-{/*  For Scroll Test: NavigationBar:
+            {/*  For Scroll Test: NavigationBar:
             <section className="test-section">test</section>
             <section className="test-section">test</section>
             <section className="test-section">test</section>
             <section className="test-section">test</section>
             <section className="test-section">test</section>
  */}         </main>
+         <Chat />
       </div>
    )
 }
