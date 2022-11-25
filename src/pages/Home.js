@@ -20,14 +20,14 @@ export default function Home() {
             <h1>Home</h1>
             <h2>temporary NavBar:</h2>
             <ul>
-            <li><Link  to="/">Home</Link></li>
-            <li><Link  to="/signup">Sign up</Link></li>
-            <li><Link  to="/login">Login</Link></li>
-            <li><Link  to="/private">Private view</Link></li>
-            <li><Link  to="/create-profile">Create Profile</Link></li>
-            <li><Link  to="/profile">Profile</Link></li>
-            <li><Link  to="/feed" >Feed</Link></li>
-            {isLoggedIn && <li><button onClick={() => logOutUser()}>Log out</button></li>}
+               <li><Link  to="/">Home</Link></li>
+               <li><Link  to="/signup">Sign up</Link></li>
+               <li><Link  to="/login">Login</Link></li>
+               <li><Link  to="/private">Private view</Link></li>
+               <li><Link  to="/create-profile">Create Profile</Link></li>
+               <li><Link  to="/profile">Profile</Link></li>
+               <li><Link  to="/feed" >Feed</Link></li>
+               {isLoggedIn && <li><button onClick={() => logOutUser()}>Log out</button></li>}
             </ul>
             
             </main>
