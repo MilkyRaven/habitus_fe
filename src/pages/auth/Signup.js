@@ -27,7 +27,7 @@ export default function Signup() {
       } else {
          setErrorMessage(undefined)
       }
-   }, [passwordControl])
+   }, [passwordControl, password])
 
    const handleSubmit = async (e) => {
       e.preventDefault();
