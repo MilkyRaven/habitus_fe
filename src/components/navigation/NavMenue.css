@@ -5,13 +5,17 @@
     height: 80px;
     position: fixed;
     bottom: 0;
-    background-color: #f8f3f3;
+    background-color: #c4c4c4;
     width: 100%;
     border-top-right-radius: 70px 60px;
-    z-index: 2;
+    z-index: 3;
 }
 
-.menue-icon-container {
+.icon-button {
+    all:unset;
+}
+
+.menue-icon-container, .icon-button {
     background-color: white;
     border-radius: 50%;
     width: 25px;
@@ -20,12 +24,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden
-
 }
 
 .menue-icon {
-    min-height:100%; 
-    min-width: 100%; 
-    object-fit: cover; 
+    font-size: 20px;
+    color: #48535a;
 }
+
