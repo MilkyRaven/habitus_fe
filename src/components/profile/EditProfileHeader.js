@@ -1,5 +1,5 @@
 import React from 'react'
-import './EditProfileHeader.css'
+import './ProfileComponents.css'
 import defaultUser from '../../assets/images/default-user-placeholder.png'
 
 export default function EditProfileHeader(props) {

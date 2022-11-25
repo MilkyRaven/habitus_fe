@@ -77,3 +77,16 @@
 .b-left-white:before {
     box-shadow: -50px 50px 0 0 white;
 } */
+
+/* Buttons */
+
+.button-blue-lg {
+    all: unset;
+    background-color: #48535a;
+    color: white;
+    min-width: 170px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}

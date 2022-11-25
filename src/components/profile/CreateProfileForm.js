@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import CurveContainerLeft from '../common/CurveContainerLeft';
+import CurveContainerRight from '../common/CurveContainerRight';
 
 
 export default function CreateProfileForm () {
@@ -76,52 +78,55 @@ export default function CreateProfileForm () {
     return (
 
         <form onSubmit={submitHandler}>
-            <p>TELL US SOMETHING ABOUT YOU...</p>
-            <label>My Goals: </label>
-            <textarea name="goals" onChange={onChangeGoalsHandler}></textarea>
+            <CurveContainerLeft>
+                <p>TELL US SOMETHING ABOUT YOU...</p>
+                <label>My Goals: </label>
+                <textarea name="goals" onChange={onChangeGoalsHandler}></textarea>
+            </CurveContainerLeft>
+            <CurveContainerRight>
+                <label>Interests</label>
+                <input 
+                    type="checkbox" 
+                    name="mindfulness" 
+                    value="mindfulness"
+                    checked={isCheckedMindfulness}
+                    onChange={onChangeMindfulnessHandler}
+                /> Mindfulness
 
-            <label>Interests</label>
-            <input 
-                type="checkbox" 
-                name="mindfulness" 
-                value="mindfulness"
-                checked={isCheckedMindfulness}
-                onChange={onChangeMindfulnessHandler}
-            /> Mindfulness
+                <input 
+                    type="checkbox" 
+                    name="finances" 
+                    value="finances" 
+                    checked={isCheckedFinances}
+                    onChange={onChangeFinancesHandler}
+                /> Finances
 
-            <input 
-                type="checkbox" 
-                name="finances" 
-                value="finances" 
-                checked={isCheckedFinances}
-                onChange={onChangeFinancesHandler}
-            /> Finances
+                <input 
+                    type="checkbox" 
+                    name="health" 
+                    value="health" 
+                    checked={isCheckedHealth}
+                    onChange={onChangeHealthHandler}
+                /> Health
 
-            <input 
-                type="checkbox" 
-                name="health" 
-                value="health" 
-                checked={isCheckedHealth}
-                onChange={onChangeHealthHandler}
-            /> Health
+                <input 
+                    type="checkbox" 
+                    name="tech" 
+                    value="tech" 
+                    checked={isCheckedTech}
+                    onChange={onChangeTechHandler}
+                /> Tech
 
-            <input 
-                type="checkbox" 
-                name="tech" 
-                value="tech" 
-                checked={isCheckedTech}
-                onChange={onChangeTechHandler}
-            /> Tech
+                <input 
+                    type="checkbox" 
+                    name="confidence" 
+                    value="confidence" 
+                    checked={isCheckedConfidence}
+                    onChange={onChangeConfidenceHandler}
+                /> Self Confidence
 
-            <input 
-                type="checkbox" 
-                name="confidence" 
-                value="confidence" 
-                checked={isCheckedConfidence}
-                onChange={onChangeConfidenceHandler}
-            /> Self Confidence
-
-            <button type="submit">DONE</button>
+                <button className="button-blue-lg"type="submit">DONE</button>
+            </CurveContainerRight>
         </form>
 
     )

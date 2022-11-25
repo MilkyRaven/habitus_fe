@@ -1,4 +1,15 @@
-#edit-profile-header{
+#profile-header{
+    position: relative;
+    background-color: #c4c4c4;
+    height: 250px;
+    display: flex; 
+    align-items: flex-end;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    border-bottom-left-radius: 70px 60px;
+}
+
+#edit-profile-header {
     position: relative;
     background-color: #d9d9d9;
     height: 150px;

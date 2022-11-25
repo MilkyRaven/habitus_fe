@@ -1,5 +1,5 @@
 import React from 'react'
-import './ProfileHeader.css'
+import './ProfileComponents.css'
 import defaultUser from '../../assets/images/default-user-placeholder.png'
 
 export default function ProfileHeader(props) {
@@ -7,7 +7,7 @@ export default function ProfileHeader(props) {
     const {profileHeadline, profileSubheadline} = props
 
     return (
-        <section id="edit-profile-header">
+        <section id="profile-header">
             <div className="flex-header">
                 <div className="profile-img-container-lg">
                     <img className="profile-img-lg" src={defaultUser} alt="default-user"/>
