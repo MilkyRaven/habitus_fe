@@ -9,6 +9,8 @@ import PrivateView from './pages/PrivateView';
 import IsPrivate from './components/IsPrivate';
 import CreateProfile from './pages/profile/CreateProfile';
 import ProfilePage from './pages/profile/ProfilePage';
+import EditProfile from './pages/profile/EditProfile';
+import LibraryPage from './pages/profile/LibraryPage';
 import Feed from './pages/feed/Feed';
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
             <Route path="/private" element={<IsPrivate><PrivateView /></IsPrivate>} />
             <Route path="/create-profile" element={<CreateProfile />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/edit-profile" element={<EditProfile  />} />
+            <Route path="/library" element={<LibraryPage />}/>
             <Route path="/feed" element={<Feed />} />
             <Route path="*" element={<ErrorPage />} />
          </Routes>

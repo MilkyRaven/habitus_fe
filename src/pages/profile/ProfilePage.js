@@ -8,42 +8,49 @@ import Navbar from '../../components/navigation/Navbar'
 // import axios from 'axios'
 import { useContext } from "react"
 import { AuthContext } from '../../context/AuthContext';
+import { Link } from "react-router-dom";
 
 
 export default function ProfilePage() {
     const {  user  } = useContext(AuthContext);
 
-    // const [user, setUser] = useState({})
-
-    // useEffect(() => {
-    //     const apiCall = async () => {
-    //         try {
-    //             const res = await axios.get((apiEndpoint))
-    //             setUser(res.data)
-    //             console.log(res)
-    //         } catch (err) {
-    //             console.log(err)
-    //         }
-    //     } 
-    //     apiCall()  
-    // }, [])
-
 
    return (
     <div className="page-relative">
         <Navbar />
-        <NavMenue></NavMenue> 
+        <NavMenue></NavMenue>
+        
         {user &&
             <ProfileHeader 
-            profileHeadline={user.username}
-            profileSubheadline="Location"
+                profileHeadline={user.username}
+                profileSubheadline="Location"
             /> 
         }
-       
-        <main>
-            <CurveContainerLeft></CurveContainerLeft>
-            <CurveContainerRight></CurveContainerRight>
-        </main>
+        
+        <Link to="/edit-profile"> Edit </Link>
+
+       {user &&
+            <main>
+                <CurveContainerLeft></CurveContainerLeft>
+
+                <h3>Habits Interests:</h3>
+                <ul>
+                    {user.myPreferences && user.myPreferences.map((preference, index) => {
+                        return (
+                            <li>{preference}</li>
+                        )
+                    })}
+                </ul>
+
+                <h3>My Goals:</h3>
+                <p>{user.goals}</p>
+
+                <Link to="/library"> My Library </Link>
+
+                <CurveContainerRight></CurveContainerRight>
+            </main>
+       }
+        
     </div>
    )
 }
