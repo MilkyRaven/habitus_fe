@@ -5,10 +5,13 @@ import NavMenue from '../../components/navigation/NavMenue'
 import ProfileHeader from '../../components/profile/ProfileHeader'
 import EditProfileHeader from '../../components/profile/ProfileHeader'
 
+import Navbar from '../../components/navigation/Navbar';
+
 
 export default function ProfilePage() {
    return (
     <div className="page-relative">
+        <Navbar />
         <NavMenue></NavMenue> 
         <ProfileHeader 
             profileHeadline="@Username" 

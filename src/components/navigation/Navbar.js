@@ -5,6 +5,8 @@ import { AuthContext } from '../../context/AuthContext';
 
 export default function Navbar() {
    const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+   console.log(isLoggedIn)
+   console.log(user)
    const navigate = useNavigate();
    return (
       <nav id="navbar">
@@ -14,7 +16,7 @@ export default function Navbar() {
             {!isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'navitem-selected' : 'navitem'} to="/signup">Sign up</NavLink></li>}
             {!isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'navitem-selected' : 'navitem'} to="/login">Login</NavLink></li>}
             {isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'navitem-selected' : 'navitem'} to="/private">Private view</NavLink></li>}
-            {isLoggedIn && <li><button onClick={() => logOutUser()}>Log out</button></li>}
+            {isLoggedIn && <li><button onClick={() =>logOutUser()}>Log out</button></li>}
             <li><button onClick={() => navigate(-1)} className="navbar-button"  >Go back</button></li>
          </ul>
          <div className="curved corner-t-right t-right-grey"></div>
