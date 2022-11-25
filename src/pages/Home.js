@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react';
 import Navbar from '../components/navigation/Navbar'
 import './Home.css'
 import Chat from '../components/Chat'
 import { Link } from 'react-router-dom'
+import { AuthContext } from './../context/AuthContext';
+
+
+
 
 export default function Home() {
+   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+   console.log(isLoggedIn)
+   console.log(user)
+
    return (
       <div>
          <Navbar />
@@ -19,6 +27,7 @@ export default function Home() {
             <li><Link  to="/create-profile">Create Profile</Link></li>
             <li><Link  to="/profile">Profile</Link></li>
             <li><Link  to="/feed" >Feed</Link></li>
+            {isLoggedIn && <li><button onClick={() => logOutUser()}>Log out</button></li>}
             </ul>
             
             </main>
