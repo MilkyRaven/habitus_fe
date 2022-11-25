@@ -3,7 +3,7 @@ import Navbar from '../components/navigation/Navbar'
 import './Home.css'
 import Chat from '../components/Chat'
 import { Link } from 'react-router-dom'
-import { AuthContext } from './../context/AuthContext';
+import { AuthContext } from '../context/AuthContext';
 
 
 
