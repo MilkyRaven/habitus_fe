@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './Auth.css'
+import Navbar from '../../components/navigation/Navbar';
 
 export default function Signup() {
    const [user, setUser] = useState({
@@ -41,18 +43,35 @@ export default function Signup() {
 
    return (
       <div>
-         <form onSubmit={handleSubmit}>
-            <label>Username</label>
-            <input required type="text" name="username" value={user.username} onChange={handleChange} />
-            <label>Email</label>
-            <input required type="email" name="email" value={user.email} onChange={handleChange} />
-            <label>Password</label>
-            <input required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <label>Repeat the password</label>
-            <input required type="password" name="passwordControl" value={passwordControl} onChange={(e) => setPasswordControl(e.target.value)} />
+      <Navbar></Navbar>
+      <section id="signup">
+         <form className="form"  onSubmit={handleSubmit}>
+            <div className="form-row">
+               <label>Username</label>
+               <input required type="text" name="username" value={user.username} onChange={handleChange} />
+            </div>
+            <div className="form-row">
+               <label>Email</label>
+               <input required type="email" name="email" value={user.email} onChange={handleChange} />
+            </div>
+            <div className="form-row">
+               <label>Password</label>
+               <input required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            </div>
+            <div className="form-row">
+               <label>Repeat the password</label>
+               <input required type="password" name="passwordControl" value={passwordControl} onChange={(e) => setPasswordControl(e.target.value)} />
+            </div>
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-            <button type="submit">Register</button>
+            <button className="button-blue-xl" type="submit">Register</button>
          </form>
+         <p className="text-centered">Already a Customer? Go to <Link className="link-blue" to="/login">LOG IN</Link></p>
+         <ul className="icon-footer-container">
+            <li><i class="fa-brands fa-google footer-icon"></i></li>
+            <li><i class="fa-brands fa-facebook-f footer-icon"></i></li>
+            <li><i class="fa-brands fa-linkedin footer-icon"></i></li>
+         </ul>
+      </section>
       </div>
    )
 }
