@@ -2,7 +2,9 @@ import axios from 'axios';
 import React, { useState, useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import './Auth.css'
+import Navbar from '../../components/navigation/Navbar';
 
 export default function Login() {
    const { storeToken, authenticateUser } = useContext(AuthContext);
@@ -36,15 +38,24 @@ export default function Login() {
    }
 
    return (
-      <div>
-         <form onSubmit={handleSubmit}>
-            <label>Email</label>
-            <input required type="email" name="email" value={user.email} onChange={handleChange} />
-            <label>Password</label>
-            <input required type="password" name="password" value={user.password} onChange={handleChange} />
-            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-            <button type="submit">Log in </button>
-         </form>
+      <div >
+         <Navbar></Navbar>
+         <section id="login">
+            <form className="form" onSubmit={handleSubmit}>
+               <div className="form-row">
+                  <label>Email</label>
+                  <input required type="email" name="email" value={user.email} onChange={handleChange} />
+               </div>
+               <div className="form-row">
+               <label>Password</label>
+               <input required type="password" name="password" value={user.password} onChange={handleChange} />
+               </div>
+               {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+               <button className="button-blue-xl" type="submit">Log in </button>
+            </form>
+            <p className="text-centered">No Account yet? Go to <Link className="link-blue" to="/signup">SIGN UP</Link></p>
+         </section>
       </div>
    )
 }
+ 

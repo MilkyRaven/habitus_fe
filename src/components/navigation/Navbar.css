@@ -1,30 +1,20 @@
 #navbar {
     background-color: #d9d9d9;
-    position: fixed;
+    position: relative;
     width:100%;
     border-bottom-left-radius: 70px 60px;
     z-index: 2;
-}
-.navitem-container {
-    list-style: none;
+    height: 150px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    height: 100px;
-    margin: 0;
-    padding: 0;
-    
- }
- .navbar-button {
-    all: unset;
- }
-.navitem, .navitem-selected, .navbar-button {
-    color: white;
-    text-decoration: none;
- }
-.navitem-selected {
-    
-    color: red;
- }
+}
+
+.home-icon {
+    color: #48535a;
+    background-color: white;
+    padding: 10px; 
+    border-radius: 50%;
+}
 
  
