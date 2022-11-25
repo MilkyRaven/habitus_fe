@@ -1,5 +1,6 @@
 import React, { useState, createContext, useEffect } from 'react';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
@@ -24,7 +25,8 @@ function AuthProviderWrapper(props) {
       const storedToken = localStorage.getItem('authToken');
       if (storedToken) {
          try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/me`, { headers: { Authorization: `Bearer ${storedToken}` } });
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/auth/verify`, { headers: { Authorization: `Bearer ${storedToken}` } });
+            console.log(user)
             setIsLoggedIn(true);
             setLoading(false);
             setUser(response.data);
