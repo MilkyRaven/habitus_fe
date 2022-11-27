@@ -11,12 +11,11 @@ export default function NavMenue() {
    
    return (
       <nav id="nav-menue">
-        <NavLink to="/feed" className="menue-icon-container"><i className="fa-solid fa-house menue-icon"></i></NavLink>
-        <NavLink to="/profile" className="menue-icon-container"><i className="fa-solid fa-user menue-icon"></i></NavLink>
-        <NavLink className="menue-icon-container"><i class="fa-solid fa-comments menue-icon"></i></NavLink>
-        {isLoggedIn && <button className="icon-button" onClick={() => logOutUser()}>
-         <i className="fa-solid fa-right-from-bracket menue-icon"></i>
-        </button>}
+        <NavLink to="/feed" className="menue-icon-container"><img className="menue-icon" src={homePlacholder} alt="feed"/></NavLink>
+        <NavLink to="/profile" className="menue-icon-container"><img className="menue-icon" src={homePlacholder} alt="profile"/></NavLink>
+        <NavLink to="/chat"className="menue-icon-container"><img className="menue-icon" src={homePlacholder} alt="chat"/></NavLink>
+        <NavLink className="menue-icon-container"><img className="menue-icon" src={homePlacholder} alt="chats"/></NavLink>
+        {isLoggedIn && <button onClick={() => logOutUser()}>Log out</button>}
          <div className="curved corner-b-left b-left-grey"></div>
       </nav>
    )

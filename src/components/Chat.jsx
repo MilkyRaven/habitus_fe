@@ -14,8 +14,8 @@ export default function MyChatComponent() {
       const currentUser = new Talk.User({
         id: '1',
         name: 'Henry Mill',
-        email: 'henrymill@example.com',
-        photoUrl: 'henry.jpeg',
+        email: 'henry@gmail.com',
+        photoUrl: 'https://i0.wp.com/catcaresolutions.com/wp-content/uploads/2020/12/cute-cat-with-yellow-headband-on.png?fit=1000%2C1500&ssl=1',
         welcomeMessage: 'Hello!',
         role: 'default',
       });
@@ -23,8 +23,8 @@ export default function MyChatComponent() {
       const otherUser = new Talk.User({
         id: '2',
         name: 'Jessica Wells',
-        email: 'jessicawells@example.com',
-        photoUrl: 'jessica.jpeg',
+        email: 'jessica@gmail.com',
+        photoUrl: 'https://i0.wp.com/catcaresolutions.com/wp-content/uploads/2020/12/cute-cat-with-yellow-headband-on.png?fit=1000%2C1500&ssl=1',
         welcomeMessage: 'Hello!',
         role: 'default',
       });
@@ -47,5 +47,5 @@ export default function MyChatComponent() {
     }
   }, [talkLoaded]);
 
-  return <div div style={{height: '400px'}} ref={chatboxEl} />;
+  return <div style={{height: '400px'}} ref={chatboxEl} />;
 }
