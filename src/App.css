@@ -51,7 +51,7 @@
 /* CURVED COLOR CSS Classes: */
 
 .b-left-grey:before {
-    box-shadow: -50px 50px 0 0 #f8f3f3;
+    box-shadow: -50px 50px 0 0 #c4c4c4;
 }
 .t-right-grey:before {
     box-shadow: 50px -50px 0 0 #d9d9d9; ;

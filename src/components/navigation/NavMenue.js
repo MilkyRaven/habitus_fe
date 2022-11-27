@@ -1,7 +1,6 @@
 import './NavMenue.css'
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom'
-import homePlacholder from '../../assets/icons/home-placeholder.png'
 import { AuthContext } from '../../context/AuthContext';
 
 export default function NavMenue() {
