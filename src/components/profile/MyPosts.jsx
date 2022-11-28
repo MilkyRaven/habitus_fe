@@ -10,26 +10,26 @@ export default function MyPosts() {
 
     useEffect(() => {
         const apiCall = async () => {
+            const token = localStorage.getItem("authToken");
             try {
-                const res = await axios.get(apiEndpoint)
+                const res = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` } })
                 setMyPosts(res.data)
-                console.log(myPosts)
             }
             catch (err) { console.log(err) }
         }
 
         apiCall()
-    }, [myPosts])
+    }, [])
 
     return (
         <div>MyPosts
-            {myPosts.forEach((post)=> {
+            {myPosts.map((post)=> {
                    return (
-                    <div> 
+                    <div key={post._id}> 
                         <p>{post.title}</p>
                         <p>{post.image}</p>
                         <p>{post.createdAt}</p>
-                        <button>Delete from library</button>
+                        <button>Delete post</button>
                     </div>
                    )
                 })}

@@ -6,6 +6,7 @@ import { AuthContext } from '../../context/AuthContext';
 export default function NavMenue() {
 
    const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+   const homePlacholder = "src/assets/icons/home-placeholder.png";
    console.log(isLoggedIn)
    console.log(user)
    
