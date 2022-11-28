@@ -9,8 +9,9 @@ export default function FriendsPosts() {
 
     useEffect(() => {
         const apiCall = async () => {
+            const token = localStorage.getItem("authToken");
             try {
-                const res = await axios.get(apiEndpoint);
+                const res = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` }});
                 setFriendsPosts(res.data)
                 console.log(friendsPosts)
             } catch (error) {
@@ -22,14 +23,13 @@ export default function FriendsPosts() {
     
     
     return (
-        <div>FriendsPosts
-            {friendsPosts.forEach((post) => {
+        <div> <h2>Friends Posts 💕</h2>
+            {friendsPosts.map((post) => {
                 return (
-                    <div>
-                        <p>{post.title}</p>
+                    <div key={post._id}>
+                        <h3>{post.title}</h3>
                         <p>{post.image}</p>
-                        <p>{post.upvotes}</p>
-                        <p>{post.downvotes}</p>
+                        <p>upvotes: {post.upvotes} downvotes:{post.downvotes}</p>
                         <p>{post.createdAt}</p>
                     </div>
                 )
