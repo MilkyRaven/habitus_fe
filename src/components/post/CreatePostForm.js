@@ -1,14 +1,10 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 
 
 export default function CreateProfileForm () {
     const storedToken = localStorage.getItem('authToken')
-
-   
-
-    const [imageUrl, setImageUrl] = useState("")
-
+    
     const [select, setSelect] = useState([])
 
     const [input, setInput] = useState({
@@ -32,7 +28,8 @@ export default function CreateProfileForm () {
 
         setSelect ((prev) => {
             let val = event.target.value
-
+            console.log(val)
+            
             if(prev.includes(val)) { 
                 const clone = [...prev];
                 clone.splice(prev.indexOf(val), 1)
@@ -41,30 +38,24 @@ export default function CreateProfileForm () {
             return [...prev, val]
             }
         })
-        setInput ((prev) => {
-            return {
-                ...prev,
-                categories: select
-                }
-        })
+        console.log(select)
         
-    }
+        }
+        
+    
 
     const handleFileUpload = async (event) => {
-        console.log("The file to be uploaded is: ", event.target.files[0]);
      
         const uploadData = new FormData();
         uploadData.append("image", event.target.files[0]);
 
         try {
             const fileDate = await axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, uploadData, {headers: {Authorization: `Bearer ${storedToken}`}})
-            console.log(fileDate, "image")
 
-            setImageUrl(fileDate.fileUrl)
             setInput ((prev) => {
                 return {
                     ...prev,
-                    image: imageUrl
+                    image: fileDate.data.fileUrl
                     } 
             })
 
@@ -77,10 +68,18 @@ export default function CreateProfileForm () {
 
     const submitHandler = async (event) => {
         event.preventDefault()
-        console.log(input, "Submit")
+        const {title, description, type, image} = input
+        const obj = {
+            title: title,
+            description: description,
+            categories: select,
+            type: type,
+            image: image
+        }
+        console.log(obj, "Submit")
 
          try {
-            await axios.post(`${process.env.REACT_APP_API_URL}/api/feed/new-post`, input, {headers: {Authorization: `Bearer ${storedToken}`}})
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/feed/new-post`, obj, {headers: {Authorization: `Bearer ${storedToken}`}})
 
         } catch (err) {
             console.log(err)
@@ -127,7 +126,7 @@ export default function CreateProfileForm () {
                     type="checkbox" 
                     name="confidence" 
                     value="Self Confidence" 
-                    onChange={handleSelection}
+                    onChange={(event) =>handleSelection(event) }
                 /> Self Confidence
             </div>
             <div className="form-select">
@@ -140,7 +139,7 @@ export default function CreateProfileForm () {
             </div>
             <div className="media-upload">
                <label>Post-Title</label>
-               <input type="file" onChange={(event) => handleFileUpload(event)} />            
+               <input type="file" name="image" onChange={(event) => handleFileUpload(event)} />            
             </div>
             <button type='submit'>Post</button>
         </form>
