@@ -3,13 +3,19 @@ import { useParams } from 'react-router-dom'
 import NavMenue from '../../components/navigation/NavMenue'
 import Navbar from '../../components/navigation/Navbar'
 import axios from 'axios'
+import { useContext } from "react"
+import { AuthContext } from '../../context/AuthContext';
 
 const apiEndpoint = "http://localhost:8000/api/user/"
 
 
 export default function PublicProfile() {
     const [userProfile, setUserProfile] = useState([])
+    const {  user  } = useContext(AuthContext);
     const { userId } = useParams()
+    const [followState, setFollowState] =useState("Follow")
+
+    console.log(user , "USER")
 
     useEffect(() => {
         const apiCall = async () => {
@@ -22,6 +28,19 @@ export default function PublicProfile() {
         }
         apiCall();
     }, [])
+
+    const followHandler = async () => {
+        const token = localStorage.getItem("authToken");
+
+        try {
+            const resFollowing = await axios.put(`${apiEndpoint}${userId}/set-following`,{}, { headers: { Authorization: `Bearer ${token}` }});
+            const resFollower = await axios.put(`${apiEndpoint}${userId}/set-follower`,{}, { headers: { Authorization: `Bearer ${token}` }});
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+   
 
     // const userPreferences = userProfile.myPreferences
     // const userPosts = userProfile.myPosts;
@@ -36,7 +55,7 @@ export default function PublicProfile() {
             {/* <p>Followers: {userFollowersNumber}</p>
             <p>Following: {userFollowingNumber}</p> */}
             <img alt='username profile' width={200} src={userProfile.profileImg}></img>
-            <button>Follow</button>
+            <button onClick={followHandler}>{followState}</button>
             <p>{userProfile.goals}</p>
             <p> Interests:</p>
             {/* {userPreferences.map((preference) => {
