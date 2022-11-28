@@ -17,7 +17,23 @@ export default function LibraryPage() {
         apiCall()
     }, [])
 
-    console.log(library)
+    const deleteApiEndpoint = "http://localhost:8000/api/my-profile/library/";
+    const deletePost = async (id) => {
+        const token = localStorage.getItem("authToken");
+        console.log(id);
+        try {
+            const res = await axios.put(deleteApiEndpoint + id + "/delete", {}, { headers: { Authorization: `Bearer ${token}` }}); 
+            const newLibrary = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` }});
+            setLibrary(newLibrary.data)
+
+            console.log(res);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+    // console.log(library)
 
     return (
         <div>
@@ -29,7 +45,7 @@ export default function LibraryPage() {
                         <p>{post.title}</p>
                         <img width={200} alt="post" src={post.image}></img>
                         <p>{post.createdAt}</p>
-                        <button>Delete from library</button>
+                        <button onClick={() => deletePost(post._id)}>Delete from library</button>
                     </div>
                 )
             })}
