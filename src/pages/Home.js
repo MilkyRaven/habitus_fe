@@ -4,6 +4,7 @@ import './Home.css'
 import Chat from '../components/Chat'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext';
+import CreateProfileForm from '../components/post/CreatePostForm';
 
 
 
@@ -32,6 +33,7 @@ export default function Home() {
             
             </main>
          <Chat />
+         <CreateProfileForm/>
       </div>
    )
 }
