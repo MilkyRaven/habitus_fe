@@ -67,9 +67,9 @@ export default function Signup() {
          </form>
          <p className="text-centered">Already a Customer? Go to <Link className="link-blue" to="/login">LOG IN</Link></p>
          <ul className="icon-footer-container">
-            <li><i class="fa-brands fa-google footer-icon"></i></li>
-            <li><i class="fa-brands fa-facebook-f footer-icon"></i></li>
-            <li><i class="fa-brands fa-linkedin footer-icon"></i></li>
+            <li><i className="fa-brands fa-google footer-icon"></i></li>
+            <li><i className="fa-brands fa-facebook-f footer-icon"></i></li>
+            <li><i className="fa-brands fa-linkedin footer-icon"></i></li>
          </ul>
       </section>
       </div>
