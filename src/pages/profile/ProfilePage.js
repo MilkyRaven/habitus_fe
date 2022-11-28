@@ -13,45 +13,44 @@ import MyPosts from '../../components/profile/MyPosts'
 
 
 export default function ProfilePage() {
-    const {  user  } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
+    return (
+        <div className="page-relative">
+            <Navbar />
+            <NavMenue></NavMenue>
 
-   return (
-    <div className="page-relative">
-        <Navbar />
-        <NavMenue></NavMenue>
-        
-        {user &&
-            <ProfileHeader 
-                profileHeadline={user.username}
-                profileSubheadline="Location"
-            /> 
-        }
-        
-        <Link to="/edit-profile"> Edit </Link>
+            {user &&
+                <ProfileHeader
+                    profileHeadline={user.username}
+                    profileSubheadline="Location"
+                />
+            }
 
-       {user &&
-            <main>
-                <CurveContainerLeft></CurveContainerLeft>
+            <Link to="/edit-profile"> Edit </Link>
 
-                <h3>Habits Interests:</h3>
-                <ul>
-                    {user.myPreferences && user.myPreferences.map((preference, index) => {
-                        return (
-                            <li>{preference}</li>
-                        )
-                    })}
-                </ul>
+            {user &&
+                <main>
+                    <CurveContainerLeft></CurveContainerLeft>
 
-                <h3>My Goals:</h3>
-                <p>{user.goals}</p>
-                <MyPosts />
-                <Link to="/library"> My Library </Link>
+                    <h3>Habits Interests:</h3>
+                    <ul>
+                        {user.myPreferences && user.myPreferences.map((preference, index) => {
+                            return (
+                                <li>{preference}</li>
+                            )
+                        })}
+                    </ul>
 
-                <CurveContainerRight></CurveContainerRight>
-            </main>
-       }
-        
-    </div>
-   )
+                    <h3>My Goals:</h3>
+                    <p>{user.goals}</p>
+                    <MyPosts />
+                    <Link to="/library"> My Library </Link>
+
+                    <CurveContainerRight></CurveContainerRight>
+                </main>
+            }
+
+        </div>
+    )
 }
