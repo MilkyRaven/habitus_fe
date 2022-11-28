@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const apiEndpoint = "http://localhost:8000/api/feed/following";
 
@@ -28,7 +29,7 @@ export default function FriendsPosts() {
                 return (
                     <div key={post._id}>
                         <h3>{post.title}</h3>
-                        <h3>{post.creator.username}</h3>
+                        <h3><Link  to={`/user/${post.creator._id}`} > {post.creator.username}</Link></h3>
                         <p>{post.image}</p>
                         <p>upvotes: {post.upvotes} downvotes:{post.downvotes}</p>
                         <p>{post.createdAt}</p>

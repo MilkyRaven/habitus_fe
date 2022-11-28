@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom'
 import NavMenue from '../../components/navigation/NavMenue'
 import Navbar from '../../components/navigation/Navbar'
 import axios from 'axios'
-import { Link } from "react-router-dom";
 
 const apiEndpoint = "http://localhost:8000/api/user/"
 
@@ -24,8 +23,8 @@ export default function PublicProfile() {
         apiCall();
     }, [])
 
-    const userPreferences = userProfile.myPreferences
-    const userPosts = userProfile.myPosts;
+    // const userPreferences = userProfile.myPreferences
+    // const userPosts = userProfile.myPosts;
     // const userFollowingNumber = userProfile.following.length;
     // const userFollowersNumber = userProfile.followers.length;
 
