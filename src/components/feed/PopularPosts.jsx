@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const apiEndpoint = "http://localhost:8000/api/feed";
 
@@ -27,6 +28,7 @@ export default function PopularPosts() {
                 return (
                     <div key={post._id}>
                         <h3>{post.title}</h3>
+                        <h3><Link  to={`/user/${post.creator._id}`} > {post.creator.username}</Link></h3>
                         <img width={200} src={post.image} alt="" />
                         <p>upvotes: {post.upvotes} downvotes: {post.downvotes}</p>
                         <p>{post.createdAt}</p>

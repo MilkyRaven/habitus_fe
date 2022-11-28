@@ -9,6 +9,7 @@ import Navbar from '../../components/navigation/Navbar'
 import { useContext } from "react"
 import { AuthContext } from '../../context/AuthContext';
 import { Link } from "react-router-dom";
+import MyPosts from '../../components/profile/MyPosts'
 
 
 export default function ProfilePage() {
@@ -44,7 +45,7 @@ export default function ProfilePage() {
 
                 <h3>My Goals:</h3>
                 <p>{user.goals}</p>
-
+                <MyPosts />
                 <Link to="/library"> My Library </Link>
 
                 <CurveContainerRight></CurveContainerRight>
