@@ -28,6 +28,7 @@ export default function FriendsPosts() {
                 return (
                     <div key={post._id}>
                         <h3>{post.title}</h3>
+                        <h3>{post.creator.username}</h3>
                         <p>{post.image}</p>
                         <p>upvotes: {post.upvotes} downvotes:{post.downvotes}</p>
                         <p>{post.createdAt}</p>

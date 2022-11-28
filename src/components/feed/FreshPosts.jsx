@@ -29,6 +29,7 @@ export default function FreshPosts() {
                 return (
                     <div key={post._id}>
                         <h3>{post.title}</h3>
+                        <h3>{post.creator.username}</h3>
                         <img width={200} src={post.image} alt="" />
                         <p>{post.createdAt}</p>
                     </div>

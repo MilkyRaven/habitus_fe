@@ -27,6 +27,7 @@ export default function PopularPosts() {
                 return (
                     <div key={post._id}>
                         <h3>{post.title}</h3>
+                        <h3>{post.creator.username}</h3>
                         <img width={200} src={post.image} alt="" />
                         <p>upvotes: {post.upvotes} downvotes: {post.downvotes}</p>
                         <p>{post.createdAt}</p>
