@@ -3,6 +3,7 @@ import Navbar from '../components/navigation/Navbar'
 import './Home.css'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext';
+import CreateProfileForm from '../components/post/CreatePostForm';
 
 
 
@@ -29,8 +30,8 @@ export default function Home() {
                <li><Link  to="/chat" >Chat</Link></li>
                {isLoggedIn && <li><button onClick={() => logOutUser()}>Log out</button></li>}
             </ul>
-            
             </main>
+         <CreateProfileForm/>
       </div>
    )
 }
