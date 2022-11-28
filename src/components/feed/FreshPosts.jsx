@@ -9,10 +9,10 @@ export default function FreshPosts() {
 
     useEffect(() => {
         const apiCall = async () => {
+            const token = localStorage.getItem("authToken");
             try {
-                const res = await axios.get(apiEndpoint);
+                const res = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` }});
                 setFreshPosts(res.data)
-                console.log(freshPosts)
             } catch (error) {
                 console.log(error)
             }
@@ -22,14 +22,14 @@ export default function FreshPosts() {
     
     
     return (
-        <div>FreshPosts
-            {freshPosts.forEach((post) => {
+        <div> <h2>Fresh Posts 🚀</h2>
+            
+            {freshPosts.map((post) => {
+                
                 return (
-                    <div>
-                        <p>{post.title}</p>
-                        <p>{post.image}</p>
-                        <p>{post.upvotes}</p>
-                        <p>{post.downvotes}</p>
+                    <div key={post._id}>
+                        <h3>{post.title}</h3>
+                        <img width={200} src={post.image} alt="" />
                         <p>{post.createdAt}</p>
                     </div>
                 )
