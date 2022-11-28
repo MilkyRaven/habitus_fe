@@ -12,6 +12,8 @@ import ProfilePage from './pages/profile/ProfilePage';
 import EditProfile from './pages/profile/EditProfile';
 import LibraryPage from './pages/profile/LibraryPage';
 import Feed from './pages/feed/Feed';
+import ChatPage from './pages/profile/ChatPage';
+import PublicProfile from './pages/profile/PublicProfile';
 
 function App() {
    return (
@@ -24,9 +26,11 @@ function App() {
             <Route path="/private" element={<IsPrivate><PrivateView /></IsPrivate>} />
             <Route path="/create-profile" element={<CreateProfile />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/user/:userId" element={<PublicProfile />} />
             <Route path="/edit-profile" element={<EditProfile  />} />
             <Route path="/library" element={<LibraryPage />}/>
             <Route path="/feed" element={<Feed />} />
+            <Route path="/chat" element={<ChatPage />} />
             <Route path="*" element={<ErrorPage />} />
          </Routes>
       </div>
