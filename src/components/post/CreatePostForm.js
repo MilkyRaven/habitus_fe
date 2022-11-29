@@ -2,8 +2,10 @@ import axios from 'axios'
 import React, {  useState } from 'react'
 
 
-export default function CreateProfileForm () {
+export default function CreatePostForm (props) {
     const storedToken = localStorage.getItem('authToken')
+
+    const { closeModalHandler } = props
     
     const [select, setSelect] = useState([])
 
@@ -84,6 +86,8 @@ export default function CreateProfileForm () {
         } catch (err) {
             console.log(err)
         } 
+
+        closeModalHandler()
     }
 
     return (
