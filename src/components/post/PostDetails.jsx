@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import CreateComment from '../../components/comments/CreateComment'
 
 import { AuthContext } from '../../context/AuthContext';
 
@@ -59,6 +60,7 @@ export default function PostDetails() {
                 </div>
             )
         })}</div>: <h4>Loading comments...</h4>}
+        <CreateComment />
             
         </div>
     </div>
