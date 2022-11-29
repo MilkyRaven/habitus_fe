@@ -18,17 +18,14 @@ export default function ProfilePage() {
 
    return (
     <div className="page-relative">
-        <Navbar />
         <NavMenue></NavMenue>
         
         {user &&
             <ProfileHeader 
                 profileHeadline={user.username}
-                profileSubheadline="Location"
+                // profileSubheadline="Location" 
             /> 
         }
-        
-        <Link to="/edit-profile"> Edit </Link>
 
        {user &&
             <main>

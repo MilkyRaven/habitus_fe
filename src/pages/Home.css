@@ -1,5 +1,11 @@
-.test-section {
-    height: 400px;
-    background-color: brown;
-    margin-top: 20px;
+
+
+.homepage-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#img-women-gathering {
+    width: 100%;
 }

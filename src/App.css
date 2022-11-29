@@ -1,4 +1,7 @@
 /* Generic CSS Classes: */
+html {
+    background-color: #F5ECE4;
+}
 
 .page-relative {
     position: relative;
@@ -51,10 +54,10 @@
 /* CURVED COLOR CSS Classes: */
 
 .b-left-grey:before {
-    box-shadow: -50px 50px 0 0 #c4c4c4;
+    box-shadow: -50px 50px 0 0 #BF928C;
 }
 .t-right-grey:before {
-    box-shadow: 50px -50px 0 0 #d9d9d9; ;
+    box-shadow: 50px -50px 0 0 #C07D4E; ;
 }
 .t-right-grey2:before {
     box-shadow: 50px -50px 0 0 #c4c4c4; ;
@@ -65,6 +68,10 @@
 .b-right-rose:before {
     box-shadow: 50px 50px 0 0 #f8f3f3;
 }
+
+
+
+
 /* 
 .t-left-white:before {
     box-shadow: -50px -50px 0 0 white;
@@ -105,4 +112,38 @@
 
 .link-blue {
     color: #48535a
+}
+
+
+/* Links */
+
+.link-blue-lg {
+    background-color: #48535a;
+    color: white;
+    min-width: 170px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-bottom: 25px;
+}
+
+.link-brown-lg {
+    background-color: #C07D4E;
+    color: white;
+    min-width: 170px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+
+
+/* Images */
+
+.img-logo {
+    width: 100%;
 }
