@@ -24,8 +24,9 @@ export default function ProfilePage() {
         {user &&
             <ProfileHeader 
                 profileHeadline={user.username}
-                // profileSubheadline="Location" 
-            /> 
+            > 
+                <Link to="/edit-profile" className="menue-icon-container"><i className="fa-solid fa-pen menue-icon"></i></Link>
+            </ProfileHeader>
         }
 
        {user &&

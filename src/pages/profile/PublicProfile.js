@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import NavMenue from '../../components/navigation/NavMenue'
-import Navbar from '../../components/navigation/Navbar'
 import axios from 'axios'
 import { useContext } from "react"
 import { AuthContext } from '../../context/AuthContext';
+import ProfileHeader from '../../components/profile/ProfileHeader'
+import FollowButton from '../../components/profile/FollowButton'
 
 const apiEndpoint = "http://localhost:8000/api/user/"
 
@@ -12,12 +13,7 @@ const apiEndpoint = "http://localhost:8000/api/user/"
 export default function PublicProfile() {
     const [userProfile, setUserProfile] = useState([])
     const {  user } = useContext(AuthContext);
-    const { userId } = useParams()
-    const [followed, setFollowed] =useState("follow")
-
-    //const TestID = user[0]
-    
-    
+    const { userId } = useParams()    
 
     useEffect(() => {
         const apiCall = async () => {
@@ -25,22 +21,13 @@ export default function PublicProfile() {
             try {
                 const res = await axios.get((apiEndpoint) + (userId), { headers: { Authorization: `Bearer ${token}` }});
                 setUserProfile(res.data)
-
-                const currentUser = await axios.get("http://localhost:8000/api/my-profile", { headers: { Authorization: `Bearer ${token}` }})
-                console.log(currentUser.data, "INSIDE USE E")
-                setFollowed(() => {
-                    if (currentUser.data.following.includes(res.data._id)) {
-                        return "follow"
-                    } else {return "unfollow"}
-                }) 
-                console.log(followed, "FOLLOW")
                 
             } catch (error) {
                 console.log(error)
             }
         }
         apiCall();
-    }, [user, followed, userId])
+    }, [])
 
     /* const followHandler = async () => {
         const token = localStorage.getItem("authToken");
@@ -58,69 +45,58 @@ export default function PublicProfile() {
             console.log(error)
         }
     } */
-    const followHandler = async () => {
-        const token = localStorage.getItem("authToken");
 
-        try {
-            const resFollowing = await axios.put(`${apiEndpoint}${userId}/follow`,{}, { headers: { Authorization: `Bearer ${token}` }});
-            setFollowed("unfollow")
 
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    const unfollowHandler = async () => {
-        const token = localStorage.getItem("authToken");
-
-        try {
-            const resFollowing = await axios.put(`${apiEndpoint}${userId}/follow`,{}, { headers: { Authorization: `Bearer ${token}` }});
-            setFollowed("unfollow")
-
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-   
-
-    // const userPreferences = userProfile.myPreferences
-    // const userPosts = userProfile.myPosts;
-    // const userFollowingNumber = userProfile.following.length;
-    // const userFollowersNumber = userProfile.followers.length;
 
     return (
         <div>
-            <Navbar />
             {user && (
             <section>
-            {/* {console.log(userProfile, "USER-PROFILE")} */}
-            <h3>{userProfile.username}</h3>
-            {/* <p>Followers: {userFollowersNumber}</p>
-            <p>Following: {userFollowingNumber}</p> */}
-            <img alt='username profile' width={200} src={userProfile.profileImg}></img>
-            {followed === "follow"? <button onClick={followHandler}>Follow</button> : <button onClick={unfollowHandler}>UnFollow</button> }
-            <p>{userProfile.goals}</p>
-            <p> Interests:</p>
-            {/* {userPreferences.map((preference) => {
-                return (
-                    <ul>
-                        <li>{preference}</li>
-                    </ul>
-                )
-            })} */}
-            <h4>{userProfile.username} posts</h4>
-            <div>
-                {/* {userPosts.map((post) => {
-                    return (
-                        <div>
-                            <h5>{post.title}</h5>
-                            <img src={post.image}></img>
-                        </div>
-                    )
-                })} */}
-            </div>
-            </section>)}
+                <ProfileHeader
+                profileHeadline={userProfile.username}
+                userImage={userProfile.profileImg}
+                >
+                    <FollowButton
+                        userId={userId}
+                    />
+                </ProfileHeader>
+                
+                <div className="interest-profile-container">
+                    <h2>Habit Interests:</h2>
+                    {userProfile.myPreferences !== [] && 
+                    userProfile.myPreferences.map((preference, index) => {
+                        return (
+                            <ul key={index}>
+                                <li>{preference}</li>
+                            </ul>
+                        )
+                    })} 
+                    {!userProfile.myPreferences[0] && <p>{userProfile.username} hasn't set any Interests, yet!</p>} 
+                </div>
+                <div className="goals-profile-container">
+                    <h2>{userProfile.username}'s Goals:</h2>
+                    <p>{userProfile.goals}</p>
+                </div>
+                <div className="follower-profile-container">
+                    <h2>{userProfile.followers.length} Followers</h2>
+                </div>
+                <div className="post-profile-container">
+                    <h2>{userProfile.username}'s posts</h2>
+                    <div>
+                    {userProfile.myPosts !== [] && 
+                    userProfile.myPosts.map((post, index) => {
+                        return (
+                            <ul key={index}>
+                                <li>{post.title}</li>
+                                <li>{post.type}</li>
+                            </ul>
+                        )
+                    })} 
+                    {!userProfile.myPosts[0] && <p>{userProfile.username} hasn't made any Posts, yet!</p>}
+                    </div>
+                </div>
+            </section>)
+            }
             <NavMenue />
         </div>
     )
