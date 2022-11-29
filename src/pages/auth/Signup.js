@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Auth.css'
 import Navbar from '../../components/navigation/Navbar';
+import { AuthContext } from '../../context/AuthContext';
 
 export default function Signup() {
+   const { storeToken, authenticateUser } = useContext(AuthContext);
    const [user, setUser] = useState({
       username: '',
       email: ''
@@ -38,6 +40,11 @@ export default function Signup() {
       try {
          console.log("inside the rout")
          const test = await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/auth/signup`, { username: user.username, email: user.email, password });
+        
+         const login = await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/auth/login`, {email: user.email, password});
+         storeToken(login.data.authToken);
+         console.log(login.data.authToken, "TOKEN")
+         authenticateUser(); 
          navigate('/create-profile');
          console.log(test, "test")
       } catch (error) {
