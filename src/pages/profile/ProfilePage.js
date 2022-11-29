@@ -13,6 +13,7 @@ import MyPosts from '../../components/profile/MyPosts'
 
 
 export default function ProfilePage() {
+
     const {  user  } = useContext(AuthContext);
 
 
