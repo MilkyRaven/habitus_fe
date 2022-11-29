@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CurveContainerLeft from '../../components/common/CurveContainerLeft'
 import CurveContainerRight from '../../components/common/CurveContainerRight'
 import NavMenue from '../../components/navigation/NavMenue'
@@ -10,18 +10,37 @@ import { useContext } from "react"
 import { AuthContext } from '../../context/AuthContext';
 import { Link } from "react-router-dom";
 import MyPosts from '../../components/profile/MyPosts'
+import axios from 'axios'
 
 
 export default function ProfilePage() {
 
     const {  user  } = useContext(AuthContext);
+    const [ currentUser, setCurrentUser] = useState({})
+
+
+    useEffect( () => {
+        const apiCall = async () => {
+            const token = localStorage.getItem("authToken");
+
+            try {
+                const userData = await axios.get("http://localhost:8000/api/my-profile", { headers: { Authorization: `Bearer ${token}` }});
+                console.log(userData.data, "data")
+                setCurrentUser(userData.data)
+                console.log(currentUser, "meeeeee")
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        apiCall()
+    }, [])
 
 
    return (
     <div className="page-relative">
         <NavMenue></NavMenue>
         
-        {user &&
+        {currentUser &&
             <ProfileHeader 
                 profileHeadline={user.username}
             > 
@@ -29,21 +48,21 @@ export default function ProfilePage() {
             </ProfileHeader>
         }
 
-       {user &&
+       {currentUser &&
             <main>
                 <CurveContainerLeft></CurveContainerLeft>
 
                 <h3>Habits Interests:</h3>
                 <ul>
-                    {user.myPreferences && user.myPreferences.map((preference, index) => {
+                    {currentUser.myPreferences && currentUser.myPreferences.map((preference, index) => {
                         return (
-                            <li>{preference}</li>
+                            <li key={index}>{preference}</li>
                         )
                     })}
                 </ul>
 
                 <h3>My Goals:</h3>
-                <p>{user.goals}</p>
+                <p>{currentUser.goals}</p>
                 <MyPosts />
                 <Link to="/library"> My Library </Link>
 

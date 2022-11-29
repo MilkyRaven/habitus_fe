@@ -67,7 +67,7 @@ export default function CreateProfileForm () {
         try {
             await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {myPreferences: preferencesArr}, {headers: {Authorization: `Bearer ${storedToken}`}})
             await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {goals}, {headers: {Authorization: `Bearer ${storedToken}`}})
-            navigate("/feed")
+            navigate("/profile")
 
         } catch (err) {
             console.log(err)
