@@ -24,7 +24,7 @@ export default function PostDetails() {
     <div>
         <h3>Title: {postDetails.title}</h3>
         {postDetails.creator? <h4>{postDetails.creator.username}</h4> : <h4>Loading...</h4>}
-        <img alt="post" src={postDetails.image}></img>
+        <img width={200} alt="post" src={postDetails.image}></img>
         <p>{postDetails.description}</p>
         <p>Downvotes: {postDetails.downvotes}</p>
         <p>Upvotes: {postDetails.upvotes}</p>
