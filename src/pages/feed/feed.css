@@ -1,0 +1,11 @@
+#btn-create-post {
+    margin: 20px 10px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 13px 25px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    border: none;
+    color: white;
+    background: #185adb;
+}
