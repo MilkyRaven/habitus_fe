@@ -21,15 +21,30 @@ export default function MyPosts() {
         apiCall()
     }, [])
 
+    const deleteApiEndpoint = "http://localhost:8000/api/my-profile/";
+    const deletePost = async (id) => {
+        const token = localStorage.getItem("authToken");
+        console.log(id);
+        try {
+            const res = await axios.put(deleteApiEndpoint + id + "/delete", {}, { headers: { Authorization: `Bearer ${token}` }}); 
+            const newPosts = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` }});
+            setMyPosts(newPosts.data)
+
+            console.log(res);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <div>MyPosts
             {myPosts.map((post)=> {
                    return (
                     <div key={post._id}> 
                         <p>{post.title}</p>
-                        <p>{post.image}</p>
+                        <img alt={post} width={200} src={post.image}></img>
                         <p>{post.createdAt}</p>
-                        <button>Delete post</button>
+                        <button onClick={() => deletePost(post._id)}>Delete post</button>
                     </div>
                    )
                 })}
