@@ -10,7 +10,7 @@ const apiEndpoint = "http://localhost:8000/api/feed/"
 export default function PostDetails() {
     const {user} = useContext(AuthContext);
     const [postDetails, setPostsDetails] = useState([]);
-    const [comments, setComments] = useState([]);
+    // const [comments, setComments] = useState([]);
     const {postId} = useParams();
 
     useEffect(() => {
@@ -28,16 +28,12 @@ export default function PostDetails() {
     
     const commentsArray = postDetails.commentsId;
     
-    const deleteCommentApiEndpoint = "http://localhost:8000/api/feed/"
-    
     const deleteComment = async (commentId) => {
         const token = localStorage.getItem("authToken");
         try {
-            console.log("inside")
-            const res = await axios.delete(deleteCommentApiEndpoint + commentId + "/delete", {}, { headers: { Authorization: `Bearer ${token}` }}); 
-            const newComments = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` }});
-            setComments(newComments.data)
-            console.log(comments);
+            await axios.delete(`http://localhost:8000/api/feed/${commentId}/delete`, { headers: { Authorization: `Bearer ${token}` }});
+            const res = await axios.get(apiEndpoint + postId, { headers: { Authorization: `Bearer ${token}` }});
+                setPostsDetails(res.data)
         } catch (error) {
             console.log(error)
         }
@@ -59,7 +55,7 @@ export default function PostDetails() {
                 <div key={comment._id}>
                     <h5>{comment.creator.username}</h5>
                     <p>{comment.content}</p>
-                    {/* {comment.creator._id === user._id ? <button onClick={()=> deleteComment(comment._id)}>delete</button> : ""}  */}
+                    {comment.creator._id === user._id ? <button onClick={()=> deleteComment(comment._id)}>delete</button> : ""} 
                 </div>
             )
         })}</div>: <h4>Loading comments...</h4>}
