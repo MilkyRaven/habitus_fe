@@ -14,6 +14,7 @@ import LibraryPage from './pages/profile/LibraryPage';
 import Feed from './pages/feed/Feed';
 import ChatPage from './pages/profile/ChatPage';
 import PublicProfile from './pages/profile/PublicProfile';
+import PostDetails from './components/post/PostDetails';
 
 function App() {
    return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/create-profile" element={<CreateProfile />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/user/:userId" element={<PublicProfile />} />
+            <Route path="/:postId" element={<PostDetails />} />
             <Route path="/edit-profile" element={<EditProfile  />} />
             <Route path="/library" element={<LibraryPage />}/>
             <Route path="/feed" element={<Feed />} />
