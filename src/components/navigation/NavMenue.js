@@ -6,8 +6,8 @@ import { AuthContext } from '../../context/AuthContext';
 export default function NavMenue() {
 
    const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
-   console.log(isLoggedIn)
-   console.log(user)
+   //console.log(isLoggedIn)
+   //console.log(user)
    
    return (
       <nav id="nav-menue">
