@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+import { AuthContext } from '../../context/AuthContext';
+
 const apiEndpoint = "http://localhost:8000/api/feed/"
 
 export default function PostDetails() {
+    const {user} = useContext(AuthContext);
     const [postDetails, setPostsDetails] = useState([]);
+    const [comments, setComments] = useState([]);
     const {postId} = useParams();
 
     useEffect(() => {
@@ -21,7 +25,25 @@ export default function PostDetails() {
         };
         apiCall();
     }, [postId])
+    
     const commentsArray = postDetails.commentsId;
+    
+    const deleteCommentApiEndpoint = "http://localhost:8000/api/feed/"
+    
+    const deleteComment = async (commentId) => {
+        const token = localStorage.getItem("authToken");
+        try {
+            console.log("inside")
+            const res = await axios.delete(deleteCommentApiEndpoint + commentId + "/delete", {}, { headers: { Authorization: `Bearer ${token}` }}); 
+            const newComments = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` }});
+            setComments(newComments.data)
+            console.log(comments);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
   return (
     <div>
         <h3>{postDetails.title}</h3>
@@ -37,6 +59,7 @@ export default function PostDetails() {
                 <div key={comment._id}>
                     <h5>{comment.creator.username}</h5>
                     <p>{comment.content}</p>
+                    {/* {comment.creator._id === user._id ? <button onClick={()=> deleteComment(comment._id)}>delete</button> : ""}  */}
                 </div>
             )
         })}</div>: <h4>Loading comments...</h4>}
