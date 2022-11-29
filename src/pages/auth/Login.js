@@ -55,6 +55,7 @@ export default function Login() {
             </form>
             <p className="text-centered">No Account yet? Go to <Link className="link-blue" to="/signup">SIGN UP</Link></p>
          </section>
+
       </div>
    )
 }
