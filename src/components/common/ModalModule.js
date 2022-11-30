@@ -3,7 +3,7 @@ import './ModalModule.css'
 
 
 export default function ModalModule (props) {
-    const { setIsOpen } = props
+    const { setIsOpen, modalHeadline } = props
 
     return (
         <>
@@ -12,7 +12,7 @@ export default function ModalModule (props) {
             <div className="centered">
                 <div className="modal">
                     <div className="modal-header">
-                        <h3 id="h3-title" className="heading">Create a Post</h3>
+                        <h3 id="h3-title" className="heading">{modalHeadline}</h3>
                     </div>
 
                     <button className="btn-close" onClick={() => setIsOpen(false)}>

@@ -21,7 +21,9 @@ export default function Feed () {
                 <button id="btn-create-post" onClick={() => setIsOpen(true)}><i className="fa-solid fa-plus post-icon"></i></button>
             </div>
             {isOpen && 
-                <ModalModule setIsOpen={setIsOpen}>
+                <ModalModule 
+                setIsOpen={setIsOpen}
+                modalHeadline={"Create a Post"}>
                     <CreatePostForm closeModalHandler={closeModal}/>
                 </ModalModule>
             }
