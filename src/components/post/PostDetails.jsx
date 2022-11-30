@@ -60,6 +60,7 @@ export default function PostDetails() {
             return (
                 <div key={comment._id}>
                     <h5>{comment.creator.username}</h5>
+                    <img alt={"profile"} width={50} src={comment.creator.profileImg}></img>
                     <p>{comment.content}</p>
                     {user? 
                     comment.creator._id === user._id ? <button onClick={()=> deleteComment(comment._id)}>delete</button> : "" : <h2>Loading...</h2> }
