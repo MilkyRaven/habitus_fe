@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import CurveContainerLeft from '../common/CurveContainerLeft';
 import CurveContainerRight from '../common/CurveContainerRight';
 
 
@@ -10,8 +9,16 @@ export default function CreateProfileForm () {
 
     const navigate = useNavigate()
 
+    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
     const [goals, setGoals] = useState("")
 
+    const onChangeUsernameHandler = (e) => {
+        setUsername(e.target.value)
+    }
+    const onChangeEmailHandler = (e) => {
+        setEmail(e.target.value)
+    }
     const onChangeGoalsHandler = (e) => {
         setGoals(e.target.value)
     }
@@ -79,11 +86,18 @@ export default function CreateProfileForm () {
 
         <form onSubmit={submitHandler}>
             <section className="textinput-container form">
-                <p>TELL US SOMETHING ABOUT YOU...</p>
-                    <div className="form-row">
-                    <label>My Goals: </label>
-                    <textarea name="goals" onChange={onChangeGoalsHandler}></textarea>
-                </div>
+                <div className="form-row">
+                  <label>Username</label>
+                  <input type="text" name="username" value={username} onChange={onChangeUsernameHandler} />
+               </div>
+               <div className="form-row">
+                  <label>Email</label>
+                  <input type="email" name="email" value={email} onChange={onChangeEmailHandler} />
+               </div>
+               <div className="form-row">
+                  <label>My Goals</label>
+                  <textarea name="goals" onChange={onChangeGoalsHandler}></textarea>
+               </div>
             </section>
             <CurveContainerRight className="category-checkbox-container">
                 <h3>Interests</h3>
