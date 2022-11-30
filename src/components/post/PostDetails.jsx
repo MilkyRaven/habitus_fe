@@ -2,7 +2,9 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './PostDetails.css'
 import CreateComment from '../../components/comments/CreateComment'
+
 
 import { AuthContext } from '../../context/AuthContext';
 
@@ -42,7 +44,7 @@ export default function PostDetails() {
 
 
   return (
-    <div>
+    <div className="">
         <h3>{postDetails.title}</h3>
         {postDetails.creator? <h3><Link  to={`/user/${postDetails.creator._id}`} > {postDetails.creator.username}</Link></h3> : <h4>Loading...</h4>}
         <img width={200} alt="post" src={postDetails.image}></img>

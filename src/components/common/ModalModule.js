@@ -1,7 +1,5 @@
 import React from 'react'
 import './ModalModule.css'
-import CreatePostForm from '../../components/post/CreatePostForm'
-import PopularPosts from '../feed/PopularPosts'
 
 
 export default function ModalModule (props) {
