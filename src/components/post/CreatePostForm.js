@@ -93,7 +93,7 @@ export default function CreatePostForm (props) {
         <form className="form" onSubmit={submitHandler}>
             <div className="form-row">
                <label className="label-subtitle">Post Title</label>
-               <input required type="text" name="itle" value={input.title} onChange={handleChange} />
+               <input required type="text" name="title" value={input.title} onChange={handleChange} />
             </div>
             <div className="form-row">
                 <label className="label-subtitle">Description</label>
