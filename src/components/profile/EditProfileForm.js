@@ -1,17 +1,72 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import CurveContainerRight from '../common/CurveContainerRight';
 
 
+
 export default function CreateProfileForm () {
     const storedToken = localStorage.getItem('authToken')
+    const [user, setUser] = useState("")
 
     const navigate = useNavigate()
 
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [goals, setGoals] = useState("")
+
+    const [isCheckedMindfulness, setIsCheckedMindfulness] = useState(null)
+    const [isCheckedFinances, setIsCheckedFinances] = useState(null)
+    const [isCheckedHealth, setIsCheckedHealth] = useState(null)
+    const [isCheckedTech, setIsCheckedTech] = useState(null)
+    const [isCheckedConfidence, setIsCheckedConfidence] = useState(null)
+
+
+    useEffect( () => {
+        const apiCall = async () => {
+            const token = localStorage.getItem("authToken");
+
+            try {
+                const userData = await axios.get("http://localhost:8000/api/my-profile", { headers: { Authorization: `Bearer ${token}` }});
+                console.log(userData.data, "data")
+
+                setUser(userData.data)
+                setUsername(userData.data.username)
+                setEmail(userData.data.email)
+                setGoals(userData.data.goals)
+
+                userData.data.myPreferences.forEach(cat => {
+                    if (cat === "Mindfulness") {
+                        setIsCheckedMindfulness("Mindfulness")
+                        console.log("mind-true") 
+                    }
+                    if (cat === "Finances" ) {
+                        setIsCheckedFinances("Finances" )
+                    }
+                    if (cat === "Health" ) {
+                        setIsCheckedHealth("Health" )
+                        console.log("health-true")
+                    }               
+                    if (cat === "Tech") {
+                        setIsCheckedTech("Tech")
+                        console.log("tech-true")
+                    }
+                    if (cat === "Self Confidence") {
+                        setIsCheckedConfidence("Self Confidence")
+                    }
+                    
+                });
+
+                
+                
+               
+                    
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        apiCall()
+    }, [])
 
     const onChangeUsernameHandler = (e) => {
         setUsername(e.target.value)
@@ -23,27 +78,35 @@ export default function CreateProfileForm () {
         setGoals(e.target.value)
     }
 
-    const [isCheckedMindfulness, setIsCheckedMindfulness] = useState(null)
-    const [isCheckedFinances, setIsCheckedFinances] = useState(null)
-    const [isCheckedHealth, setIsCheckedHealth] = useState(null)
-    const [isCheckedTech, setIsCheckedTech] = useState(null)
-    const [isCheckedConfidence, setIsCheckedConfidence] = useState(null)
 
 
     const onChangeMindfulnessHandler = (e) => {
-        setIsCheckedMindfulness(e.target.value)
+        if (isCheckedMindfulness) {
+            setIsCheckedMindfulness(null)
+        } else {setIsCheckedMindfulness(e.target.value)}
     }
     const onChangeFinancesHandler = (e) => {
-        setIsCheckedFinances(e.target.value)
+        if (isCheckedFinances) {
+            setIsCheckedFinances(null)
+        } else {setIsCheckedFinances(e.target.value)}
+        
     }
     const onChangeHealthHandler = (e) => {
-        setIsCheckedHealth(e.target.value)
+        if (isCheckedHealth) {
+            setIsCheckedHealth(null)
+        } else {setIsCheckedHealth(e.target.value)}
     }
+
     const onChangeTechHandler = (e) => {
-        setIsCheckedTech(e.target.value)
+        if (isCheckedTech) {
+        setIsCheckedTech(null)
+        } else {setIsCheckedTech(e.target.value)}
     }
+
     const onChangeConfidenceHandler = (e) => {
-        setIsCheckedConfidence(e.target.value)
+        if (isCheckedConfidence) {
+            setIsCheckedConfidence(null)
+            } else {setIsCheckedConfidence(e.target.value)}
     }
 
     const submitHandler = async (event) => {
@@ -73,7 +136,7 @@ export default function CreateProfileForm () {
 
         try {
             const test1 = await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {myPreferences: preferencesArr}, {headers: {Authorization: `Bearer ${storedToken}`}})
-            const test2 = await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {username, email, goals}, {headers: {Authorization: `Bearer ${storedToken}`}})
+            const test2 = await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {username: username, email, goals}, {headers: {Authorization: `Bearer ${storedToken}`}})
 
             console.log(test1, "Prefs")
             console.log(test2, "REST")
@@ -89,7 +152,7 @@ export default function CreateProfileForm () {
     return (
 
         <form onSubmit={submitHandler}>
-            <section className="textinput-container form">
+        {user !== null && <section className="textinput-container form">
                 <div className="form-row">
                   <label>Username</label>
                   <input type="text" name="username" value={username} onChange={onChangeUsernameHandler} />
@@ -100,9 +163,10 @@ export default function CreateProfileForm () {
                </div>
                <div className="form-row">
                   <label>My Goals</label>
-                  <textarea name="goals" onChange={onChangeGoalsHandler}></textarea>
+                  <textarea name="goals" value={goals} onChange={onChangeGoalsHandler}></textarea>
                </div>
-            </section>
+            </section>}
+            
             <CurveContainerRight className="category-checkbox-container">
                 <h3>Interests</h3>
                 <section className="category-flex-container">
@@ -111,7 +175,7 @@ export default function CreateProfileForm () {
                             <input 
                                 type="checkbox" 
                                 name="mindfulness" 
-                                value="mindfulness"
+                                value="Mindfulness"
                                 checked={isCheckedMindfulness}
                                 onChange={onChangeMindfulnessHandler}
                             /> 
@@ -123,7 +187,7 @@ export default function CreateProfileForm () {
                             <input 
                                 type="checkbox" 
                                 name="finances" 
-                                value="finances" 
+                                value="Finances" 
                                 checked={isCheckedFinances}
                                 onChange={onChangeFinancesHandler}
                             /> 
@@ -135,7 +199,7 @@ export default function CreateProfileForm () {
                             <input 
                             type="checkbox" 
                             name="health" 
-                            value="health" 
+                            value="Health" 
                             checked={isCheckedHealth}
                             onChange={onChangeHealthHandler}
                             /> 
@@ -147,7 +211,7 @@ export default function CreateProfileForm () {
                             <input 
                                 type="checkbox" 
                                 name="tech" 
-                                value="tech" 
+                                value="Tech" 
                                 checked={isCheckedTech}
                                 onChange={onChangeTechHandler}
                             /> 
@@ -159,7 +223,7 @@ export default function CreateProfileForm () {
                             <input 
                                 type="checkbox" 
                                 name="confidence" 
-                                value="confidence" 
+                                value="Self Confidence" 
                                 checked={isCheckedConfidence}
                                 onChange={onChangeConfidenceHandler}
                             /> 

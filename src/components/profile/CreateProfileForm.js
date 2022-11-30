@@ -24,19 +24,32 @@ export default function CreateProfileForm () {
 
 
     const onChangeMindfulnessHandler = (e) => {
-        setIsCheckedMindfulness(e.target.value)
+        if (isCheckedMindfulness) {
+            setIsCheckedMindfulness(null)
+        } else {setIsCheckedMindfulness(e.target.value)}
     }
     const onChangeFinancesHandler = (e) => {
-        setIsCheckedFinances(e.target.value)
+        if (isCheckedFinances) {
+            setIsCheckedFinances(null)
+        } else {setIsCheckedFinances(e.target.value)}
+        
     }
     const onChangeHealthHandler = (e) => {
-        setIsCheckedHealth(e.target.value)
+        if (isCheckedHealth) {
+            setIsCheckedHealth(null)
+        } else {setIsCheckedHealth(e.target.value)}
     }
+
     const onChangeTechHandler = (e) => {
-        setIsCheckedTech(e.target.value)
+        if (isCheckedTech) {
+        setIsCheckedTech(null)
+        } else {setIsCheckedTech(e.target.value)}
     }
+
     const onChangeConfidenceHandler = (e) => {
-        setIsCheckedConfidence(e.target.value)
+        if (isCheckedConfidence) {
+            setIsCheckedConfidence(null)
+            } else {setIsCheckedConfidence(e.target.value)}
     }
 
     const submitHandler = async (event) => {
