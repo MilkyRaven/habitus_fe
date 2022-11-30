@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './ProfileComponents.css'
 import defaultUser from '../../assets/images/default-user-placeholder.png'
 import axios from 'axios'
@@ -9,9 +9,26 @@ export default function EditProfileHeader(props) {
     const storedToken = localStorage.getItem('authToken')
 
     const {profileHeadline, profileSubheadline} = props
-    const [ profileImage, setProfileImage ] = useState("")
+    const [ profileImg, setProfileImage ] = useState("")
 
     const [isOpen, setIsOpen] = useState(false)
+
+    useEffect( () => {
+        const apiCall = async () => {
+            const token = localStorage.getItem("authToken");
+
+            try {
+                const userData = await axios.get("http://localhost:8000/api/my-profile", { headers: { Authorization: `Bearer ${token}` }});
+                console.log(userData.data, "data")
+
+                setProfileImage(userData.data.profileImg)
+            } catch (err) {
+                console.log(err)
+            }
+            setIsOpen(false)
+        } 
+    apiCall()
+    }, [])
 
 
     const handleFileUpload = async (event) => {
@@ -23,11 +40,7 @@ export default function EditProfileHeader(props) {
             console.log(uploadData, "IMAGE-OBJECT")
             const fileDate = await axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, uploadData, {headers: {Authorization: `Bearer ${storedToken}`}})
             console.log(fileDate)
-            setProfileImage ((prev) => {
-                return {
-                    profileImg: fileDate.data.fileUrl
-                }
-            })
+            setProfileImage (fileDate.data.fileUrl)
         } catch (err) {
             console.log(err)
         }   
@@ -38,8 +51,8 @@ export default function EditProfileHeader(props) {
 
         try {
 
-        console.log(profileImage, 'inside submit try')
-            const test = await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {profileImage}, {headers: {Authorization: `Bearer ${storedToken}`}})
+        console.log(profileImg, 'inside submit try')
+            const test = await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {profileImg: profileImg}, {headers: {Authorization: `Bearer ${storedToken}`}})
         console.log(test, "RESULT")
 
         } catch (err) {
@@ -53,7 +66,7 @@ export default function EditProfileHeader(props) {
         <div className="curved corner-t-right cc-navbar"></div>
             <div className="flex-header">
                 <div className="profile-img-container-lg">
-                    <img className="profile-img-lg" src={defaultUser} alt="default-user"/>
+                    {profileImg? (<img className="profile-img-lg" src={profileImg} alt="default-user"/>):(<img className="profile-img-lg" src={defaultUser} alt="default-user"/>)}
                 </div>
                 <div>
                     <p className="profile-headline" >{profileHeadline}</p>

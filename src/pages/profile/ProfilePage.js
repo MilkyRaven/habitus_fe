@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import CurveContainerRight from '../../components/common/CurveContainerRight'
 import NavMenue from '../../components/navigation/NavMenue'
 import ProfileHeader from '../../components/profile/ProfileHeader'
 import { useContext } from "react"
