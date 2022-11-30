@@ -50,11 +50,11 @@ export default function PublicProfile() {
                             )
                         })}  
                     </ul>}
-                    {!userProfile.myPreferences !== undefined && <p>{userProfile.username} hasn't set any Interests, yet!</p>} 
+                    {/* {!userProfile.myPreferences !== undefined && <p><strong>{userProfile.username}</strong> hasn't set any interests yet!</p>}  */}
                 </div>
                 <div id="goals" className="profile-container">
                     <h3>{userProfile.username}'s Goals:</h3>
-                    {userProfile.goals? <p>{userProfile.goals}</p> : <p>You havn't set any Goals, yet!</p>}
+                    {userProfile.goals? <p>{userProfile.goals}</p> : <p>Haven't set any goals yet!</p>}
 
                     <div className="curved corner-b-left cc-goals"></div>
                 </div>
@@ -71,12 +71,10 @@ export default function PublicProfile() {
                         return (
                             <ul key={index}>
                                 <li>{post.title}</li>
-                                <li>{post.type}</li>
-                                <li>{post.creator.username}</li>
                             </ul>
                         )
                     })} 
-                    {!userProfile.myPosts !== undefined && <p>{userProfile.username} hasn't made any Posts, yet!</p>}
+                    {/* {!userProfile.myPosts !== undefined && <p><strong>{userProfile.username}</strong> hasn't made any posts yet!</p>} */}
                     </div>
                     <div className="curved corner-b-left cc-post"></div>
                 </div>

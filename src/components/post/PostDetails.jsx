@@ -53,7 +53,7 @@ export default function PostDetails() {
         <p>Upvotes: {postDetails.upvotes}</p>
         <button>Save</button>
         <div>
-        {postDetails.commentsId? <div>Comments: {commentsArray.map((comment)=> {
+        {postDetails.commentsId ==! undefined && <div>Comments: {commentsArray.map((comment)=> {
             return (
                 <div key={comment._id}>
                     <h5>{comment.creator.username}</h5>
@@ -61,7 +61,7 @@ export default function PostDetails() {
                     {comment.creator._id === user._id ? <button onClick={()=> deleteComment(comment._id)}>delete</button> : ""} 
                 </div>
             )
-        })}</div>: <h4>Loading comments...</h4>}
+        })}</div>}
         <CreateComment />
             
         </div>
