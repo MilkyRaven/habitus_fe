@@ -25,7 +25,7 @@ export default function PopularPosts() {
 
     return (
         <div className=""> 
-        <h2>Popular Posts</h2>
+       
             {popularPosts.map((post) => {
                 return (
                     <div className="post-container" key={post._id}>

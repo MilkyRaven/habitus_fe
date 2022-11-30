@@ -14,17 +14,18 @@
 }
 
 .feed-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-top: 50px;
 }
 
-.post-icon {
+.post-icon-white {
     font-size: 25px;
     color: white;
 }
 
 .feeds-page {
+    display: flex;
+    justify-content: center;
+    padding-top: 85px;
     padding-bottom: 85px;
 }
 
@@ -43,6 +44,8 @@
 }
 
 .list-container {
+    margin-top: 5px;
+    position: fixed;
     display: flex;
     justify-content: space-between;
 }
@@ -52,9 +55,6 @@
     font-size: 18px;
 }
 
-.active {
-    background-color:#48535a;
-    color: white;
-}
+
 
     

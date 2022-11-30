@@ -1,16 +1,12 @@
 import React, { useContext } from 'react';
-import Navbar from '../components/navigation/Navbar'
 import './Home.css'
 import habitusLogo from '../assets/images/habitus-logo.png'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext';
-import CreateProfileForm from '../components/post/CreatePostForm';
-
-
 
 
 export default function Home() {
-   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+   const { isLoggedIn, user } = useContext(AuthContext);
    console.log(isLoggedIn)
    console.log(user)
 
@@ -25,20 +21,6 @@ export default function Home() {
 }
 
 
-
-
-
-// <ul>
-// <li><Link  to="/">Home</Link></li>
-// <li><Link  to="/signup">Sign up</Link></li>
-// <li><Link  to="/login">Login</Link></li>
-// <li><Link  to="/private">Private view</Link></li>
-// <li><Link  to="/create-profile">Create Profile</Link></li>
-// <li><Link  to="/profile">Profile</Link></li>
-// <li><Link  to="/feed" >Feed</Link></li>
-// <li><Link  to="/chat" >Chat</Link></li>
-// {isLoggedIn && <li><button onClick={() => logOutUser()}>Log out</button></li>}
-// </ul>
 
 
            

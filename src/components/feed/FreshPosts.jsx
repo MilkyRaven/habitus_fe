@@ -29,7 +29,7 @@ export default function FreshPosts() {
     // console.log(newDate)
     
     return (
-        <div> <h2>Fresh Posts 🚀</h2>
+        <div>
             
             {freshPosts.map((post) => {
                 
@@ -50,9 +50,13 @@ export default function FreshPosts() {
                             </h3>
                         </div>
 
-                        <img width={200} src={post.image} alt="" />
-                        <p>{post.createdAt}</p>
-
+                        <p>{post.description}</p>
+                        <img id="img-post" src={post.image} alt="" />
+                        
+                        <div className="bottom-post-container">
+                            <p>{post.createdAt}</p>
+                            <button className="btn-save"><i className="fa-solid fa-bookmark post-icon-blue"></i></button>
+                        </div>
                     </div>
                 )
             })}

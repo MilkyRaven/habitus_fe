@@ -56,11 +56,6 @@ html {
     box-shadow: 50px 50px 0 0;
 }
 
-/* .corner-t-left, .corner-t-left:before {
-    top: 0;
-    left: 0;
-} */
-
 
 /* CURVED COLOR CSS Classes: */
 
@@ -80,18 +75,6 @@ html {
     color: #DAAB8A;
 }
 
-
-
-
-
-
-/* 
-.t-left-white:before {
-    box-shadow: -50px -50px 0 0 white;
-}
-.b-left-white:before {
-    box-shadow: -50px 50px 0 0 white;
-} */
 
 /* Buttons */
 
@@ -169,4 +152,12 @@ html {
     height: 18px;
     width: 18px;
     accent-color: #0D4040;
+}
+
+
+/* Active */
+
+.active {
+    background-color:#48535a;
+    color: white;
 }
