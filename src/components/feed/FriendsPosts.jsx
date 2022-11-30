@@ -25,7 +25,7 @@ export default function FriendsPosts() {
     
     
     return (
-        <div> <h2>Friends Posts 💕</h2>
+        <div>
             {friendsPosts.map((post) => {
                 return (
                     <div className="post-container" key={post._id}>
