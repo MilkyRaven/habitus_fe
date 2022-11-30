@@ -17,17 +17,19 @@ export default function Feed () {
 
     return (
         <div>
-            <button id="btn-create-post" onClick={() => setIsOpen(true)}>Create</button>
+            <div id="fix-container">
+                <button id="btn-create-post" onClick={() => setIsOpen(true)}><i className="fa-solid fa-plus post-icon"></i></button>
+            </div>
             {isOpen && 
                 <ModalModule setIsOpen={setIsOpen}>
                     <CreatePostForm closeModalHandler={closeModal}/>
                 </ModalModule>
-    
             }
-            
+            <div className="feed-container">
             <PopularPosts />
             <FriendsPosts />
             <FreshPosts />
+            </div>
             <NavMenue></NavMenue>
         </div>
     )
