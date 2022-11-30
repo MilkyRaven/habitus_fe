@@ -17,7 +17,7 @@ export default function NavMenue() {
         {isLoggedIn && <button className="icon-button" onClick={() => logOutUser()}>
          <i className="fa-solid fa-right-from-bracket menue-icon"></i>
         </button>}
-         <div className="curved corner-b-left b-left-grey"></div>
+         <div className="curved corner-b-left cc-navmenue"></div>
       </nav>
    )
 }

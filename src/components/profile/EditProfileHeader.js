@@ -8,7 +8,7 @@ export default function EditProfileHeader(props) {
 
     return (
         <section id="edit-profile-header">
-        <div className="curved corner-t-right t-right-grey"></div>
+        <div className="curved corner-t-right cc-navbar"></div>
             <div className="flex-header">
                 <div className="profile-img-container-lg">
                     <img className="profile-img-lg" src={defaultUser} alt="default-user"/>
