@@ -160,3 +160,13 @@ html {
 .img-logo {
     width: 100%;
 }
+
+
+/* Radio Inputs */
+
+.radio-inputs {
+    cursor: pointer;
+    height: 18px;
+    width: 18px;
+    accent-color: #0D4040;
+}
