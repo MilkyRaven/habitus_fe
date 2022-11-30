@@ -49,6 +49,7 @@
 }
 
 .profile-subheadline {
+    all: unset;
     margin: 0;
 }
 

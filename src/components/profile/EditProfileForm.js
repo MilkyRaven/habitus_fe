@@ -69,11 +69,15 @@ export default function CreateProfileForm () {
         }
 
         console.log(preferencesArr)
-        console.log('this is goals', goals)
+        console.log(username, email, goals)
 
         try {
-            await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {myPreferences: preferencesArr}, {headers: {Authorization: `Bearer ${storedToken}`}})
-            await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {goals}, {headers: {Authorization: `Bearer ${storedToken}`}})
+            const test1 = await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {myPreferences: preferencesArr}, {headers: {Authorization: `Bearer ${storedToken}`}})
+            const test2 = await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {username, email, goals}, {headers: {Authorization: `Bearer ${storedToken}`}})
+
+            console.log(test1, "Prefs")
+            console.log(test2, "REST")
+
             navigate("/profile")
 
         } catch (err) {

@@ -19,7 +19,9 @@ export default function Feed () {
         <div>
             <button id="btn-create-post" onClick={() => setIsOpen(true)}>Create</button>
             {isOpen && 
-                <ModalModule setIsOpen={setIsOpen}>
+                <ModalModule 
+                setIsOpen={setIsOpen}
+                modalHeadline={"Create a Post"}>
                     <CreatePostForm closeModalHandler={closeModal}/>
                 </ModalModule>
     
