@@ -3,12 +3,10 @@ import React, {  useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 
-export default function CreatePostForm (props) {
+export default function CreatePostForm () {
     const { postId } = useParams()
-    console.log(postId) 
     const storedToken = localStorage.getItem('authToken')
-    
-    const [select, setSelect] = useState([])
+
 
     const [input, setInput] = useState({
         content: ""

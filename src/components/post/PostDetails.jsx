@@ -12,6 +12,7 @@ const apiEndpoint = "http://localhost:8000/api/feed/"
 
 export default function PostDetails() {
     const {user} = useContext(AuthContext);
+    console.log( "fuera del div", user)
     const [postDetails, setPostsDetails] = useState([]);
     // const [comments, setComments] = useState([]);
     const {postId} = useParams();
@@ -42,9 +43,8 @@ export default function PostDetails() {
         }
     }
 
-
   return (
-    <div className="">
+         <div className="">
         <h3>{postDetails.title}</h3>
         {postDetails.creator? <h3><Link  to={`/user/${postDetails.creator._id}`} > {postDetails.creator.username}</Link></h3> : <h4>Loading...</h4>}
         <img width={200} alt="post" src={postDetails.image}></img>
@@ -53,15 +53,19 @@ export default function PostDetails() {
         <p>Upvotes: {postDetails.upvotes}</p>
         <button>Save</button>
         <div>
-        {postDetails.commentsId? <div>Comments: {commentsArray.map((comment)=> {
+            
+         {console.log("dentro del return", user)}
+
+            {postDetails.commentsId && user._id  && <div>Comments: {commentsArray.map((comment)=> {
             return (
                 <div key={comment._id}>
                     <h5>{comment.creator.username}</h5>
                     <p>{comment.content}</p>
-                    {comment.creator._id === user._id ? <button onClick={()=> deleteComment(comment._id)}>delete</button> : ""} 
+                    {user !== null ? 
+                    comment.creator._id === user._id ? <button onClick={()=> deleteComment(comment._id)}>delete</button> : "" : <h2>Loading...</h2> }
                 </div>
             )
-        })}</div>: <h4>Loading comments...</h4>}
+        })}</div>}
         <CreateComment />
             
         </div>

@@ -21,7 +21,6 @@ export default function PublicProfile() {
                 const res = await axios.get((apiEndpoint) + (userId), { headers: { Authorization: `Bearer ${token}` }});
                 setUserProfile(res.data)
                 console.log(res.data)
-                console.log(userProfile)
                 
             } catch (error) {
                 console.log(error)
@@ -44,39 +43,37 @@ export default function PublicProfile() {
                 </ProfileHeader>
                 <div id="habit-interest" className="start-container">
                     <h3>Habit Interests:</h3>
-                    {userProfile.myPreferences !== [] && <ul>
+                    {userProfile.myPreferences && <ul>
                          {userProfile.myPreferences.map((preference, index) => {
                             return (
                                     <li key={index}>{preference}</li>
                             )
                         })}  
                     </ul>}
-                    {!userProfile.myPreferences[0] && <p>{userProfile.username} hasn't set any Interests, yet!</p>} 
+                    {/* {!userProfile.myPreferences !== undefined && <p><strong>{userProfile.username}</strong> hasn't set any interests yet!</p>}  */}
                 </div>
                 <div id="goals" className="profile-container">
                     <h3>{userProfile.username}'s Goals:</h3>
-                    {userProfile.goals? <p>{userProfile.goals}</p> : <p>You havn't set any Goals, yet!</p>}
+                    {userProfile.goals? <p>{userProfile.goals}</p> : <p>Haven't set any goals yet!</p>}
 
                     <div className="curved corner-b-left cc-goals"></div>
                 </div>
                 <div id="follower" className="profile-container">
-                    <h3>{userProfile.followers.length} Followers</h3>
+                    {/* <h3>{userProfile.followers.length} Followers</h3> */}
                     <div className="curved corner-b-left cc-follower"></div>
                 </div>
                 <div id="post" className="profile-container nav-margin">
                     <h3>{userProfile.username}'s posts</h3>
                     <div>
-                    {userProfile.myPosts !== [] && 
+                        {console.log(userProfile.myPosts)}
+                    {userProfile.myPosts && 
                     userProfile.myPosts.map((post, index) => {
                         return (
                             <ul key={index}>
                                 <li>{post.title}</li>
-                                <li>{post.type}</li>
-                                <li>{post.creator.username}</li>
                             </ul>
                         )
                     })} 
-                    {!userProfile.myPosts[0] && <p>{userProfile.username} hasn't made any Posts, yet!</p>}
                     </div>
                     <div className="curved corner-b-left cc-post"></div>
                 </div>

@@ -37,8 +37,8 @@ export default function ProfilePage() {
         <NavMenue/>
         {currentUser &&
             <ProfileHeader 
-                profileHeadline={user.username}
-                userImage={user.profileImg}> 
+                profileHeadline={currentUser.username}
+                userImage={currentUser.profileImg}> 
                 <Link to="/edit-profile" className="menue-icon-container"><i className="fa-solid fa-pen menue-icon"></i></Link>
             </ProfileHeader>
         }
