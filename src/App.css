@@ -34,15 +34,26 @@ html {
     bottom:-60px;
     right: 0;
 }
+.corner-t-right:before  {
+    box-shadow: 50px -50px 0 0;
+}
+
 
 .corner-b-left , .corner-b-left:before {
     top: -60px;
     left: 0;
 }
+.corner-b-left:before {
+    box-shadow: -50px 50px 0 0;
+}
+
 
 .corner-b-right, .corner-b-right:before {
     top: -60px;
     right: 0;
+}
+.corner-b-right:before {
+    box-shadow: 50px 50px 0 0;
 }
 
 /* .corner-t-left, .corner-t-left:before {
@@ -53,21 +64,23 @@ html {
 
 /* CURVED COLOR CSS Classes: */
 
-.b-left-grey:before {
-    box-shadow: -50px 50px 0 0 #BF928C;
+.cc-navmenue:before {
+    color: #BF928C;
 }
-.t-right-grey:before {
-    box-shadow: 50px -50px 0 0 #C07D4E; ;
+.cc-rose:before {
+    color: #f8f3f3;
 }
-.t-right-grey2:before {
-    box-shadow: 50px -50px 0 0 #c4c4c4; ;
+.cc-navbar:before {
+    color: #C07D4E; ;
 }
-.t-right-rose:before {
-    box-shadow: 50px -50px 0 0 #f8f3f3; ;
+.cc-grey:before {
+    color: #c4c4c4;
 }
-.b-right-rose:before {
-    box-shadow: 50px 50px 0 0 #f8f3f3;
+.cc-profile-header::before {
+    color: #DAAB8A;
 }
+
+
 
 
 

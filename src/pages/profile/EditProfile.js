@@ -1,6 +1,6 @@
 import React from 'react'
-import EditProfileHeader from '../../components/profile/ProfileHeader'
-import CreateProfileForm from '../../components/profile/CreateProfileForm'
+import EditProfileHeader from '../../components/profile/EditProfileHeader'
+import EditProfileForm from '../../components/profile/EditProfileForm'
 
 
 export default function EditProfile() {
@@ -11,9 +11,7 @@ export default function EditProfile() {
         profileHeadline="Edit Profile" 
         profileSubheadline="Change Image"
         />  
-
-        <CreateProfileForm />
-        
+        <EditProfileForm></EditProfileForm>
     </div>
 
     )

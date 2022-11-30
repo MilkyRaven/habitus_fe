@@ -9,8 +9,8 @@ export default function CurveContainerRight(props) {
    return (
       <section id={ids} className={classes}>
          {props.children}
-         <div className="curved corner-b-right b-right-rose"></div>
-         <div className="curved corner-t-right t-right-rose"></div>
+         <div className="curved corner-b-right cc-rose"></div>
+         <div className="curved corner-t-right cc-rose"></div>
       </section>
    )
 }

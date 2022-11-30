@@ -9,7 +9,7 @@ export default function Navbar() {
             <i className="fa-solid fa-house home-icon"></i>
          </Link>
 
-         <div className="curved corner-t-right t-right-grey"></div>
+         <div className="curved corner-t-right cc-navbar"></div>
       </nav>
    )
 }

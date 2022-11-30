@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import CurveContainerLeft from '../../components/common/CurveContainerLeft'
 import CurveContainerRight from '../../components/common/CurveContainerRight'
 import NavMenue from '../../components/navigation/NavMenue'
 import ProfileHeader from '../../components/profile/ProfileHeader'
-
-import Navbar from '../../components/navigation/Navbar'
-// import axios from 'axios'
 import { useContext } from "react"
 import { AuthContext } from '../../context/AuthContext';
 import { Link } from "react-router-dom";
@@ -16,7 +12,7 @@ import axios from 'axios'
 export default function ProfilePage() {
 
     const {  user  } = useContext(AuthContext);
-    const [ currentUser, setCurrentUser] = useState({})
+    const [ currentUser, setCurrentUser] = useState(user)
 
 
     useEffect( () => {
@@ -38,35 +34,46 @@ export default function ProfilePage() {
 
    return (
     <div className="page-relative">
-        <NavMenue></NavMenue>
-        
+        <NavMenue/>
         {currentUser &&
             <ProfileHeader 
                 profileHeadline={user.username}
-            > 
+                userImage={user.profileImg}> 
                 <Link to="/edit-profile" className="menue-icon-container"><i className="fa-solid fa-pen menue-icon"></i></Link>
             </ProfileHeader>
         }
 
        {currentUser &&
             <main>
-                <CurveContainerLeft></CurveContainerLeft>
+                <div id="habit-interest" className="start-container">
+                    <h3>Habit Interests:</h3>
+                    {currentUser.myPreferences !== [] && <ul>
+                         {currentUser.myPreferences.map((preference, index) => {
+                            return (
+                                    <li key={index}>{preference}</li>
+                            )
+                        })}  
+                    </ul>}
+                    {!currentUser.myPreferences[0] && <p>You havn't set any Interests, yet!</p>} 
+                </div>
+                <div id="goals" className="profile-container">
+                    <h3>My Goals:</h3>
+                    {currentUser.goals? <p>{currentUser.goals}</p> : <p>You havn't set any Goals, yet!</p>}
+                    <Link to="/library" className="link-blue-lg"> My Library </Link> 
+                    <div className="curved corner-b-left cc-goals"></div>
+                </div>
+                <div id="follower" className="profile-container">
+                    <h3>{currentUser.followers.length} Followers</h3>
+                    <div className="curved corner-b-left cc-follower"></div>
+                </div>
+                <div id="post" className="profile-container nav-margin">
+                    <h3>My posts</h3>
+                    <div className="curved corner-b-left cc-post"></div>
+                    <MyPosts />
+                </div>
 
-                <h3>Habits Interests:</h3>
-                <ul>
-                    {currentUser.myPreferences && currentUser.myPreferences.map((preference, index) => {
-                        return (
-                            <li key={index}>{preference}</li>
-                        )
-                    })}
-                </ul>
-
-                <h3>My Goals:</h3>
-                <p>{currentUser.goals}</p>
-                <MyPosts />
-                <Link to="/library"> My Library </Link>
-
-                <CurveContainerRight></CurveContainerRight>
+                    
+                    
             </main>
        }
         

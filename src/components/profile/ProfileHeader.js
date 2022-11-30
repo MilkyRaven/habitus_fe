@@ -1,6 +1,5 @@
 import React from 'react'
 import './ProfileComponents.css'
-import { Link } from "react-router-dom";
 import defaultUser from '../../assets/images/default-user-placeholder.png'
 
 export default function ProfileHeader(props) {
@@ -19,10 +18,9 @@ export default function ProfileHeader(props) {
                 </div>
                 <div>
                     {props.children}
-{/*                  <Link to="/edit-profile" className="menue-icon-container"><i className="fa-solid fa-pen menue-icon"></i></Link>
- */}            </div>
             </div>
-            <div className="curved corner-t-right t-right-grey2"></div>
+            </div>
+            <div className="curved corner-t-right cc-profile-header"></div>
         </section>
     )
-}
+}   
