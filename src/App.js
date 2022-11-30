@@ -15,6 +15,9 @@ import Feed from './pages/feed/Feed';
 import ChatPage from './pages/profile/ChatPage';
 import PublicProfile from './pages/profile/PublicProfile';
 import PostDetails from './components/post/PostDetails';
+import FreshPosts from './components/feed/FreshPosts';
+import FriendsPosts from './components/feed/FriendsPosts';
+import PopularPosts from './components/feed/PopularPosts';
 
 function App() {
    return (
@@ -32,6 +35,9 @@ function App() {
             <Route path="/edit-profile" element={<EditProfile  />} />
             <Route path="/library" element={<LibraryPage />}/>
             <Route path="/feed" element={<Feed />} />
+            <Route path="/fresh-posts" element={<Feed><FreshPosts /></Feed>}/>
+            <Route path="/friends-posts" element={<Feed><FriendsPosts /></Feed>}/>
+            <Route path="/popular-posts" element={<Feed><PopularPosts /></Feed>}/>
             <Route path="/chat" element={<ChatPage />} />
             <Route path="*" element={<ErrorPage />} />
          </Routes>

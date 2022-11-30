@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './PostFeed.css'
+import NavMenue from '../../components/navigation/NavMenue'
 
 const apiEndpoint = "http://localhost:8000/api/feed/fresh";
 
 export default function FreshPosts() {
+    
 
     const [freshPosts, setFreshPosts] = useState([])
 
@@ -21,7 +23,10 @@ export default function FreshPosts() {
         };
         apiCall();
     }, [])
-    
+
+    // console.log(freshPosts[0].createdAt)
+    // const newDate = freshPosts[0].createdAt.toLocaleDateString()
+    // console.log(newDate)
     
     return (
         <div> <h2>Fresh Posts 🚀</h2>
@@ -29,6 +34,7 @@ export default function FreshPosts() {
             {freshPosts.map((post) => {
                 
                 return (
+                    
                     <div className="post-container" key={post._id}>
                         <h1>
                             <Link className="post-feed-link" to={`/${post._id}`}> {post.title}</Link>
@@ -46,6 +52,7 @@ export default function FreshPosts() {
 
                         <img width={200} src={post.image} alt="" />
                         <p>{post.createdAt}</p>
+
                     </div>
                 )
             })}
