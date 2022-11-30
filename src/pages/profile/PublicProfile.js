@@ -43,7 +43,7 @@ export default function PublicProfile() {
                 </ProfileHeader>
                 <div id="habit-interest" className="start-container">
                     <h3>Habit Interests:</h3>
-                    {userProfile.myPreferences !== undefined && <ul>
+                    {userProfile.myPreferences && <ul>
                          {userProfile.myPreferences.map((preference, index) => {
                             return (
                                     <li key={index}>{preference}</li>
@@ -66,7 +66,7 @@ export default function PublicProfile() {
                     <h3>{userProfile.username}'s posts</h3>
                     <div>
                         {console.log(userProfile.myPosts)}
-                    {userProfile.myPosts !== undefined && 
+                    {userProfile.myPosts && 
                     userProfile.myPosts.map((post, index) => {
                         return (
                             <ul key={index}>
@@ -74,7 +74,6 @@ export default function PublicProfile() {
                             </ul>
                         )
                     })} 
-                    {/* {!userProfile.myPosts !== undefined && <p><strong>{userProfile.username}</strong> hasn't made any posts yet!</p>} */}
                     </div>
                     <div className="curved corner-b-left cc-post"></div>
                 </div>
