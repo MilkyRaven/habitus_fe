@@ -69,13 +69,15 @@ export default function TalkChat() {
 
 
     return (
-        <div>TalkChat
+        <div>
             <div>
                 <h2>My Contacts</h2>
                 {mutuals.map((user) => {
                     return (
                         <div key={user._id}>
+                            {/* <img width={100}>{user.profileImg}</img> */}
                             <p>{user.username}</p>
+                            <img width={50} src={user.profileImg}></img>
                             <button onClick={() => { handleUserChat(user) }}>Chat</button>
                         </div>
                     )
