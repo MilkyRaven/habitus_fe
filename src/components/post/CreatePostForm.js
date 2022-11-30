@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, {  useState } from 'react'
+import './CreatePostForm.css'
 
 
 export default function CreatePostForm (props) {
@@ -93,59 +94,80 @@ export default function CreatePostForm (props) {
     return (
         <form className="form" onSubmit={submitHandler}>
             <div className="form-row">
-               <label>Post-Title</label>
-               <input required type="text" name="title" value={input.title} onChange={handleChange} />
+               <label className="label-subtitle">Post Title</label>
+               <input required type="text" name="itle" value={input.title} onChange={handleChange} />
             </div>
             <div className="form-row">
-                <label>Description</label>
+                <label className="label-subtitle">Description</label>
                 <textarea name="description" rows="4" cols="39" value={input.description} onChange={handleChange}></textarea>            
             </div>
-            <div className="form-checkbox">
-                <label>Interests</label>
-                <input 
-                    type="checkbox" 
-                    name="mindfulness" 
-                    value="Mindfulness"
-                    onChange={handleSelection}
-                /> Mindfulness
-                <input 
-                    type="checkbox" 
-                    name="finances" 
-                    value="Finances" 
-                    onChange={handleSelection}
-                /> Finances
-                <input 
-                    type="checkbox" 
-                    name="health" 
-                    value="Health" 
-                    onChange={handleSelection}
-                /> Health
-                <input 
-                    type="checkbox" 
-                    name="tech" 
-                    value="Tech" 
-                    onChange={handleSelection}
-                /> Tech
-                <input 
-                    type="checkbox" 
-                    name="confidence" 
-                    value="Self Confidence" 
-                    onChange={(event) =>handleSelection(event) }
-                /> Self Confidence
+            <div className="form-radio-container">
+                
+                <label className="label-subtitle">Interests</label>
+                <div className="radio-container">
+
+                        <input className="radio-inputs"
+                            type="radio" 
+                            name="mindfulness" 
+                            value="Mindfulness"
+                            onChange={handleSelection}
+                        /> 
+                        <label>Mindfulness</label>
+
+
+
+                        <input className="radio-inputs"
+                            type="radio"  
+                            name="finances" 
+                            value="Finances" 
+                            onChange={handleSelection}
+                        /> 
+                        <label>Finances</label>
+
+
+
+                        <input className="radio-inputs"
+                            type="radio"  
+                            name="health" 
+                            value="Health" 
+                            onChange={handleSelection}
+                        /> 
+                        <label>Health</label>
+
+
+  
+                        <input className="radio-inputs"
+                            type="radio"  
+                            name="tech" 
+                            value="Tech" 
+                            onChange={handleSelection}
+                        /> 
+                        <label>Tech</label>
+
+
+                        <input className="radio-inputs"
+                            type="radio"  
+                            name="confidence" 
+                            value="Self Confidence" 
+                            onChange={(event) =>handleSelection(event) }
+                        /> 
+                        <label>Self Confidence</label>
+
+                </div>
+
             </div>
-            <div className="form-select">
-                <label for="type">Post-Type</label>
+            <div className="form-select-container">
+                <label className="label-subtitle" for="type">Post-Type</label>
                 <select name="type" id="type" onChange={handleChange}>
-                {/* <select name="type" id="type" onChange={(event) => setInput (prev => { return {...prev,[event.target.name]: event.target.value}})} value={input.type.value}></select> */}
                     <option value="Knowledge" >Knowledge</option>
                     <option value="Meeting" >Meeting</option>
                 </select>
             </div>
-            <div className="media-upload">
-               <label>Post-Title</label>
+            <div className="media-upload-container">
+               <label className="label-subtitle">Post-Image</label>
                <input type="file" name="image" onChange={(event) => handleFileUpload(event)} />            
             </div>
-            <button type='submit'>Post</button>
+            <button className="button-blue-lg" type='submit'>Post</button>
         </form>
     )
     

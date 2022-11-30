@@ -1,0 +1,27 @@
+
+.label-subtitle {
+    font-size: 16px;
+    font-weight: bolder;
+    padding: 5px;
+}
+
+.form-radio-container {
+    display: flex;
+    flex-direction: column;  
+}
+
+.radio-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.form-select-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.media-upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

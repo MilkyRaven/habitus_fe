@@ -12,7 +12,7 @@ export default function ModalModule (props) {
             <div className="centered">
                 <div className="modal">
                     <div className="modal-header">
-                        <h3 className="heading">Create a Post</h3>
+                        <h3 id="h3-title" className="heading">Create a Post</h3>
                     </div>
 
                     <button className="btn-close" onClick={() => setIsOpen(false)}>
