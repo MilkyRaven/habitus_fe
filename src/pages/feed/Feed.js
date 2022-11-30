@@ -16,7 +16,7 @@ export default function Feed () {
     }
 
     return (
-        <div>
+        <div className="feeds-page">
             <div id="fix-container">
                 <button id="btn-create-post" onClick={() => setIsOpen(true)}><i className="fa-solid fa-plus post-icon"></i></button>
             </div>
@@ -26,6 +26,8 @@ export default function Feed () {
                 </ModalModule>
             }
             <div className="feed-container">
+
+            
             <PopularPosts />
             <FriendsPosts />
             <FreshPosts />
