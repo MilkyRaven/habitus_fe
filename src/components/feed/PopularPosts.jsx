@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 import './PostFeed.css'
+import SaveButton from '../common/SaveButton';
 
-const apiEndpoint = "http://localhost:8000/api/feed";
+const apiEndpoint = "http://localhost:8000/api/feed"
 
 export default function PopularPosts() {
 
-    const [popularPosts, setPopularPosts] = useState([])
+    const token = localStorage.getItem("authToken");
+    const [popularPosts, setPopularPosts] = useState([]);
 
     useEffect(() => {
         const apiCall = async () => {
-            const token = localStorage.getItem("authToken");
+
             try {
                 const res = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` } });
                 setPopularPosts(res.data)
@@ -23,15 +25,21 @@ export default function PopularPosts() {
         apiCall();
     }, [])
 
+
     return (
         <div className=""> 
        
             {popularPosts.map((post) => {
                 return (
                     <div className="post-container" key={post._id}>
-                        <h1>
-                            <Link className="post-feed-link" to={`/post/${post._id}`}> {post.title} </Link>
-                        </h1>
+
+                        <div className="post-title">
+                            <h1>
+                                <Link className="post-feed-link" to={`/post/${post._id}`}> {post.title} </Link>
+                            </h1>
+
+                            <p>{post.createdAt}</p>
+                        </div>
 
                         <div className="post-feed-user-container">
                             <Link to={`/user/${post.creator._id}`}>
@@ -42,10 +50,16 @@ export default function PopularPosts() {
                                 <Link className="post-feed-link" to={`/user/${post.creator._id}`}> {post.creator.username} </Link>
                             </h3>
                         </div>
-                        
-                        <img width={200} src={post.image} alt="" />
-                        <p>upvotes: {post.upvotes} downvotes: {post.downvotes}</p>
-                        <p>{post.createdAt}</p>
+
+                        <p>{post.description}</p>
+                        <img className="img-post" src={post.image} alt="" />
+
+                        <div className="post-social-container">
+                            {/* <p>upvotes: {post.upvotes} downvotes: {post.downvotes}</p> */}
+                            <SaveButton 
+                                postId={post._id}
+                            />
+                        </div>
                     </div>
                 )
             })}
