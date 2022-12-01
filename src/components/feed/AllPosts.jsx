@@ -24,7 +24,6 @@ export default function AllPosts() {
 
   return (
     <div>
-        //deleted
     <div> { allPosts.map((post) => {
         
         return (
