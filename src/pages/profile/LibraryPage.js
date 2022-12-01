@@ -47,6 +47,7 @@ export default function LibraryPage() {
             <div className="feed-container">
             {library.map((post) => {
                 return (
+
                     <div className="post-container" key={post._id}>
                         <div>
                             <h1>
@@ -69,6 +70,7 @@ export default function LibraryPage() {
                         <p>{post.createdAt}</p>
 
                         <button className="vote-button" onClick={() => deletePost(post._id)}><i className="fa-solid fa-trash-can vote-icon"></i></button>
+
                     </div>
                 )
             })}
