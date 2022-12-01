@@ -48,8 +48,6 @@ export default function FriendsPosts() {
                                 <Link className="post-feed-link" to={`/user/${post.creator._id}`}> {post.creator.username} </Link>
                             </h3>
                         </div>
-                        
-                        <p>{post.description}</p>
                         <img className="img-post" src={post.image} alt="" />
 
                         <div className="post-social-container">

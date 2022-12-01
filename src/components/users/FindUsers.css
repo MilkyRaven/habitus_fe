@@ -29,6 +29,12 @@ margin: 10px;
 .user-container a {
     text-decoration: none;
 }
-.test {
-    position: relative;
+
+
+/*Following Followers */
+.users-box {
+    margin: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
 }
