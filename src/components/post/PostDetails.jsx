@@ -80,7 +80,7 @@ export default function PostDetails() {
             <ProfileHeader
                 profileHeadline={user.username}
                 userImage={user.profileImg}> 
-                {postDetails.creator && <div><Link  to={`/user/${postDetails.creator._id}`} ><i className="fa-solid fa-circle-chevron-right"></i></Link></div>}
+                {postDetails.creator && <div><Link to={`/user/${postDetails.creator._id}`} ><i className="fa-solid fa-circle-chevron-right link-icon"></i></Link></div>}
 
             </ProfileHeader>
             }
