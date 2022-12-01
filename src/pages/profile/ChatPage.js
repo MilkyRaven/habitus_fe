@@ -1,10 +1,10 @@
 import React from 'react'
-import Chat from '../../components/Chat'
+import TalkChat from '../../components/TalkChat';
 
 export default function ChatPage() {
   return (
     <div>
-        <Chat />
+        <TalkChat />
     </div>
   )
 }

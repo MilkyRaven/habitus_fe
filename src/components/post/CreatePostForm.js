@@ -1,9 +1,12 @@
 import axios from 'axios'
 import React, {  useState } from 'react'
+import './CreatePostForm.css'
 
 
-export default function CreateProfileForm () {
+export default function CreatePostForm (props) {
     const storedToken = localStorage.getItem('authToken')
+
+    const { closeModalHandler } = props
     
     const [select, setSelect] = useState([])
 
@@ -11,7 +14,6 @@ export default function CreateProfileForm () {
         title: "",
         description: "",
         categories: [],
-        type: "Knowledge",
         image: "",
         })
 
@@ -27,8 +29,7 @@ export default function CreateProfileForm () {
     const handleSelection = (event) => { 
 
         setSelect ((prev) => {
-            let val = event.target.value
-            console.log(val)
+            const val = event.target.value
             
             if(prev.includes(val)) { 
                 const clone = [...prev];
@@ -37,12 +38,9 @@ export default function CreateProfileForm () {
             } else {
             return [...prev, val]
             }
-        })
-        console.log(select)
+        })        
+    }
         
-        }
-        
-    
 
     const handleFileUpload = async (event) => {
      
@@ -61,19 +59,16 @@ export default function CreateProfileForm () {
 
         } catch (err) {
             console.log(err)
-        } 
-
-        
+        }   
     }
 
     const submitHandler = async (event) => {
         event.preventDefault()
-        const {title, description, type, image} = input
+        const {title, description, image} = input
         const obj = {
             title: title,
             description: description,
             categories: select,
-            type: type,
             image: image
         }
         console.log(obj, "Submit")
@@ -84,64 +79,101 @@ export default function CreateProfileForm () {
         } catch (err) {
             console.log(err)
         } 
+
+        closeModalHandler()
     }
 
     return (
         <form className="form" onSubmit={submitHandler}>
             <div className="form-row">
-               <label>Post-Title</label>
+               <h3 className="label-subtitle">Post Title</h3>
                <input required type="text" name="title" value={input.title} onChange={handleChange} />
             </div>
             <div className="form-row">
-                <label>Description</label>
+                <h3 className="label-subtitle">Description</h3>
                 <textarea name="description" rows="4" cols="39" value={input.description} onChange={handleChange}></textarea>            
             </div>
-            <div className="form-checkbox">
-                <label>Interests</label>
-                <input 
-                    type="checkbox" 
-                    name="mindfulness" 
-                    value="Mindfulness"
-                    onChange={handleSelection}
-                /> Mindfulness
-                <input 
-                    type="checkbox" 
-                    name="finances" 
-                    value="Finances" 
-                    onChange={handleSelection}
-                /> Finances
-                <input 
-                    type="checkbox" 
-                    name="health" 
-                    value="Health" 
-                    onChange={handleSelection}
-                /> Health
-                <input 
-                    type="checkbox" 
-                    name="tech" 
-                    value="Tech" 
-                    onChange={handleSelection}
-                /> Tech
-                <input 
-                    type="checkbox" 
-                    name="confidence" 
-                    value="Self Confidence" 
-                    onChange={(event) =>handleSelection(event) }
-                /> Self Confidence
+    
+            <label className="label-subtitle">Interests</label>
+
+            <section className="radio-container">
+
+                <div className="radio-category">
+                    <label>
+                        <input className="radio-inputs"
+                            type="radio" 
+                            name="mindfulness" 
+                            value="Mindfulness"
+                            onChange={handleSelection}
+                        /> 
+
+                        <span>Mindfulness</span>
+                    </label>
+                </div>
+
+                <div className="radio-category">
+                    <label>
+
+                        <input className="radio-inputs"
+                            type="radio"  
+                            name="finances" 
+                            value="Finances" 
+                            onChange={handleSelection}
+                        /> 
+
+                        <span>Finances</span>
+                    </label>
+                </div>
+
+                <div className="radio-category">
+                    <label>
+
+                        <input className="radio-inputs"
+                            type="radio"  
+                            name="health" 
+                            value="Health" 
+                            onChange={handleSelection}
+                        /> 
+
+                        <span>Health</span>
+                    </label>
+                </div>
+  
+                <div className="radio-category">
+                    <label>
+
+                        <input className="radio-inputs"
+                            type="radio"  
+                            name="tech" 
+                            value="Tech" 
+                            onChange={handleSelection}
+                        /> 
+
+                        <span>Tech</span>
+                    </label>
+                </div>
+
+                <div className="radio-category" id="item-5">
+                    <label>
+
+                        <input className="radio-inputs"
+                            type="radio"  
+                            name="confidence" 
+                            value="Self Confidence" 
+                            onChange={(event) =>handleSelection(event) }
+                        /> 
+                        <span>Self Confidence</span> 
+                    </label>  
+                </div> 
+
+            </section>
+
+            <div className="media-upload-container">
+                <img className="preview-img" src={input.image} alt="psot"></img>
+                <label className="label-subtitle">Post-Image</label>
+                <input type="file" name="image" onChange={(event) => handleFileUpload(event)} />            
             </div>
-            <div className="form-select">
-                <label for="type">Post-Type</label>
-                <select name="type" id="type" onChange={handleChange}>
-                {/* <select name="type" id="type" onChange={(event) => setInput (prev => { return {...prev,[event.target.name]: event.target.value}})} value={input.type.value}></select> */}
-                    <option value="Knowledge" >Knowledge</option>
-                    <option value="Meeting" >Meeting</option>
-                </select>
-            </div>
-            <div className="media-upload">
-               <label>Post-Title</label>
-               <input type="file" name="image" onChange={(event) => handleFileUpload(event)} />            
-            </div>
-            <button type='submit'>Post</button>
+            <button className="button-blue-lg" type='submit'>Post</button>
         </form>
     )
     

@@ -15,6 +15,13 @@ import Feed from './pages/feed/Feed';
 import ChatPage from './pages/profile/ChatPage';
 import PublicProfile from './pages/profile/PublicProfile';
 import PostDetails from './components/post/PostDetails';
+import FreshPosts from './components/feed/FreshPosts';
+import FriendsPosts from './components/feed/FriendsPosts';
+import PopularPosts from './components/feed/PopularPosts';
+import Following from './components/users/Following';
+import Followers from './components/users/Followers';
+import AllPosts from './components/feed/AllPosts';
+import AllUsers from './components/users/AllUsers';
 
 function App() {
    return (
@@ -26,13 +33,19 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/private" element={<IsPrivate><PrivateView /></IsPrivate>} />
             <Route path="/create-profile" element={<CreateProfile />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/user/:userId" element={<PublicProfile />} />
-            <Route path="/:postId" element={<PostDetails />} />
-            <Route path="/edit-profile" element={<EditProfile  />} />
-            <Route path="/library" element={<LibraryPage />}/>
-            <Route path="/feed" element={<Feed />} />
-            <Route path="/chat" element={<ChatPage />} />
+            <Route path="/profile" element={<IsPrivate><ProfilePage /></IsPrivate>} />
+            <Route path="/user/:userId" element={<IsPrivate><PublicProfile /></IsPrivate>} />
+            <Route path="/post/:postId" element={<IsPrivate><PostDetails /></IsPrivate>} />
+            <Route path="/edit-profile" element={<IsPrivate><EditProfile /></IsPrivate>} />
+            <Route path="/library" element={<IsPrivate><LibraryPage /></IsPrivate>}/>
+            <Route path="/feed" element={<IsPrivate><Feed><AllPosts/></Feed></IsPrivate>} />
+            <Route path="/fresh-posts" element={<IsPrivate><Feed><FreshPosts /></Feed></IsPrivate>}/>
+            <Route path="/friends-posts" element={<IsPrivate><Feed><FriendsPosts /></Feed></IsPrivate>}/>
+            <Route path="/popular-posts" element={<IsPrivate><Feed><PopularPosts /></Feed></IsPrivate>}/>
+            <Route path="/chat" element={<IsPrivate><ChatPage /></IsPrivate>} />
+            <Route path="/followers" element={<Followers/>}></Route>
+            <Route path="/following" element={<Following />}></Route>
+            <Route path="/find-users" element={<AllUsers/>}></Route>
             <Route path="*" element={<ErrorPage />} />
          </Routes>
       </div>

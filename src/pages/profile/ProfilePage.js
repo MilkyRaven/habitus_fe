@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import CurveContainerLeft from '../../components/common/CurveContainerLeft'
-import CurveContainerRight from '../../components/common/CurveContainerRight'
 import NavMenue from '../../components/navigation/NavMenue'
-import ProfileHeader from '../../components/profile/ProfileHeader'
-
-import Navbar from '../../components/navigation/Navbar'
-// import axios from 'axios'
+import ProfileHeader from '../../components/profile/ProfileHeader';
 import { useContext } from "react"
 import { AuthContext } from '../../context/AuthContext';
 import { Link } from "react-router-dom";
@@ -16,7 +11,7 @@ import axios from 'axios'
 export default function ProfilePage() {
 
     const {  user  } = useContext(AuthContext);
-    const [ currentUser, setCurrentUser] = useState({})
+    const [ currentUser, setCurrentUser] = useState(user)
 
 
     useEffect( () => {
@@ -25,9 +20,7 @@ export default function ProfilePage() {
 
             try {
                 const userData = await axios.get("http://localhost:8000/api/my-profile", { headers: { Authorization: `Bearer ${token}` }});
-                console.log(userData.data, "data")
                 setCurrentUser(userData.data)
-                console.log(currentUser, "meeeeee")
             } catch (error) {
                 console.log(error)
             }
@@ -38,34 +31,62 @@ export default function ProfilePage() {
 
    return (
     <div className="page-relative">
-        <NavMenue></NavMenue>
-        
+        <NavMenue/>
         {currentUser &&
             <ProfileHeader 
                 profileHeadline={currentUser.username}
-                // profileSubheadline="Location" 
-            /> 
+                userImage={currentUser.profileImg}> 
+                <Link to="/edit-profile" className="menue-icon-container"><i className="fa-solid fa-pen menue-icon"></i></Link>
+            </ProfileHeader>
         }
 
        {currentUser &&
             <main>
-                <CurveContainerLeft></CurveContainerLeft>
 
-                <h3>Habits Interests:</h3>
-                <ul>
-                    {currentUser.myPreferences && currentUser.myPreferences.map((preference, index) => {
-                        return (
-                            <li key={index}>{preference}</li>
-                        )
-                    })}
-                </ul>
+                <div id="habit-interest" className="start-container">
+                    <h3>Habit Interests:</h3>
 
-                <h3>My Goals:</h3>
-                <p>{currentUser.goals}</p>
-                <MyPosts />
-                <Link to="/library"> My Library </Link>
+                    {currentUser.myPreferences !== [] && 
+                    <ul className="interests-list-container">
+                         {currentUser.myPreferences.map((preference, index) => {
+                            return (
+                                    <li key={index}>{preference}</li>
+                            )
+                        })}  
+                    </ul>}
 
-                <CurveContainerRight></CurveContainerRight>
+                    {!currentUser.myPreferences[0] && <p>You havn't set any Interests, yet!</p>} 
+                </div>
+
+                <div id="goals" className="profile-container">
+                        <h3>My Goals:</h3>
+
+                        {currentUser.goals? <p>{currentUser.goals}</p> : <p>You havn't set any Goals, yet!</p>}
+
+                    <div id="link-library-container">
+                        <Link className="link-blue-library" to="/library"> My Saved Posts </Link>
+                    </div>
+
+                    <div className="curved corner-b-left cc-goals"></div>
+                </div>
+
+                <div id="follower" className="profile-container">
+                    <div className="follow-container">
+                        <h3><Link className="follow-item" to={"/followers"}>{currentUser.followers.length} Followers </Link></h3>
+                        <h3><Link className="follow-item" to={"/following"}>{currentUser.following.length} Following </Link></h3>
+                    </div>
+
+                    <div className="curved corner-b-left cc-follower"></div>
+                </div>
+
+                <div id="post" className="profile-container nav-margin">
+                    <h3>My posts: </h3>
+                    <div className="curved corner-b-left cc-post"></div>
+                    <MyPosts />
+                </div>
+
+                    
+                    
             </main>
        }
         

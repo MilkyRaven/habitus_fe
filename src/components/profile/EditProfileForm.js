@@ -1,19 +1,19 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import CurveContainerRight from '../common/CurveContainerRight';
 
 
+
 export default function CreateProfileForm () {
     const storedToken = localStorage.getItem('authToken')
+    const [user, setUser] = useState("")
 
     const navigate = useNavigate()
 
+    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
     const [goals, setGoals] = useState("")
-
-    const onChangeGoalsHandler = (e) => {
-        setGoals(e.target.value)
-    }
 
     const [isCheckedMindfulness, setIsCheckedMindfulness] = useState("")
     const [isCheckedFinances, setIsCheckedFinances] = useState("")
@@ -22,31 +22,80 @@ export default function CreateProfileForm () {
     const [isCheckedConfidence, setIsCheckedConfidence] = useState("")
 
 
+    useEffect( () => {
+        const apiCall = async () => {
+            const token = localStorage.getItem("authToken");
+
+            try {
+                const userData = await axios.get("http://localhost:8000/api/my-profile", { headers: { Authorization: `Bearer ${token}` }});
+
+                setUser(userData.data)
+                setUsername(userData.data.username)
+                setEmail(userData.data.email)
+                setGoals(userData.data.goals)
+
+                userData.data.myPreferences.forEach(cat => {
+                    if (cat === "Mindfulness") {
+                        setIsCheckedMindfulness("Mindfulness")
+                    }
+                    if (cat === "Finances" ) {
+                        setIsCheckedFinances("Finances" )
+                    }
+                    if (cat === "Health" ) {
+                        setIsCheckedHealth("Health" )
+                    }               
+                    if (cat === "Tech") {
+                        setIsCheckedTech("Tech")
+                    }
+                    if (cat === "Self Confidence") {
+                        setIsCheckedConfidence("Self Confidence")
+                    }
+                    
+                });
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        apiCall()
+    }, [])
+
+    const onChangeUsernameHandler = (e) => {
+        setUsername(e.target.value)
+    }
+    const onChangeEmailHandler = (e) => {
+        setEmail(e.target.value)
+    }
+    const onChangeGoalsHandler = (e) => {
+        setGoals(e.target.value)
+    }
+
+
+
     const onChangeMindfulnessHandler = (e) => {
-        if (isCheckedMindfulness) {
+        if (isCheckedMindfulness !== "") {
             setIsCheckedMindfulness("")
         } else {setIsCheckedMindfulness(e.target.value)}
     }
     const onChangeFinancesHandler = (e) => {
-        if (isCheckedFinances) {
+        if (isCheckedFinances !== "") {
             setIsCheckedFinances("")
         } else {setIsCheckedFinances(e.target.value)}
         
     }
     const onChangeHealthHandler = (e) => {
-        if (isCheckedHealth) {
+        if (isCheckedHealth !== "") {
             setIsCheckedHealth("")
         } else {setIsCheckedHealth(e.target.value)}
     }
 
     const onChangeTechHandler = (e) => {
-        if (isCheckedTech) {
+        if (isCheckedTech !== "") {
         setIsCheckedTech("")
         } else {setIsCheckedTech(e.target.value)}
     }
 
     const onChangeConfidenceHandler = (e) => {
-        if (isCheckedConfidence) {
+        if (isCheckedConfidence !== "") {
             setIsCheckedConfidence("")
             } else {setIsCheckedConfidence(e.target.value)}
     }
@@ -57,26 +106,26 @@ export default function CreateProfileForm () {
 
         const preferencesArr = []
 
-        if(isCheckedMindfulness !== ""){
+        if(isCheckedMindfulness){
             preferencesArr.push(isCheckedMindfulness)
         }
-        if(isCheckedFinances !== ""){
+        if(isCheckedFinances){
             preferencesArr.push(isCheckedFinances)
         }
-        if(isCheckedHealth !== ""){
+        if(isCheckedHealth){
             preferencesArr.push(isCheckedHealth)
         } 
-        if(isCheckedTech !== ""){
+        if(isCheckedTech){
             preferencesArr.push(isCheckedTech)
         }
-        if(isCheckedConfidence !== ""){
+        if(isCheckedConfidence){
             preferencesArr.push(isCheckedConfidence)
         }
 
-
         try {
             await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {myPreferences: preferencesArr}, {headers: {Authorization: `Bearer ${storedToken}`}})
-            await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {goals}, {headers: {Authorization: `Bearer ${storedToken}`}})
+            await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {username: username, email, goals}, {headers: {Authorization: `Bearer ${storedToken}`}})
+
             navigate("/profile")
 
         } catch (err) {
@@ -88,13 +137,21 @@ export default function CreateProfileForm () {
     return (
 
         <form onSubmit={submitHandler}>
-            <section className="textinput-container form">
-                <p>TELL US SOMETHING ABOUT YOU...</p>
-                    <div className="form-row">
-                    <label>My Goals: </label>
-                    <textarea name="goals" onChange={onChangeGoalsHandler} placeholder="My Goals are to ..."></textarea>
-                </div>
-            </section>
+        {user !== null && <section className="textinput-container form">
+                <div className="form-row">
+                  <label>Username</label>
+                  <input type="text" name="username" value={username} onChange={onChangeUsernameHandler} />
+               </div>
+               <div className="form-row">
+                  <label>Email</label>
+                  <input type="email" name="email" value={email} onChange={onChangeEmailHandler} />
+               </div>
+               <div className="form-row">
+                  <label>My Goals</label>
+                  <textarea name="goals" value={goals} onChange={onChangeGoalsHandler}></textarea>
+               </div>
+            </section>}
+            
             <CurveContainerRight className="category-checkbox-container">
                 <h3>Interests</h3>
                 <section className="category-flex-container">
