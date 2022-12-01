@@ -105,7 +105,7 @@ export default function PostDetails() {
                 
             {postDetails.commentsId && user._id  && 
                 <div>
-                {commentsArray.length > 0 ? <h3>Comments:</h3> : <h3>Be the first to leafe a comment!</h3>}
+                {commentsArray.length > 0 ? <h3>Comments:</h3> : <h3>Be the first to leave a comment!</h3>}
                 
                 {commentsArray.map((comment)=> {
                     return (                

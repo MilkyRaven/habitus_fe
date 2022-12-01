@@ -19,8 +19,6 @@ export default function EditProfileHeader(props) {
 
             try {
                 const userData = await axios.get("http://localhost:8000/api/my-profile", { headers: { Authorization: `Bearer ${token}` }});
-                console.log(userData.data, "data")
-
                 setProfileImage(userData.data.profileImg)
             } catch (err) {
                 console.log(err)
@@ -37,9 +35,7 @@ export default function EditProfileHeader(props) {
         uploadData.append("image", event.target.files[0]);
 
         try {
-            console.log(uploadData, "IMAGE-OBJECT")
             const fileDate = await axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, uploadData, {headers: {Authorization: `Bearer ${storedToken}`}})
-            console.log(fileDate)
             setProfileImage (fileDate.data.fileUrl)
         } catch (err) {
             console.log(err)
@@ -50,10 +46,7 @@ export default function EditProfileHeader(props) {
         event.preventDefault()
 
         try {
-
-        console.log(profileImg, 'inside submit try')
-            const test = await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {profileImg: profileImg}, {headers: {Authorization: `Bearer ${storedToken}`}})
-        console.log(test, "RESULT")
+            await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {profileImg: profileImg}, {headers: {Authorization: `Bearer ${storedToken}`}})
 
         } catch (err) {
             console.log(err)
@@ -78,11 +71,11 @@ export default function EditProfileHeader(props) {
             setIsOpen={setIsOpen}
             modalHeadline={"Image-Uploade"}>
                 <form className="form" onSubmit={submitHandler}>
-                    <div className="media-upload">
-                        <label>Choose an Image:</label>
+                    <div className="media-upload-container">
+                        <label className="label-subtitle">Choose an Image:</label>
                         <input type="file" name="image" onChange={(event) => handleFileUpload(event)} />            
                     </div>
-                    <button type='submit' className="">Chose this Image</button>
+                    <button type='submit' className="button-blue-lg">Chose this Image</button>
                 </form>
             </ModalModule>
             }
