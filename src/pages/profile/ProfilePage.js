@@ -53,6 +53,7 @@ export default function ProfilePage() {
                     </ul>}
                     {!currentUser.myPreferences[0] && <p>You havn't set any Interests, yet!</p>} 
                 </div>
+
                 <div id="goals" className="profile-container">
                     <h3>My Goals:</h3>
                     {currentUser.goals? <p>{currentUser.goals}</p> : <p>You havn't set any Goals, yet!</p>}
@@ -60,7 +61,8 @@ export default function ProfilePage() {
                     <div className="curved corner-b-left cc-goals"></div>
                 </div>
                 <div id="follower" className="profile-container">
-                    <h3>{currentUser.followers.length} Followers</h3>
+                    <h3><Link  to={"/followers"}>{currentUser.followers.length} Followers </Link></h3>
+                    <h3><Link  to={"/following"}>{currentUser.following.length} Following </Link></h3>
                     <div className="curved corner-b-left cc-follower"></div>
                 </div>
                 <div id="post" className="profile-container nav-margin">
