@@ -6,6 +6,8 @@ import { AuthContext } from '../../context/AuthContext';
 import { Link } from "react-router-dom";
 import MyPosts from '../../components/profile/MyPosts'
 import axios from 'axios'
+import Following from '../../components/users/Following';
+import Followers from '../../components/users/Followers';
 
 
 export default function ProfilePage() {
@@ -42,6 +44,8 @@ export default function ProfilePage() {
 
        {currentUser &&
             <main>
+                 <Following></Following>
+                 <Followers></Followers>
                 <div id="habit-interest" className="start-container">
                     <h3>Habit Interests:</h3>
                     {currentUser.myPreferences !== [] && <ul>
@@ -53,6 +57,7 @@ export default function ProfilePage() {
                     </ul>}
                     {!currentUser.myPreferences[0] && <p>You havn't set any Interests, yet!</p>} 
                 </div>
+
                 <div id="goals" className="profile-container">
                     <h3>My Goals:</h3>
                     {currentUser.goals? <p>{currentUser.goals}</p> : <p>You havn't set any Goals, yet!</p>}
