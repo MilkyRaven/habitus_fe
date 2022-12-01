@@ -13,7 +13,7 @@ export default function ProfileHeader(props) {
                     {userImage? (<img className="profile-img-lg" src={userImage} alt="default-user"/>):(<img className="profile-img-lg" src={defaultUser} alt="default-user"/>)}
                 </div>
                 <div>
-                    <p className="profile-headline" >{profileHeadline}</p>
+                    <p className="profile-headline" >@ {profileHeadline}</p>
                     <p className="profile-subheadline" >{profileSubheadline}</p> 
                 </div>
                 <div>

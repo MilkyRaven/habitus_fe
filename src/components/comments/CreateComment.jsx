@@ -27,8 +27,6 @@ export default function CreatePostForm () {
         const obj = {
             content: content
         }
-        console.log(obj, "Submit")
-
          try {
             await axios.post(`http://localhost:8000/api/feed/${postId}/new-comment`, obj, {headers: {Authorization: `Bearer ${storedToken}`}})
 
@@ -47,4 +45,4 @@ export default function CreatePostForm () {
         </form>
     )
     
-}
+} 

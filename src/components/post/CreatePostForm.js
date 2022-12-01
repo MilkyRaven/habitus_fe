@@ -169,8 +169,9 @@ export default function CreatePostForm (props) {
             </section>
 
             <div className="media-upload-container">
-               <label className="label-subtitle">Post-Image</label>
-               <input type="file" name="image" onChange={(event) => handleFileUpload(event)} />            
+                <img className="preview-img" src={input.image} alt="psot"></img>
+                <label className="label-subtitle">Post-Image</label>
+                <input type="file" name="image" onChange={(event) => handleFileUpload(event)} />            
             </div>
             <button className="button-blue-lg" type='submit'>Post</button>
         </form>
