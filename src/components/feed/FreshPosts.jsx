@@ -49,8 +49,6 @@ export default function FreshPosts() {
                                 <Link className="post-feed-link" to={`/user/${post.creator._id}`}> {post.creator.username} </Link>
                             </h3>
                         </div>
-
-                        <p>{post.description}</p>
                         <img className="img-post" src={post.image} alt="" />
                         
                         <div className="bottom-post-container">

@@ -64,7 +64,7 @@ export default function ProfilePage() {
                         {currentUser.goals? <p>{currentUser.goals}</p> : <p>You havn't set any Goals, yet!</p>}
 
                     <div id="link-library-container">
-                        <Link className="link-blue-library" to="/library"> My Library </Link>
+                        <Link className="link-blue-library" to="/library"> My Saved Posts </Link>
                     </div>
 
                     <div className="curved corner-b-left cc-goals"></div>

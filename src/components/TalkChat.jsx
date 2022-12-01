@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState, useRef } from 'react'
 import { AuthContext } from '../context/AuthContext';
 import NavMenue from './navigation/NavMenue';
 import './TalkChat.css'
-import PlainHeader from './common/PlainHeader';
+import gathering from '../assets/images/women-gathering.png'
 
 
 export default function TalkChat() {
@@ -74,10 +74,9 @@ export default function TalkChat() {
 
     return (
         <div>
-            <PlainHeader></PlainHeader>
             <div className='contacts-container'>
                 <h2>My Contacts</h2>
-                {mutuals.map((user) => {
+                {mutuals[0] ? <div> {mutuals.map((user) => {
                     return (
                         <div className='chat-user-card' key={user._id}>
                             <img alt='user profile' width={50} src={user.profileImg}></img>
@@ -85,7 +84,12 @@ export default function TalkChat() {
                             <button onClick={() => { handleUserChat(user) }}>Let's chat <i class="fa-solid fa-message"></i></button>
                         </div>
                     )
-                })}
+                })} </div> : <div className='no-contacts'>
+                    <h3>You have no contacts yet</h3>
+                    <p>You have to mutually follow to start a conversation, try to make some friends!</p>
+                    <img id="img-women-gathering" src={gathering} alt="women working img"/>
+
+                </div>}
             </div>
             <div className='chat-box' ref={chatboxEl} />
             <NavMenue></NavMenue>
