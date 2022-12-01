@@ -112,3 +112,17 @@
     border: solid 2px #48535a;
     background-color: #C07D4E;
 }
+
+.btn-follow {
+    background-color: white;
+    color: #48535a;
+    min-width: 80px;
+    text-align: center;
+    line-height: 25px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    font-size: 10px;
+    font-weight: 600;
+}

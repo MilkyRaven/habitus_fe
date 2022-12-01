@@ -1,6 +1,6 @@
 import './ProfilePages.css'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import NavMenue from '../../components/navigation/NavMenue'
 import axios from 'axios'
 import ProfileHeader from '../../components/profile/ProfileHeader'
@@ -33,6 +33,7 @@ export default function PublicProfile() {
     return (
         <div>
             {userProfile && (
+
             <section>
                 <ProfileHeader
                 profileHeadline={userProfile.username}
@@ -41,40 +42,60 @@ export default function PublicProfile() {
                         userId={userId}
                     />
                 </ProfileHeader>
+
                 <div id="habit-interest" className="start-container">
                     <h3>Habit Interests:</h3>
-                    {userProfile.myPreferences && <ul>
+
+                    {userProfile.myPreferences && 
+                    <ul className="interests-list-container">
                          {userProfile.myPreferences.map((preference, index) => {
                             return (
                                     <li key={index}>{preference}</li>
                             )
                         })}  
                     </ul>}
+
                     {/* {!userProfile.myPreferences !== undefined && <p><strong>{userProfile.username}</strong> hasn't set any interests yet!</p>}  */}
                 </div>
+
                 <div id="goals" className="profile-container">
-                    <h3>{userProfile.username}'s Goals:</h3>
+                    <h3>Goals:</h3>
                     {userProfile.goals? <p>{userProfile.goals}</p> : <p>Haven't set any goals yet!</p>}
 
                     <div className="curved corner-b-left cc-goals"></div>
                 </div>
+
                 <div id="follower" className="profile-container">
-                    {/* <h3>{userProfile.followers.length} Followers</h3> */}
+                
+
                     <div className="curved corner-b-left cc-follower"></div>
                 </div>
+
                 <div id="post" className="profile-container nav-margin">
-                    <h3>{userProfile.username}'s posts</h3>
+                    <h3>Posts</h3>
                     <div>
                         {console.log(userProfile.myPosts)}
+
                     {userProfile.myPosts && 
                     userProfile.myPosts.map((post, index) => {
                         return (
-                            <ul key={index}>
-                                <li>{post.title}</li>
-                            </ul>
+                            <div className="post-container" key={index}>
+                                <div className="post-title">
+                                    <h3>
+                                        <Link className="post-feed-link" to={`/post/${post._id}`}> {post.title}</Link>
+                                    </h3>
+
+                                    <p>{post.createdAt}</p>
+                                </div>
+
+                                <img className="img-post" src={post.image} alt=""></img>
+                                <p>{post.description}</p>
+
+                            </div>
                         )
                     })} 
                     </div>
+
                     <div className="curved corner-b-left cc-post"></div>
                 </div>
             </section>)
