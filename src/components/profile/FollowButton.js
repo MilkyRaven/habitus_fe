@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import './ProfileComponents.css'
 
 const apiEndpoint = "http://localhost:8000/api/user/"
 
@@ -56,7 +57,7 @@ export default function FollowButton(props) {
 
     return (
         <div>
-        {followed === "follow"? <button onClick={() => followHandler()}>Follow</button> : <button onClick={() => unfollowHandler()}>UnFollow</button> }
+            {followed === "follow"? <button className="btn-follow" onClick={() => followHandler()}>Follow</button> : <button className="btn-follow" onClick={() => unfollowHandler()}>UnFollow</button> }
         </div>
     )
 }

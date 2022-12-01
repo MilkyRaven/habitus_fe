@@ -71,8 +71,10 @@ export default function ProfilePage() {
                 </div>
 
                 <div id="follower" className="profile-container">
-                    <h3><Link  to={"/followers"}>{currentUser.followers.length} Followers </Link></h3>
-                    <h3><Link  to={"/following"}>{currentUser.following.length} Following </Link></h3>
+                    <div className="follow-container">
+                        <h3><Link className="follow-item" to={"/followers"}>{currentUser.followers.length} Followers </Link></h3>
+                        <h3><Link className="follow-item" to={"/following"}>{currentUser.following.length} Following </Link></h3>
+                    </div>
 
                     <div className="curved corner-b-left cc-follower"></div>
                 </div>
