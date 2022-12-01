@@ -44,7 +44,7 @@ export default function LibraryPage() {
                         <p>{post.creator.name}</p>
                         <p>{post.title}</p>
                         <img width={200} alt="post" src={post.image}></img>
-                        <p>{post.createdAt}</p>
+                        <p>{post.createdAt.substring(0,10)}</p>
                         <button onClick={() => deletePost(post._id)}>Delete from library</button>
                     </div>
                 )

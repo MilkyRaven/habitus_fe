@@ -48,7 +48,7 @@ export default function MyPosts() {
                                 <Link className="post-feed-link" to={`/post/${post._id}`}> {post.title}</Link>
                             </h3>
 
-                            <p>{post.createdAt}</p>
+                            <p>{post.createdAt.substring(0,10)}</p>
                         </div>
 
                         <img className="img-post" src={post.image} alt=""></img>
