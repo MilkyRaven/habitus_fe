@@ -41,10 +41,11 @@ export default function MyPosts() {
         <div>
             {myPosts.map((post)=> {
                    return (
+
                     <div className="post-container" key={post._id}> 
                         <div className="post-title">
                             <h3>
-                                <Link className="post-feed-link" to={`/${post._id}`}> {post.title}</Link>
+                                <Link className="post-feed-link" to={`/post/${post._id}`}> {post.title}</Link>
                             </h3>
 
                             <p>{post.createdAt}</p>
@@ -53,6 +54,7 @@ export default function MyPosts() {
                         <img className="img-post" src={post.image} alt=""></img>
                 
                         <button className="vote-button" onClick={() => deletePost(post._id)}><i className="fa-solid fa-trash-can vote-icon"></i></button>
+
 
                     </div>
                    )

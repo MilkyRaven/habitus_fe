@@ -32,9 +32,10 @@ export default function PopularPosts() {
             {popularPosts.map((post) => {
                 return (
                     <div className="post-container" key={post._id}>
+
                         <div className="post-title">
                             <h1>
-                                <Link className="post-feed-link" to={`/${post._id}`}> {post.title} </Link>
+                                <Link className="post-feed-link" to={`/post/${post._id}`}> {post.title} </Link>
                             </h1>
 
                             <p>{post.createdAt}</p>

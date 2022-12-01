@@ -15,11 +15,11 @@ export default function CreateProfileForm () {
     const [email, setEmail] = useState("")
     const [goals, setGoals] = useState("")
 
-    const [isCheckedMindfulness, setIsCheckedMindfulness] = useState(null)
-    const [isCheckedFinances, setIsCheckedFinances] = useState(null)
-    const [isCheckedHealth, setIsCheckedHealth] = useState(null)
-    const [isCheckedTech, setIsCheckedTech] = useState(null)
-    const [isCheckedConfidence, setIsCheckedConfidence] = useState(null)
+    const [isCheckedMindfulness, setIsCheckedMindfulness] = useState("")
+    const [isCheckedFinances, setIsCheckedFinances] = useState("")
+    const [isCheckedHealth, setIsCheckedHealth] = useState("")
+    const [isCheckedTech, setIsCheckedTech] = useState("")
+    const [isCheckedConfidence, setIsCheckedConfidence] = useState("")
 
 
     useEffect( () => {
@@ -28,7 +28,6 @@ export default function CreateProfileForm () {
 
             try {
                 const userData = await axios.get("http://localhost:8000/api/my-profile", { headers: { Authorization: `Bearer ${token}` }});
-                console.log(userData.data, "data")
 
                 setUser(userData.data)
                 setUsername(userData.data.username)
@@ -38,29 +37,21 @@ export default function CreateProfileForm () {
                 userData.data.myPreferences.forEach(cat => {
                     if (cat === "Mindfulness") {
                         setIsCheckedMindfulness("Mindfulness")
-                        console.log("mind-true") 
                     }
                     if (cat === "Finances" ) {
                         setIsCheckedFinances("Finances" )
                     }
                     if (cat === "Health" ) {
                         setIsCheckedHealth("Health" )
-                        console.log("health-true")
                     }               
                     if (cat === "Tech") {
                         setIsCheckedTech("Tech")
-                        console.log("tech-true")
                     }
                     if (cat === "Self Confidence") {
                         setIsCheckedConfidence("Self Confidence")
                     }
                     
                 });
-
-                
-                
-               
-                    
             } catch (error) {
                 console.log(error)
             }
@@ -81,31 +72,31 @@ export default function CreateProfileForm () {
 
 
     const onChangeMindfulnessHandler = (e) => {
-        if (isCheckedMindfulness) {
-            setIsCheckedMindfulness(null)
+        if (isCheckedMindfulness !== "") {
+            setIsCheckedMindfulness("")
         } else {setIsCheckedMindfulness(e.target.value)}
     }
     const onChangeFinancesHandler = (e) => {
-        if (isCheckedFinances) {
-            setIsCheckedFinances(null)
+        if (isCheckedFinances !== "") {
+            setIsCheckedFinances("")
         } else {setIsCheckedFinances(e.target.value)}
         
     }
     const onChangeHealthHandler = (e) => {
-        if (isCheckedHealth) {
-            setIsCheckedHealth(null)
+        if (isCheckedHealth !== "") {
+            setIsCheckedHealth("")
         } else {setIsCheckedHealth(e.target.value)}
     }
 
     const onChangeTechHandler = (e) => {
-        if (isCheckedTech) {
-        setIsCheckedTech(null)
+        if (isCheckedTech !== "") {
+        setIsCheckedTech("")
         } else {setIsCheckedTech(e.target.value)}
     }
 
     const onChangeConfidenceHandler = (e) => {
-        if (isCheckedConfidence) {
-            setIsCheckedConfidence(null)
+        if (isCheckedConfidence !== "") {
+            setIsCheckedConfidence("")
             } else {setIsCheckedConfidence(e.target.value)}
     }
 
@@ -131,15 +122,9 @@ export default function CreateProfileForm () {
             preferencesArr.push(isCheckedConfidence)
         }
 
-        console.log(preferencesArr)
-        console.log(username, email, goals)
-
         try {
-            const test1 = await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {myPreferences: preferencesArr}, {headers: {Authorization: `Bearer ${storedToken}`}})
-            const test2 = await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {username: username, email, goals}, {headers: {Authorization: `Bearer ${storedToken}`}})
-
-            console.log(test1, "Prefs")
-            console.log(test2, "REST")
+            await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {myPreferences: preferencesArr}, {headers: {Authorization: `Bearer ${storedToken}`}})
+            await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {username: username, email, goals}, {headers: {Authorization: `Bearer ${storedToken}`}})
 
             navigate("/profile")
 

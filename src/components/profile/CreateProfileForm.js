@@ -15,39 +15,39 @@ export default function CreateProfileForm () {
         setGoals(e.target.value)
     }
 
-    const [isCheckedMindfulness, setIsCheckedMindfulness] = useState(null)
-    const [isCheckedFinances, setIsCheckedFinances] = useState(null)
-    const [isCheckedHealth, setIsCheckedHealth] = useState(null)
-    const [isCheckedTech, setIsCheckedTech] = useState(null)
-    const [isCheckedConfidence, setIsCheckedConfidence] = useState(null)
+    const [isCheckedMindfulness, setIsCheckedMindfulness] = useState("")
+    const [isCheckedFinances, setIsCheckedFinances] = useState("")
+    const [isCheckedHealth, setIsCheckedHealth] = useState("")
+    const [isCheckedTech, setIsCheckedTech] = useState("")
+    const [isCheckedConfidence, setIsCheckedConfidence] = useState("")
 
 
     const onChangeMindfulnessHandler = (e) => {
         if (isCheckedMindfulness) {
-            setIsCheckedMindfulness(null)
+            setIsCheckedMindfulness("")
         } else {setIsCheckedMindfulness(e.target.value)}
     }
     const onChangeFinancesHandler = (e) => {
         if (isCheckedFinances) {
-            setIsCheckedFinances(null)
+            setIsCheckedFinances("")
         } else {setIsCheckedFinances(e.target.value)}
         
     }
     const onChangeHealthHandler = (e) => {
         if (isCheckedHealth) {
-            setIsCheckedHealth(null)
+            setIsCheckedHealth("")
         } else {setIsCheckedHealth(e.target.value)}
     }
 
     const onChangeTechHandler = (e) => {
         if (isCheckedTech) {
-        setIsCheckedTech(null)
+        setIsCheckedTech("")
         } else {setIsCheckedTech(e.target.value)}
     }
 
     const onChangeConfidenceHandler = (e) => {
         if (isCheckedConfidence) {
-            setIsCheckedConfidence(null)
+            setIsCheckedConfidence("")
             } else {setIsCheckedConfidence(e.target.value)}
     }
 
@@ -57,24 +57,22 @@ export default function CreateProfileForm () {
 
         const preferencesArr = []
 
-        if(isCheckedMindfulness){
+        if(isCheckedMindfulness !== ""){
             preferencesArr.push(isCheckedMindfulness)
         }
-        if(isCheckedFinances){
+        if(isCheckedFinances !== ""){
             preferencesArr.push(isCheckedFinances)
         }
-        if(isCheckedHealth){
+        if(isCheckedHealth !== ""){
             preferencesArr.push(isCheckedHealth)
         } 
-        if(isCheckedTech){
+        if(isCheckedTech !== ""){
             preferencesArr.push(isCheckedTech)
         }
-        if(isCheckedConfidence){
+        if(isCheckedConfidence !== ""){
             preferencesArr.push(isCheckedConfidence)
         }
 
-        console.log(preferencesArr)
-        console.log('this is goals', goals)
 
         try {
             await axios.put(`${process.env.REACT_APP_API_URL}/api/my-profile/edit`, {myPreferences: preferencesArr}, {headers: {Authorization: `Bearer ${storedToken}`}})
@@ -94,7 +92,7 @@ export default function CreateProfileForm () {
                 <p>TELL US SOMETHING ABOUT YOU...</p>
                     <div className="form-row">
                     <label>My Goals: </label>
-                    <textarea name="goals" onChange={onChangeGoalsHandler}></textarea>
+                    <textarea name="goals" onChange={onChangeGoalsHandler} placeholder="My Goals are to ..."></textarea>
                 </div>
             </section>
             <CurveContainerRight className="category-checkbox-container">
