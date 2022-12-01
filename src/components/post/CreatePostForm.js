@@ -14,7 +14,6 @@ export default function CreatePostForm (props) {
         title: "",
         description: "",
         categories: [],
-        type: "Knowledge",
         image: "",
         })
 
@@ -30,8 +29,7 @@ export default function CreatePostForm (props) {
     const handleSelection = (event) => { 
 
         setSelect ((prev) => {
-            let val = event.target.value
-            console.log(val)
+            const val = event.target.value
             
             if(prev.includes(val)) { 
                 const clone = [...prev];
@@ -40,12 +38,9 @@ export default function CreatePostForm (props) {
             } else {
             return [...prev, val]
             }
-        })
-        console.log(select)
+        })        
+    }
         
-        }
-        
-    
 
     const handleFileUpload = async (event) => {
      
@@ -69,12 +64,11 @@ export default function CreatePostForm (props) {
 
     const submitHandler = async (event) => {
         event.preventDefault()
-        const {title, description, type, image} = input
+        const {title, description, image} = input
         const obj = {
             title: title,
             description: description,
             categories: select,
-            type: type,
             image: image
         }
         console.log(obj, "Submit")
@@ -112,8 +106,6 @@ export default function CreatePostForm (props) {
                         /> 
                         <label>Mindfulness</label>
 
-
-
                         <input className="radio-inputs"
                             type="radio"  
                             name="finances" 
@@ -121,8 +113,6 @@ export default function CreatePostForm (props) {
                             onChange={handleSelection}
                         /> 
                         <label>Finances</label>
-
-
 
                         <input className="radio-inputs"
                             type="radio"  
@@ -132,8 +122,6 @@ export default function CreatePostForm (props) {
                         /> 
                         <label>Health</label>
 
-
-  
                         <input className="radio-inputs"
                             type="radio"  
                             name="tech" 
@@ -141,7 +129,6 @@ export default function CreatePostForm (props) {
                             onChange={handleSelection}
                         /> 
                         <label>Tech</label>
-
 
                         <input className="radio-inputs"
                             type="radio"  
@@ -152,15 +139,8 @@ export default function CreatePostForm (props) {
                         <label>Self Confidence</label>
 
                 </div>
+            </div>
 
-            </div>
-            <div className="form-select-container">
-                <label className="label-subtitle" for="type">Post-Type</label>
-                <select name="type" id="type" onChange={handleChange}>
-                    <option value="Knowledge" >Knowledge</option>
-                    <option value="Meeting" >Meeting</option>
-                </select>
-            </div>
             <div className="media-upload-container">
                <label className="label-subtitle">Post-Image</label>
                <input type="file" name="image" onChange={(event) => handleFileUpload(event)} />            

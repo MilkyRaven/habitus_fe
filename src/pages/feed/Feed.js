@@ -5,7 +5,6 @@ import ModalModule from '../../components/common/ModalModule';
 import CreatePostForm from '../../components/post/CreatePostForm'
 import './feed.css'
 import { NavLink } from 'react-router-dom';
-import AllPosts from '../../components/feed/AllPosts';
 
 export default function Feed (props) {
     const [isOpen, setIsOpen] = useState(false)
@@ -40,7 +39,6 @@ export default function Feed (props) {
                 <div className="feed-container">    
                     {props.children}
                 </div>
-                <AllPosts></AllPosts>
             </div>
             <NavMenue></NavMenue>
         </div>

@@ -20,6 +20,7 @@ import FriendsPosts from './components/feed/FriendsPosts';
 import PopularPosts from './components/feed/PopularPosts';
 import Following from './components/users/Following';
 import Followers from './components/users/Followers';
+import AllPosts from './components/feed/AllPosts';
 
 function App() {
    return (
@@ -36,7 +37,7 @@ function App() {
             <Route path="/:postId" element={<IsPrivate><PostDetails /></IsPrivate>} />
             <Route path="/edit-profile" element={<IsPrivate><EditProfile /></IsPrivate>} />
             <Route path="/library" element={<IsPrivate><LibraryPage /></IsPrivate>}/>
-            <Route path="/feed" element={<IsPrivate><Feed /></IsPrivate>} />
+            <Route path="/feed" element={<IsPrivate><Feed><AllPosts/></Feed></IsPrivate>} />
             <Route path="/fresh-posts" element={<IsPrivate><Feed><FreshPosts /></Feed></IsPrivate>}/>
             <Route path="/friends-posts" element={<IsPrivate><Feed><FriendsPosts /></Feed></IsPrivate>}/>
             <Route path="/popular-posts" element={<IsPrivate><Feed><PopularPosts /></Feed></IsPrivate>}/>
