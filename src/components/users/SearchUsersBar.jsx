@@ -12,7 +12,7 @@ export default function SearchUsersBar(props) {
                     onChange={(event) => onSearch(event.target.value)}
                 >
                 </input>
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <i className="fa-solid fa-magnifying-glass"></i>
             </div>
         </div>
     )

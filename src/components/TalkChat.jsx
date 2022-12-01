@@ -81,7 +81,7 @@ export default function TalkChat() {
                         <div className='chat-user-card' key={user._id}>
                             <img alt='user profile' width={50} src={user.profileImg}></img>
                             <h3><strong>{user.username}</strong></h3>
-                            <button onClick={() => { handleUserChat(user) }}>Let's chat <i class="fa-solid fa-message"></i></button>
+                            <button onClick={() => { handleUserChat(user) }}>Let's chat <i className="fa-solid fa-message"></i></button>
                         </div>
                     )
                 })} </div> : <div className='no-contacts'>
