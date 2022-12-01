@@ -24,8 +24,11 @@ export default function AllPosts() {
 
   return (
     <div>
-            
-    {allPosts.map((post) => {
+
+    {/* Conditional that supposely works */}
+    {allPosts[0] > 0 &&
+
+    <div> { allPosts.map((post) => {
         
         return (
             
@@ -54,6 +57,10 @@ export default function AllPosts() {
             </div>
         )
     })}
+
+    </div>
+    }
+    
 </div>
   )
 }
