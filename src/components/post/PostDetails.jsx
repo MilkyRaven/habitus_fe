@@ -37,7 +37,7 @@ export default function PostDetails() {
             }
         };
         apiCall();
-    }, [postId])
+    }, [postId, upvotes, downvotes, token])
     
     const commentsArray = postDetails.commentsId;
     
@@ -54,25 +54,21 @@ export default function PostDetails() {
 
 
     const upvoteHandler = async () => {
-        console.log(token, "TOKEN")
         try {
-            const upvotingDb = await axios.put(`http://localhost:8000/api/feed/${postId}/upvote`, { headers: { Authorization: `Bearer ${token}` }});
-            console.log(upvotingDb)
-            //setUpvotes(res.data.upvotes.length)
+            const upvotingDb = await axios.put(`http://localhost:8000/api/feed/${postId}/upvote`,{}, { headers: { Authorization: `Bearer ${token}` }});
+            setUpvotes(upvotingDb.data.upvotes.length, "just added an upvote")
             
         } catch (error) {
-            
+            console.log(error)
         }
     }
 
     const downvoteHandler = async () => {
         try {
-            const downvotingDb = await axios.put(`http://localhost:8000/api/feed/${postId}/downvote`, { headers: { Authorization: `Bearer ${token}` }});
-            console.log(downvotingDb)
-            //setDownvotes(res.data.upvotes.length)
-            
+            const downvotingDb = await axios.put(`http://localhost:8000/api/feed/${postId}/downvote`,{}, { headers: { Authorization: `Bearer ${token}` }});
+            setDownvotes(downvotingDb.data.downvotes.length)
         } catch (error) {
-            
+            console.log(error)
         }
     }
 
