@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { useState, useEffect } from 'react';
 import SearchUsersBar from './SearchUsersBar';
+import { Link } from 'react-router-dom';
 
 export default function AllUsers() {
 
@@ -47,7 +48,7 @@ export default function AllUsers() {
                             <div>
                                 <img width={50} alt='user' src={user.profileImg} />
                             </div>
-                            <h3>{user.username}</h3>
+                            <h3><Link to={`/user/${user._id}`}>{user.username}</Link></h3>
                         </div>
                     )
                 })}
