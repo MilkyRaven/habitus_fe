@@ -1,7 +1,22 @@
 
-#habit-interest {
-    
-} 
+.interests-list-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    list-style: none;
+    padding-left: 10px;
+}
+
+.interests-list-container li {
+    font-size: 16px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 25px;
+    border: solid 0.25px;
+    border-color: #48535a;
+    margin: 5px 5px;
+}
+
 
 #goals {
     background-color: burlywood;
@@ -15,8 +30,6 @@
     background-color: lightcoral;
 } 
 
-
-
 .profile-container {
     margin-top: -60px;
     padding: 20px 20px 100px 20px;
@@ -28,7 +41,7 @@
     padding-bottom: 100px;
 }
 .start-container {
-    padding: 20px 20px 100px 20px;
+    padding: 10px 20px 70px 20px;
 }
 
 
@@ -46,3 +59,23 @@
 .cc-post {
     color: lightcoral;
 } 
+
+
+
+.link-blue-library {
+    background-color: #48535a;
+    color: white;
+    min-width: 170px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+#link-library-container {
+    display: flex;
+    justify-content: center;
+}
+
+
