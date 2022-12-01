@@ -59,15 +59,15 @@ export default function Signup() {
             <form className="form"  onSubmit={handleSubmit}>
                <div className="form-row">
                   <label>Username</label>
-                  <input required type="text" name="username" placeholder="" value={user.username} onChange={handleChange} />
+                  <input required type="text" name="username" placeholder="balanceGirl" value={user.username} onChange={handleChange} />
                </div>
                <div className="form-row">
                   <label>Email</label>
-                  <input required type="email" name="email" placeholder="" value={user.email} onChange={handleChange} />
+                  <input required type="email" name="email" placeholder="balance@gmail.com" value={user.email} onChange={handleChange} />
                </div>
                <div className="form-row">
                   <label>Password</label>
-                  <input required type="password" name="password" placeholder="" value={password} onChange={(e) => setPassword(e.target.value)} />
+                  <input required type="password" name="password" placeholder="******" value={password} onChange={(e) => setPassword(e.target.value)} />
                </div>
                <div className="form-row">
                   <label>Repeat the password</label>
@@ -77,11 +77,6 @@ export default function Signup() {
                <button className="button-blue-xl" type="submit">Register</button>
             </form>
             <p className="text-centered">Already a Customer? Go to <Link className="link-blue" to="/login">LOG IN</Link></p>
-            {/* <ul className="icon-footer-container">
-               <li><i className="fa-brands fa-google footer-icon"></i></li>
-               <li><i className="fa-brands fa-facebook-f footer-icon"></i></li>
-               <li><i className="fa-brands fa-linkedin footer-icon"></i></li>
-            </ul> */}
          </section>
 
       </div>

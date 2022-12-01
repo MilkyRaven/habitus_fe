@@ -1,14 +1,9 @@
-import React, { useContext } from 'react';
 import './Home.css'
 import habitusLogo from '../assets/images/habitus-logo.png'
 import { Link } from 'react-router-dom'
-import { AuthContext } from '../context/AuthContext';
 
 
 export default function Home() {
-   const { isLoggedIn, user } = useContext(AuthContext);
-   console.log(isLoggedIn)
-   console.log(user)
 
    return (
       <div className="homepage-section">
