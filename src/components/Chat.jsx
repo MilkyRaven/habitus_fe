@@ -1,30 +1,44 @@
 import Talk from 'talkjs';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 
-export default function MyChatComponent() {
+export default function MyChatComponent(props) {
+  const {user} = useContext(AuthContext);
+  const {otherUserChat} = props;
+   console.log("this are props", otherUserChat);
   const chatboxEl = useRef();
 
   // wait for TalkJS to load
   const [talkLoaded, markTalkLoaded] = useState(false);
+
+  const [otherUser, setOtherUser] = useState(otherUserChat);
+
+
+
+  otherUserChat = {
+    id: otherUserChat._id,
+    name: otherUserChat.username,
+    photoUrl: otherUserChat.profileImg,
+    welcomeMessage: 'Hello!',
+    role: 'default',
+  }
 
   useEffect(() => {
     Talk.ready.then(() => markTalkLoaded(true));
 
     if (talkLoaded) {
       const currentUser = new Talk.User({
-        id: '1',
-        name: 'Henry Mill',
-        email: 'henry@gmail.com',
-        photoUrl: 'https://i0.wp.com/catcaresolutions.com/wp-content/uploads/2020/12/cute-cat-with-yellow-headband-on.png?fit=1000%2C1500&ssl=1',
+        id: user._id,
+        name: user.username,
+        photoUrl: user.profileImg,
         welcomeMessage: 'Hello!',
         role: 'default',
       });
-
+  
       const otherUser = new Talk.User({
-        id: '2',
-        name: 'Jessica Wells',
-        email: 'jessica@gmail.com',
-        photoUrl: 'https://i0.wp.com/catcaresolutions.com/wp-content/uploads/2020/12/cute-cat-with-yellow-headband-on.png?fit=1000%2C1500&ssl=1',
+        id: otherUserChat._id,
+        name: otherUserChat.username,
+        photoUrl: otherUserChat.profileImg,
         welcomeMessage: 'Hello!',
         role: 'default',
       });

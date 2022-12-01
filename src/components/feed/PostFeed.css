@@ -35,3 +35,20 @@ h3 {
     color: #0D4040;
     cursor: pointer;
 }
+
+#img-post {
+    width: 100%;
+}
+
+
+.post-icon-blue {
+    font-size: 20px;
+    color: #48535a;
+}
+
+.btn-save {
+    border: none;
+    border-radius: 50%;
+    background-color: white;
+}
+

@@ -20,9 +20,7 @@ export default function ProfilePage() {
 
             try {
                 const userData = await axios.get("http://localhost:8000/api/my-profile", { headers: { Authorization: `Bearer ${token}` }});
-                console.log(userData.data, "data")
                 setCurrentUser(userData.data)
-                console.log(currentUser, "meeeeee")
             } catch (error) {
                 console.log(error)
             }

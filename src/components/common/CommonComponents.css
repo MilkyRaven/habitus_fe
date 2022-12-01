@@ -14,3 +14,16 @@
 }
 
 
+#plain-header {
+    background-color: #C07D4E;
+    position: fixed;
+    width:100%;
+    border-bottom-left-radius: 70px 60px;
+    z-index: 2;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
