@@ -3,6 +3,9 @@ import axios from 'axios'
 import { useState, useEffect } from 'react';
 import SearchUsersBar from './SearchUsersBar';
 import { Link } from 'react-router-dom';
+import './FindUsers.css'
+import NavMenue from '../navigation/NavMenue';
+
 
 export default function AllUsers() {
 
@@ -14,7 +17,7 @@ export default function AllUsers() {
         const apiCall = async () => {
             const token = localStorage.getItem("authToken");
 
-            const res = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` }})
+            const res = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` } })
             console.log(res.data);
             setUsers(res.data)
             setUserSearch(res.data)
@@ -27,36 +30,33 @@ export default function AllUsers() {
         if (correctValue === '') {
             setUserSearch(users)
         } else {
-        let searchedUsers = users.filter((user) => {
-          return (user.username.toLowerCase().includes(correctValue))
-        })
-        setUserSearch(searchedUsers)
+            let searchedUsers = users.filter((user) => {
+                return (user.username.toLowerCase().includes(correctValue))
+            })
+            setUserSearch(searchedUsers)
         }
-      }
+    }
 
 
-  return (
-    <div>AllUsers
-
-<div>
-            <SearchUsersBar onSearch={handleSearch} > </SearchUsersBar> 
-            <div>
-                {!userSearch && <h1>Loading...</h1>}
-                { userSearch && userSearch.map((user) => {
-                    return (
-                        <div key={user._id}>
-                            <div>
-                                <img width={50} alt='user' src={user.profileImg} />
+    return (
+        <div>
+            <div className='search-container'>
+                <div className='all-users-container'>
+                    <SearchUsersBar onSearch={handleSearch} > </SearchUsersBar>
+                    {!userSearch && <h1>Loading users...</h1>}
+                    {userSearch && userSearch.map((user) => {
+                        return (
+                            <div className='user-container' key={user._id}>
+                                <img alt='user' src={user.profileImg} />
+                                <h3><Link to={`/user/${user._id}`}>{user.username}</Link></h3>
                             </div>
-                            <h3><Link to={`/user/${user._id}`}>{user.username}</Link></h3>
-                        </div>
-                    )
-                })}
+                        )
+                    })}
+                </div>
             </div>
+            <NavMenue></NavMenue>
         </div>
-
-    </div>
-  )
+    )
 }
 
 
