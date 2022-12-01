@@ -1,20 +1,16 @@
-* {
-    margin: auto 0;
-    padding: 0;
-}
-h2 {
+.contacts-container > h2 {
     margin: 30px;
 }
-h3 {
+.chat-user-card > h3 {
     margin: 10px;
 }
-img {
+.chat-user-card > img {
     border-radius: 50%;
 }
-i {
+.chat-user-card > i {
     padding: 5px;
 }
-button {
+.chat-user-card > button {
     margin: 10px;
     padding: 7px;
     border: none;
@@ -22,7 +18,7 @@ button {
     background-color: white;
     color: black;
 }
-button:hover {
+.chat-user-card > button:hover {
     opacity: 0.5;
 }
 
