@@ -80,7 +80,7 @@ export default function PostDetails() {
             <ProfileHeader
                 profileHeadline={user.username}
                 userImage={user.profileImg}> 
-                {postDetails.creator? <h3><Link  to={`/user/${postDetails.creator._id}`} > {postDetails.creator.username}</Link></h3> : <h4>Loading...</h4>}
+                {postDetails.creator && <div><Link  to={`/user/${postDetails.creator._id}`} ><i className="fa-solid fa-circle-chevron-right"></i></Link></div>}
 
             </ProfileHeader>
             }
@@ -103,15 +103,24 @@ export default function PostDetails() {
             
             <section id="comment-section">
                 
-            {postDetails.commentsId && user._id  && <div>Comments: {commentsArray.map((comment)=> {
-                return (                
-                    <div key={comment._id}>
-                        <h5>{comment.creator.username}</h5>
-                        <p>{comment.content}</p>
-                        {user !== null ? 
-                        comment.creator._id === user._id ? <button onClick={()=> deleteComment(comment._id)}>delete</button> : "" : <h2>Loading...</h2> }
-                    </div>
-                )
+            {postDetails.commentsId && user._id  && 
+                <div>
+                {commentsArray.length > 0 ? <h3>Comments:</h3> : <h3>Be the first to leafe a comment!</h3>}
+                
+                {commentsArray.map((comment)=> {
+                    return (                
+                        <div className="comment-container" key={comment._id}>
+                            <div className="comment-header">
+                                <div className="profile-img-container-sm">
+                                    <img className="profile-img-lg" src={comment.creator.profileImg} alt="user"/>
+                                </div>
+                                <p>@{comment.creator.username}</p>
+                                {user !== null ? 
+                                comment.creator._id === user._id ? <button className="bin-icon-button"onClick={()=> deleteComment(comment._id)}><i className="fa-solid fa-trash-can bin-icon"></i></button> : "" : <h2>Loading...</h2> }
+                            </div>
+                            <p>{comment.content}</p>
+                        </div>
+                    )
             })}</div>}
             <CreateComment />
                 

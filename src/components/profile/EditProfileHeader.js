@@ -66,7 +66,7 @@ export default function EditProfileHeader(props) {
         <div className="curved corner-t-right cc-navbar"></div>
             <div className="flex-header">
                 <div className="profile-img-container-lg">
-                    {profileImg? (<img className="profile-img-lg" src={profileImg} alt="default-user"/>):(<img className="profile-img-lg" src={defaultUser} alt="default-user"/>)}
+                    {profileImg? (<img className="profile-img-lg" src={profileImg} alt="user"/>):(<img className="profile-img-lg" src={defaultUser} alt="default-user"/>)}
                 </div>
                 <div>
                     <p className="profile-headline" >{profileHeadline}</p>

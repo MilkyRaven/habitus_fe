@@ -38,12 +38,12 @@ export default function CreatePostForm () {
     }
 
     return (
-        <form className="form" onSubmit={submitHandler}>
+        <form className="form comment-form" onSubmit={submitHandler}>
             <div className="form-row">
                 <label>Leave your comment here</label>
                 <textarea name="content" rows="4" cols="39" value={input.content} onChange={handleChange}></textarea>            
             </div>
-            <button type='submit'>Comment</button>
+            <button className="button-blue-lg" type='submit'>Comment</button>
         </form>
     )
     
