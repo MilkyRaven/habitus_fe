@@ -29,16 +29,16 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/private" element={<IsPrivate><PrivateView /></IsPrivate>} />
             <Route path="/create-profile" element={<CreateProfile />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/user/:userId" element={<PublicProfile />} />
-            <Route path="/:postId" element={<PostDetails />} />
-            <Route path="/edit-profile" element={<EditProfile  />} />
-            <Route path="/library" element={<LibraryPage />}/>
-            <Route path="/feed" element={<Feed />} />
-            <Route path="/fresh-posts" element={<Feed><FreshPosts /></Feed>}/>
-            <Route path="/friends-posts" element={<Feed><FriendsPosts /></Feed>}/>
-            <Route path="/popular-posts" element={<Feed><PopularPosts /></Feed>}/>
-            <Route path="/chat" element={<ChatPage />} />
+            <Route path="/profile" element={<IsPrivate><ProfilePage /></IsPrivate>} />
+            <Route path="/user/:userId" element={<IsPrivate><PublicProfile /></IsPrivate>} />
+            <Route path="/:postId" element={<IsPrivate><PostDetails /></IsPrivate>} />
+            <Route path="/edit-profile" element={<IsPrivate><EditProfile /></IsPrivate>} />
+            <Route path="/library" element={<IsPrivate><LibraryPage /></IsPrivate>}/>
+            <Route path="/feed" element={<IsPrivate><Feed /></IsPrivate>} />
+            <Route path="/fresh-posts" element={<IsPrivate><Feed><FreshPosts /></Feed></IsPrivate>}/>
+            <Route path="/friends-posts" element={<IsPrivate><Feed><FriendsPosts /></Feed></IsPrivate>}/>
+            <Route path="/popular-posts" element={<IsPrivate><Feed><PopularPosts /></Feed></IsPrivate>}/>
+            <Route path="/chat" element={<IsPrivate><ChatPage /></IsPrivate>} />
             <Route path="*" element={<ErrorPage />} />
          </Routes>
       </div>

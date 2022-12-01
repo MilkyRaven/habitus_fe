@@ -16,6 +16,8 @@ export default function PostDetails() {
     const token = localStorage.getItem("authToken");
     const {user} = useContext(AuthContext);
     const [postDetails, setPostsDetails] = useState([]);
+    const [upvotes, setUpvotes] = useState(0);
+    const [downvotes, setDownvotes] = useState(0);
     // const [comments, setComments] = useState([]);
     const {postId} = useParams();
 
@@ -23,7 +25,12 @@ export default function PostDetails() {
         const apiCall = async () => {
             try {
                 const res = await axios.get(apiEndpoint + postId, { headers: { Authorization: `Bearer ${token}` }});
+                
+                console.log(res.data, "DATA")
                 setPostsDetails(res.data)
+                setUpvotes(res.data.upvotes.length)
+                setDownvotes(res.data.downvotes.length)
+                
             } catch (error) {
                 console.log(error)
             }
@@ -53,9 +60,23 @@ export default function PostDetails() {
         }
     } */
 
-    const upvotePost = async (postId) => {
+    const upvoteHandler = async () => {
+        console.log(token, "TOKEN")
         try {
-            const u = axios.put('http://localhost:8000/api/feed/${postId}/save', { headers: { Authorization: `Bearer ${token}` }});
+            const upvotingDb = await axios.put(`http://localhost:8000/api/feed/${postId}/upvote`, { headers: { Authorization: `Bearer ${token}` }});
+            console.log(upvotingDb)
+            //setUpvotes(res.data.upvotes.length)
+            
+        } catch (error) {
+            
+        }
+    }
+
+    const downvoteHandler = async () => {
+        try {
+            const downvotingDb = await axios.put(`http://localhost:8000/api/feed/${postId}/downvote`, { headers: { Authorization: `Bearer ${token}` }});
+            console.log(downvotingDb)
+            //setDownvotes(res.data.upvotes.length)
             
         } catch (error) {
             
@@ -81,13 +102,13 @@ export default function PostDetails() {
                 <h2>{postDetails.title}</h2>
                 <p>{postDetails.description}</p>
             </article>
-            <secrtion className="detail-social-bar">
+            <section className="detail-social-bar">
 {/*                 <span><i className="fa-light fa-comment"></i> {postDetails.commentsId.length}</span>
  */}                <span>Votes:</span>
-                <button className="vote-button"><i className="fa-light fa-up vote-icon"></i> {postDetails.downvotes}</button>
-                <button className="vote-button"><i className="fa-light fa-down vote-icon"></i> {postDetails.upvotes}</button>
-                <button className="vote-button"><i className="fa-light fa-bookmark vote-icon"></i></button>
-            </secrtion>
+                <button className="vote-button" onClick={() => upvoteHandler()}><i className="fa-solid fa-circle-up vote-icon"></i> {upvotes}</button>
+                <button className="vote-button" onClick={() => downvoteHandler()}><i className="fa-solid fa-circle-down vote-icon"></i> {downvotes}</button>
+                <button className="vote-button"><i className="fa-regular fa-bookmark vote-icon"></i></button>
+            </section>
             
             <section id="comment-section">
                 

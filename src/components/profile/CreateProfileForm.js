@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import CurveContainerLeft from '../common/CurveContainerLeft';
 import CurveContainerRight from '../common/CurveContainerRight';
 
 
@@ -106,7 +105,7 @@ export default function CreateProfileForm () {
                             <input 
                                 type="checkbox" 
                                 name="mindfulness" 
-                                value="mindfulness"
+                                value="Mindfulness"
                                 checked={isCheckedMindfulness}
                                 onChange={onChangeMindfulnessHandler}
                             /> 
@@ -118,7 +117,7 @@ export default function CreateProfileForm () {
                             <input 
                                 type="checkbox" 
                                 name="finances" 
-                                value="finances" 
+                                value="Finances" 
                                 checked={isCheckedFinances}
                                 onChange={onChangeFinancesHandler}
                             /> 
@@ -130,7 +129,7 @@ export default function CreateProfileForm () {
                             <input 
                             type="checkbox" 
                             name="health" 
-                            value="health" 
+                            value="Health" 
                             checked={isCheckedHealth}
                             onChange={onChangeHealthHandler}
                             /> 
@@ -142,7 +141,7 @@ export default function CreateProfileForm () {
                             <input 
                                 type="checkbox" 
                                 name="tech" 
-                                value="tech" 
+                                value="Tech" 
                                 checked={isCheckedTech}
                                 onChange={onChangeTechHandler}
                             /> 
@@ -154,7 +153,7 @@ export default function CreateProfileForm () {
                             <input 
                                 type="checkbox" 
                                 name="confidence" 
-                                value="confidence" 
+                                value="Self Confidence" 
                                 checked={isCheckedConfidence}
                                 onChange={onChangeConfidenceHandler}
                             /> 
