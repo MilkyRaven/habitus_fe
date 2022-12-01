@@ -3,17 +3,18 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './PostFeed.css'
 import NavMenue from '../../components/navigation/NavMenue'
+import SaveButton from '../common/SaveButton';
 
 const apiEndpoint = "http://localhost:8000/api/feed/fresh";
 
 export default function FreshPosts() {
     
-
+    const token = localStorage.getItem("authToken");
     const [freshPosts, setFreshPosts] = useState([])
 
     useEffect(() => {
         const apiCall = async () => {
-            const token = localStorage.getItem("authToken");
+            
             try {
                 const res = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` }});
                 setFreshPosts(res.data)
@@ -36,9 +37,13 @@ export default function FreshPosts() {
                 return (
                     
                     <div className="post-container" key={post._id}>
-                        <h1>
-                            <Link className="post-feed-link" to={`/${post._id}`}> {post.title}</Link>
-                        </h1>
+                        <div className="post-title">
+                            <h1>
+                                <Link className="post-feed-link" to={`/${post._id}`}> {post.title}</Link>
+                            </h1>
+
+                            <p>{post.createdAt}</p>
+                        </div>
                         
                         <div className="post-feed-user-container">
                             <Link to={`/user/${post.creator._id}`}>
@@ -51,11 +56,13 @@ export default function FreshPosts() {
                         </div>
 
                         <p>{post.description}</p>
-                        <img id="img-post" src={post.image} alt="" />
+                        <img className="img-post" src={post.image} alt="" />
                         
                         <div className="bottom-post-container">
-                            <p>{post.createdAt}</p>
-                            <button className="btn-save"><i className="fa-solid fa-bookmark post-icon-blue"></i></button>
+                            {/* <p>upvotes: {post.upvotes} downvotes: {post.downvotes}</p> */}
+                            <SaveButton 
+                                postId={post._id}
+                            />
                         </div>
                     </div>
                 )

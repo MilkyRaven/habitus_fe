@@ -5,14 +5,19 @@
     padding: 5px;
 }
 
-.form-radio-container {
-    display: flex;
-    flex-direction: column;  
-}
-
 .radio-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: start;
+    gap: 5px;
+}
+
+#item-5 {
+    grid-area: 2 / 2 / span 1 / span 2;
+}
+
+.radio-container label {
+    display: inline-flex;
 }
 
 .form-select-container {

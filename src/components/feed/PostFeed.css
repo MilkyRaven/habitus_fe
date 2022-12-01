@@ -10,6 +10,10 @@
     box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 3px;
 }
 
+.post-title{
+    display: flex;
+}
+
 h1 {
     color: #0D4040;
     font-size: 18px;
@@ -36,8 +40,12 @@ h3 {
     cursor: pointer;
 }
 
-#img-post {
+.img-post {
     width: 100%;
+}
+
+.post-social-container {
+    display: flex;
 }
 
 
