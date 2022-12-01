@@ -34,7 +34,7 @@
     background-color: white;
     font-weight: 600;
     color: #48535a;
-    min-width: 100px;
+    min-width: 105px;
     text-align: center;
     line-height: 30px;
     border-radius: 20px;
@@ -48,6 +48,7 @@
     position: fixed;
     display: flex;
     justify-content: space-between;
+    z-index: 100;
 }
 
 .list-container > li {

@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import axios from "axios";
+import PlainHeader from '../../components/common/PlainHeader';
+import NavMenue from '../../components/navigation/NavMenue'
+import '../../components/feed/PostFeed.css'
 
 const apiEndpoint = "http://localhost:8000/api/my-profile/library";
 
@@ -33,22 +37,47 @@ export default function LibraryPage() {
     }
 
 
-    // console.log(library)
-
     return (
         <div>
-            <h1>This is my Library</h1>
+            <PlainHeader>
+            </PlainHeader>
+
+            <div className="feeds-page">
+
+            <div className="feed-container">
             {library.map((post) => {
                 return (
-                    <div key={post._id}>
-                        <p>{post.creator.name}</p>
-                        <p>{post.title}</p>
-                        <img width={200} alt="post" src={post.image}></img>
-                        <p>{post.createdAt.substring(0,10)}</p>
-                        <button onClick={() => deletePost(post._id)}>Delete from library</button>
+
+                    <div className="post-container" key={post._id}>
+                        <div>
+                            <h1>
+                                <Link className="post-feed-link" to={`/post/${post._id}`}> {post.title}</Link>
+                            </h1>
+                        </div>
+
+                        <div className="post-feed-user-container">
+                            <Link to={`/user/${post.creator._id}`}>
+                                <img className="img-post-feed-user" src={post.creator.profileImg} alt=""/>
+                            </Link>
+                            
+                            <h3>
+                                <Link className="post-feed-link" to={`/user/${post.creator._id}`}> {post.creator.username} </Link>
+                            </h3>
+                        </div>
+
+                        <p>{post.description}</p>
+                        <img className="img-post" alt="post" src={post.image}></img>
+                        <p>{post.createdAt}</p>
+
+                        <button className="vote-button" onClick={() => deletePost(post._id)}><i className="fa-solid fa-trash-can vote-icon"></i></button>
+
                     </div>
                 )
             })}
+            </div>
+
+            </div>
+            <NavMenue></NavMenue>
         </div>
     )
 }
