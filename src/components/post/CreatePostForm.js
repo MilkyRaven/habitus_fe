@@ -92,68 +92,81 @@ export default function CreatePostForm (props) {
     return (
         <form className="form" onSubmit={submitHandler}>
             <div className="form-row">
-               <label className="label-subtitle">Post Title</label>
+               <h3 className="label-subtitle">Post Title</h3>
                <input required type="text" name="title" value={input.title} onChange={handleChange} />
             </div>
             <div className="form-row">
-                <label className="label-subtitle">Description</label>
+                <h3 className="label-subtitle">Description</h3>
                 <textarea name="description" rows="4" cols="39" value={input.description} onChange={handleChange}></textarea>            
             </div>
-            <div className="form-radio-container">
-                
-                <label className="label-subtitle">Interests</label>
-                <div className="radio-container">
+    
+            <label className="label-subtitle">Interests</label>
 
+            <section className="radio-container">
+
+                <div className="radio-category">
+                    <label>
                         <input className="radio-inputs"
                             type="radio" 
                             name="mindfulness" 
                             value="Mindfulness"
                             onChange={handleSelection}
                         /> 
-                        <label>Mindfulness</label>
+                        <span>Mindfulness</span>
+                    </label>
+                </div>
 
-
-
+                <div className="radio-category">
+                    <label>
                         <input className="radio-inputs"
                             type="radio"  
                             name="finances" 
                             value="Finances" 
                             onChange={handleSelection}
                         /> 
-                        <label>Finances</label>
+                        <span>Finances</span>
+                    </label>
+                </div>
 
-
-
+                <div className="radio-category">
+                    <label>
                         <input className="radio-inputs"
                             type="radio"  
                             name="health" 
                             value="Health" 
                             onChange={handleSelection}
                         /> 
-                        <label>Health</label>
-
-
+                        <span>Health</span>
+                    </label>
+                </div>
   
+                <div className="radio-category">
+                    <label>
                         <input className="radio-inputs"
                             type="radio"  
                             name="tech" 
                             value="Tech" 
                             onChange={handleSelection}
                         /> 
-                        <label>Tech</label>
+                        <span>Tech</span>
+                    </label>
+                </div>
 
-
+                <div className="radio-category" id="item-5">
+                    <label>
                         <input className="radio-inputs"
                             type="radio"  
                             name="confidence" 
                             value="Self Confidence" 
                             onChange={(event) =>handleSelection(event) }
                         /> 
-                        <label>Self Confidence</label>
+                        <span>Self Confidence</span> 
+                    </label>  
+                </div> 
 
-                </div>
+            </section>
 
-            </div>
+
             <div className="form-select-container">
                 <label className="label-subtitle" for="type">Post-Type</label>
                 <select name="type" id="type" onChange={handleChange}>
