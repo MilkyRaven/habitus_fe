@@ -15,8 +15,16 @@ export default function Feed (props) {
 
     return (
         <div>
-            <PlainHeader></PlainHeader>
+            <PlainHeader>
+            </PlainHeader>
+
             <div className="feeds-page">
+
+                <div className="list-container">
+                        <NavLink className="feed-links" to="/fresh-posts">Fresh</NavLink>
+                        <NavLink className="feed-links" to="/friends-posts">Following</NavLink>
+                        <NavLink className="feed-links" to="/popular-posts">Popular</NavLink>
+                </div>
 
                 <div id="fix-container">
                     <button id="btn-create-post" onClick={() => setIsOpen(true)}><i className="fa-solid fa-plus post-icon-white"></i></button>
@@ -30,12 +38,6 @@ export default function Feed (props) {
                     </ModalModule>
                 }
                 
-                <div className="list-container">
-                        <NavLink className="feed-links" to="/fresh-posts">Fresh</NavLink>
-                        <NavLink className="feed-links" to="/friends-posts">Friends</NavLink>
-                        <NavLink className="feed-links" to="/popular-posts">Popular</NavLink>
-                </div>
-
                 <div className="feed-container">    
                     {props.children}
                 </div>

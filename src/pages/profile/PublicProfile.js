@@ -20,7 +20,6 @@ export default function PublicProfile() {
             try {
                 const res = await axios.get((apiEndpoint) + (userId), { headers: { Authorization: `Bearer ${token}` }});
                 setUserProfile(res.data)
-                console.log(res.data)
                 
             } catch (error) {
                 console.log(error)
@@ -65,16 +64,9 @@ export default function PublicProfile() {
                     <div className="curved corner-b-left cc-goals"></div>
                 </div>
 
-                <div id="follower" className="profile-container">
-                
-
-                    <div className="curved corner-b-left cc-follower"></div>
-                </div>
-
                 <div id="post" className="profile-container nav-margin">
                     <h3>Posts</h3>
                     <div>
-                        {console.log(userProfile.myPosts)}
 
                     {userProfile.myPosts && 
                     userProfile.myPosts.map((post, index) => {
