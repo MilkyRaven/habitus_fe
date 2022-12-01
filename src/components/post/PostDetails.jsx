@@ -6,6 +6,7 @@ import './PostDetails.css'
 import CreateComment from '../../components/comments/CreateComment'
 import ProfileHeader from '../profile/ProfileHeader'
 import Navmenue from '../navigation/NavMenue'
+import SaveButton from '../common/SaveButton';
 
 import { AuthContext } from '../../context/AuthContext';
 
@@ -51,14 +52,6 @@ export default function PostDetails() {
         }
     }
 
-   /*  const savePost = async (postId) => {
-        try {
-            const savetest = axios.put('http://localhost:8000/api/feed/${postId}/save', { headers: { Authorization: `Bearer ${token}` }});
-            
-        } catch (error) {
-            
-        }
-    } */
 
     const upvoteHandler = async () => {
         console.log(token, "TOKEN")
@@ -107,7 +100,9 @@ export default function PostDetails() {
  */}                <span>Votes:</span>
                 <button className="vote-button" onClick={() => upvoteHandler()}><i className="fa-solid fa-circle-up vote-icon"></i> {upvotes}</button>
                 <button className="vote-button" onClick={() => downvoteHandler()}><i className="fa-solid fa-circle-down vote-icon"></i> {downvotes}</button>
-                <button className="vote-button"><i className="fa-regular fa-bookmark vote-icon"></i></button>
+                <SaveButton 
+                    postId={postId}
+                />
             </section>
             
             <section id="comment-section">
@@ -130,9 +125,3 @@ export default function PostDetails() {
         </div>
   )
 }
-
-//<i className="fa-light fa-down vote-button"></i> down-empty
-//<i className="fa-light fa-up vote-button"></i> up-empty
-//<i className="fa-light fa-comment"></i>
-//<i className="fa-solid fa-comment"></i>
-//<i className="fa-solid fa-bookmark"></i>
