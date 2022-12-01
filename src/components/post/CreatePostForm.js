@@ -168,17 +168,6 @@ export default function CreatePostForm (props) {
 
             </section>
 
-
-
-            <div className="form-select-container">
-                <label className="label-subtitle" for="type">Post-Type</label>
-                <select name="type" id="type" onChange={handleChange}>
-                    <option value="Knowledge" >Knowledge</option>
-                    <option value="Meeting" >Meeting</option>
-                </select>
-
-            </div>
-
             <div className="media-upload-container">
                <label className="label-subtitle">Post-Image</label>
                <input type="file" name="image" onChange={(event) => handleFileUpload(event)} />            
