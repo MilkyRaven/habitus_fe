@@ -42,7 +42,7 @@ export default function MyPosts() {
             {myPosts.map((post)=> {
                    return (
                     <div key={post._id}> 
-                        <h3><Link  to={`/${post._id}`}> {post.title}</Link></h3>
+                        <h3><Link  to={`/post/${post._id}`}> {post.title}</Link></h3>
                         <img alt={post} width={200} src={post.image}></img>
                         <p>{post.createdAt}</p>
                         <button onClick={() => deletePost(post._id)}>Delete post</button>

@@ -32,7 +32,7 @@ function App() {
             <Route path="/create-profile" element={<CreateProfile />} />
             <Route path="/profile" element={<IsPrivate><ProfilePage /></IsPrivate>} />
             <Route path="/user/:userId" element={<IsPrivate><PublicProfile /></IsPrivate>} />
-            <Route path="/:postId" element={<IsPrivate><PostDetails /></IsPrivate>} />
+            <Route path="/post/:postId" element={<IsPrivate><PostDetails /></IsPrivate>} />
             <Route path="/edit-profile" element={<IsPrivate><EditProfile /></IsPrivate>} />
             <Route path="/library" element={<IsPrivate><LibraryPage /></IsPrivate>}/>
             <Route path="/feed" element={<IsPrivate><Feed><AllPosts/></Feed></IsPrivate>} />
