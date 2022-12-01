@@ -30,7 +30,7 @@ export default function Followers() {
         <div>
             {followers[0] ? followers.map((user)=> {
                 return (<div key={user.username}>
-                <p>{user.username}</p>
+                <p><Link to={`/user/${user._id}`}>{user.username}</Link></p>
                 <img alt='user profile' width={50} src={user.profileImg}></img>
                 </div>)
             }): <p> You have no followers yet</p>}

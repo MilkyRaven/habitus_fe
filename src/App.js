@@ -18,6 +18,8 @@ import PostDetails from './components/post/PostDetails';
 import FreshPosts from './components/feed/FreshPosts';
 import FriendsPosts from './components/feed/FriendsPosts';
 import PopularPosts from './components/feed/PopularPosts';
+import Following from './components/users/Following';
+import Followers from './components/users/Followers';
 
 function App() {
    return (
@@ -39,6 +41,8 @@ function App() {
             <Route path="/friends-posts" element={<IsPrivate><Feed><FriendsPosts /></Feed></IsPrivate>}/>
             <Route path="/popular-posts" element={<IsPrivate><Feed><PopularPosts /></Feed></IsPrivate>}/>
             <Route path="/chat" element={<IsPrivate><ChatPage /></IsPrivate>} />
+            <Route path="/followers" element={<Followers/>}></Route>
+            <Route path="/following" element={<Following />}></Route>
             <Route path="*" element={<ErrorPage />} />
          </Routes>
       </div>
