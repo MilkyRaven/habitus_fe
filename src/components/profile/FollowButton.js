@@ -4,7 +4,7 @@ import axios from 'axios'
 const apiEndpoint = "http://localhost:8000/api/user/"
 
 
-export default function PublicProfile(props) {
+export default function FollowButton(props) {
     const {userId} = props
     const token = localStorage.getItem("authToken");
 
