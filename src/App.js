@@ -21,6 +21,7 @@ import PopularPosts from './components/feed/PopularPosts';
 import Following from './components/users/Following';
 import Followers from './components/users/Followers';
 import AllPosts from './components/feed/AllPosts';
+import AllUsers from './components/users/AllUsers';
 
 function App() {
    return (
@@ -44,6 +45,7 @@ function App() {
             <Route path="/chat" element={<IsPrivate><ChatPage /></IsPrivate>} />
             <Route path="/followers" element={<Followers/>}></Route>
             <Route path="/following" element={<Following />}></Route>
+            <Route path="/find-users" element={<AllUsers/>}></Route>
             <Route path="*" element={<ErrorPage />} />
          </Routes>
       </div>

@@ -37,6 +37,7 @@ export default function ProfilePage() {
                 profileHeadline={currentUser.username}
                 userImage={currentUser.profileImg}> 
                 <Link to="/edit-profile" className="menue-icon-container"><i className="fa-solid fa-pen menue-icon"></i></Link>
+                <Link to="/find-users">Find Users</Link>
             </ProfileHeader>
         }
 
