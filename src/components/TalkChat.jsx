@@ -2,6 +2,10 @@ import Talk from 'talkjs';
 import axios from 'axios';
 import React, { useContext, useEffect, useState, useRef } from 'react'
 import { AuthContext } from '../context/AuthContext';
+import NavMenue from './navigation/NavMenue';
+import './TalkChat.css'
+import PlainHeader from './common/PlainHeader';
+
 
 export default function TalkChat() {
 
@@ -70,20 +74,21 @@ export default function TalkChat() {
 
     return (
         <div>
-            <div>
+            <PlainHeader></PlainHeader>
+            <div className='contacts-container'>
                 <h2>My Contacts</h2>
                 {mutuals.map((user) => {
                     return (
-                        <div key={user._id}>
-                            {/* <img width={100}>{user.profileImg}</img> */}
-                            <p>{user.username}</p>
-                            <img width={50} src={user.profileImg}></img>
-                            <button onClick={() => { handleUserChat(user) }}>Chat</button>
+                        <div className='chat-user-card' key={user._id}>
+                            <img alt='user profile' width={50} src={user.profileImg}></img>
+                            <h3><strong>{user.username}</strong></h3>
+                            <button onClick={() => { handleUserChat(user) }}>Let's chat <i class="fa-solid fa-message"></i></button>
                         </div>
                     )
                 })}
             </div>
-            <div style={{height: '400px'}} ref={chatboxEl} />
+            <div className='chat-box' ref={chatboxEl} />
+            <NavMenue></NavMenue>
         </div>
     )
 }

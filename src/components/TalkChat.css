@@ -1,0 +1,45 @@
+* {
+    margin: auto 0;
+    padding: 0;
+}
+h2 {
+    margin: 30px;
+}
+h3 {
+    margin: 10px;
+}
+img {
+    border-radius: 50%;
+}
+i {
+    padding: 5px;
+}
+button {
+    margin: 10px;
+    padding: 7px;
+    border: none;
+    border-radius: 50px;
+    background-color: white;
+    color: black;
+}
+button:hover {
+    opacity: 0.5;
+}
+
+.contacts-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+.chat-user-card {
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 25px;
+    padding: 10px;
+    align-items: center;
+}
+.chat-box {
+    height: 400px;
+    margin-bottom: 100px;
+}
