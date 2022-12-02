@@ -4,6 +4,8 @@ import axios from "axios";
 import PlainHeader from '../../components/common/PlainHeader';
 import NavMenue from '../../components/navigation/NavMenue'
 import '../../components/feed/PostFeed.css'
+import gathering from '../../assets/images/2.png'
+
 
 const apiEndpoint = "http://localhost:8000/api/my-profile/library";
 
@@ -24,13 +26,12 @@ export default function LibraryPage() {
     const deleteApiEndpoint = "http://localhost:8000/api/my-profile/library/";
     const deletePost = async (id) => {
         const token = localStorage.getItem("authToken");
-        console.log(id);
+
         try {
             const res = await axios.put(deleteApiEndpoint + id + "/delete", {}, { headers: { Authorization: `Bearer ${token}` }}); 
             const newLibrary = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` }});
-            setLibrary(newLibrary.data)
+            setLibrary(newLibrary.data, res)
 
-            console.log(res);
         } catch (error) {
             console.log(error)
         }
@@ -45,10 +46,12 @@ export default function LibraryPage() {
             <div className="feeds-page">
 
             <div className="feed-container">
-            {library.map((post) => {
+            { library[0] ? library.map((post) => {
                 return (
 
                     <div className="post-container" key={post._id}>
+                        <p className="date-absolute">{post.createdAt.substring(0,10)}</p>
+                        
                         <div>
                             <h1>
                                 <Link className="post-feed-link" to={`/post/${post._id}`}> {post.title}</Link>
@@ -67,13 +70,17 @@ export default function LibraryPage() {
 
                         <p>{post.description}</p>
                         <img className="img-post" alt="post" src={post.image}></img>
-                        <p>{post.createdAt}</p>
 
                         <button className="vote-button" onClick={() => deletePost(post._id)}><i className="fa-solid fa-trash-can vote-icon"></i></button>
 
                     </div>
                 )
-            })}
+            }) :
+                <div className="no-saved-posts-containter">
+                    <p>You have no posts saved</p>
+                    <img id="img-women-gathering" src={gathering} alt="women working img"/>
+               </div>
+            }
             </div>
 
             </div>

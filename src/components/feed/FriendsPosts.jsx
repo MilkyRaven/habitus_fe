@@ -17,7 +17,7 @@ export default function FriendsPosts() {
             try {
                 const res = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` }});
                 setFriendsPosts(res.data)
-                console.log(friendsPosts)
+
             } catch (error) {
                 console.log(error)
             }

@@ -96,3 +96,13 @@
 }
 
 
+#img-create-profile {
+    height: 120%;
+}
+
+#img-container {
+    display: flex;
+    justify-content: center;
+    height: 120px;
+}
+

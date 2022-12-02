@@ -1,6 +1,7 @@
 import React from 'react'
 import EditProfileHeader from '../../components/profile/EditProfileHeader'
 import EditProfileForm from '../../components/profile/EditProfileForm'
+import NavMenue from '../../components/navigation/NavMenue'
 
 
 export default function EditProfile() {
@@ -12,6 +13,7 @@ export default function EditProfile() {
         profileSubheadline="Change Image"
         />  
         <EditProfileForm></EditProfileForm>
+        <NavMenue></NavMenue>
     </div>
 
     )

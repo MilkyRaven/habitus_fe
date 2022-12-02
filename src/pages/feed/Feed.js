@@ -15,15 +15,13 @@ export default function Feed (props) {
 
     return (
         <div>
-            <PlainHeader>
-            </PlainHeader>
+            <PlainHeader></PlainHeader>
 
             <div className="feeds-page">
-
                 <div className="list-container">
-                        <NavLink className="feed-links" to="/fresh-posts">Fresh</NavLink>
-                        <NavLink className="feed-links" to="/friends-posts">Following</NavLink>
-                        <NavLink className="feed-links" to="/popular-posts">Popular</NavLink>
+                    <NavLink className="feed-links" to="/fresh-posts">Fresh</NavLink>
+                    <NavLink className="feed-links" to="/friends-posts">Following</NavLink>
+                    <NavLink className="feed-links" to="/popular-posts">Popular</NavLink>
                 </div>
 
                 <div id="fix-container">

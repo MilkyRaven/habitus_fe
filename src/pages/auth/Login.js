@@ -32,6 +32,7 @@ export default function Login() {
          storeToken(response.data.authToken);
          authenticateUser();
          navigate('/profile');
+         
       } catch (error) {
          setErrorMessage(error.response.data.error)
       }
@@ -44,11 +45,11 @@ export default function Login() {
             <form className="form" onSubmit={handleSubmit}>
                <div className="form-row">
                   <label>Email</label>
-                  <input required type="email" name="email" value={user.email} onChange={handleChange} />
+                  <input required type="email" name="email" placeholder="balance@gmail.com" value={user.email} onChange={handleChange} />
                </div>
                <div className="form-row">
                <label>Password</label>
-               <input required type="password" name="password" value={user.password} onChange={handleChange} />
+               <input required type="password" name="password" placeholder="******" value={user.password} onChange={handleChange} />
                </div>
                {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
                <button className="button-blue-xl" type="submit">Log in </button>

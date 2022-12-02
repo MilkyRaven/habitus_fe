@@ -17,7 +17,6 @@ export default function Signup() {
    const navigate = useNavigate();
 
    const handleChange = (e) => {
-      console.log(e.target.value, "Event")
       setUser(prev => {
          return {
             ...prev,
@@ -25,6 +24,7 @@ export default function Signup() {
          }
       })
    }
+
 
    useEffect(() => {
       if (password !== passwordControl) {
@@ -34,19 +34,20 @@ export default function Signup() {
       }
    }, [passwordControl, password])
 
+
+
    const handleSubmit = async (e) => {
       
       e.preventDefault();
       try {
-         console.log("inside the rout")
-         const test = await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/auth/signup`, { username: user.username, email: user.email, password });
+
+         const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/auth/signup`, { username: user.username, email: user.email, password });
         
          const login = await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/auth/login`, {email: user.email, password});
          storeToken(login.data.authToken);
-         console.log(login.data.authToken, "TOKEN")
          authenticateUser(); 
-         navigate('/create-profile');
-         console.log(test, "test")
+         navigate('/onboarding')
+
       } catch (error) {
          setErrorMessage(error.response.data.error)
       }

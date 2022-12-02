@@ -35,10 +35,10 @@ export default function PublicProfile() {
 
             <section>
                 <ProfileHeader
-                profileHeadline={userProfile.username}
-                userImage={userProfile.profileImg}>
+                    profileHeadline={userProfile.username}
+                    userImage={userProfile.profileImg}>
                     <FollowButton
-                        userId={userId}
+                            userId={userId}
                     />
                 </ProfileHeader>
 
@@ -53,13 +53,11 @@ export default function PublicProfile() {
                             )
                         })}  
                     </ul>}
-
-                    {/* {!userProfile.myPreferences !== undefined && <p><strong>{userProfile.username}</strong> hasn't set any interests yet!</p>}  */}
                 </div>
 
                 <div id="goals" className="profile-container">
                     <h3>Goals:</h3>
-                    {userProfile.goals? <p>{userProfile.goals}</p> : <p>Haven't set any goals yet!</p>}
+                    {userProfile.goals ? <p>{userProfile.goals}</p> : <p>Haven't set any goals yet!</p>}
 
                     <div className="curved corner-b-left cc-goals"></div>
                 </div>
@@ -77,7 +75,7 @@ export default function PublicProfile() {
                                         <Link className="post-feed-link" to={`/post/${post._id}`}> {post.title}</Link>
                                     </h3>
 
-                                    <p>{post.createdAt.substring(0,10)}</p>
+                                    <p className="date-absolute">{post.createdAt.substring(0,10)}</p>
                                 </div>
 
                                 <img className="img-post" src={post.image} alt=""></img>

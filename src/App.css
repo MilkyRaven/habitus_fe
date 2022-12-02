@@ -154,9 +154,13 @@ html {
     accent-color: #0D4040;
 }
 
-
 /* Active */
 
-.active {
-    background-color:#48535a;
+a.active {
+    background-color: #48535a;
+    color: white;
+}
+
+a.menue-icon-container.active {
+    background-color: #48535a;
 }

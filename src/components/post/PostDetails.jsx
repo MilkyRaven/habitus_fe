@@ -27,7 +27,6 @@ export default function PostDetails() {
             try {
                 const res = await axios.get(apiEndpoint + postId, { headers: { Authorization: `Bearer ${token}` }});
                 
-                console.log(res.data, "DATA")
                 setPostsDetails(res.data)
                 setUpvotes(res.data.upvotes.length)
                 setDownvotes(res.data.downvotes.length)

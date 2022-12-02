@@ -31,9 +31,8 @@ export default function SaveButton(props) {
     const saveHandler = async () => {
 
         try {
-            setSaved("unsave")
             const userData = await axios.put(`http://localhost:8000/api/feed/${postId}/save`,{}, { headers: { Authorization: `Bearer ${token}` }});
-            console.log(userData, "Data-unsave")
+            setSaved(userData, "unsave")
 
         } catch (error) {
             console.log(error)
@@ -43,9 +42,8 @@ export default function SaveButton(props) {
     const unsaveHandler = async () => {
 
         try {
-            setSaved("save")
             const userData = await axios.put(`http://localhost:8000/api/feed/${postId}/unsave`,{}, { headers: { Authorization: `Bearer ${token}` }});
-            console.log(userData, "Data-save")
+            setSaved(userData, "save")
 
         } catch (error) {
             console.log(error)

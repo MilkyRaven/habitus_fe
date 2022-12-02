@@ -25,16 +25,15 @@
 .feeds-page {
     display: flex;
     justify-content: center;
-    padding-top: 85px;
+    padding-top: 40px;
     padding-bottom: 85px;
 }
-
 
 .feed-links {
     background-color: white;
     font-weight: 600;
     color: #48535a;
-    min-width: 105px;
+    min-width: 110px;
     text-align: center;
     line-height: 30px;
     border-radius: 20px;
@@ -44,17 +43,13 @@
 }
 
 .list-container {
-    margin-top: 5px;
     position: fixed;
+    top: 18px;
     display: flex;
     justify-content: space-between;
-    z-index: 100;
+    z-index: 10;
 }
 
-.list-container > li {
-    list-style: none;
-    font-size: 18px;
-}
 
 
 
