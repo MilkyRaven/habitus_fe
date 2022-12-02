@@ -81,7 +81,9 @@ export default function TalkChat() {
                 {mutuals[0] ? <div> {mutuals.map((user) => {
                     return (
                         <div className='chat-user-card' key={user._id}>
-                            <img alt='user profile' width={50} src={user.profileImg}></img>
+                            <div className="profile-img-container-smw">
+                                <img className="profile-img-lg" alt='user profile' src={user.profileImg}></img>
+                            </div>
                             <h3><strong>{user.username}</strong></h3>
                             <button onClick={() => { handleUserChat(user) }}>Let's chat <i className="fa-solid fa-message"></i></button>
                         </div>

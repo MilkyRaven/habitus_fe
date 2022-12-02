@@ -44,7 +44,9 @@ export default function Following() {
             
                 {following[0] ? following.map((user)=> {
                     return (<div className='user-container' key={user._id}>
-                        <img alt='user profile' width={50} src={user.profileImg}></img>
+                        <div className="profile-img-container-smw">
+                            <img className="profile-img-lg" alt='user profile' src={user.profileImg}></img>
+                        </div>
                         <p><Link to={`/user/${user._id}`}>@{user.username}</Link></p>
                         </div>)
                     }) : 

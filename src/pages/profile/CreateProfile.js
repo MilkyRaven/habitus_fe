@@ -16,7 +16,7 @@ export default function CreateProfile() {
         />  
 
         <div id="img-container">
-            <img id="img-create-profile" src={image} alt=""/>
+            <img id="img-create-profile" src={image} alt="create profile"/>
         </div>
 
         <CreateProfileForm />

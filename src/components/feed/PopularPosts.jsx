@@ -36,7 +36,9 @@ export default function PopularPosts() {
 
                         <div className="post-feed-user-container">
                             <Link to={`/user/${post.creator._id}`}>
-                                <img className="img-post-feed-user" src={post.creator.profileImg} alt=""/>
+                                <div className="profile-img-container-smw">
+                                    <img className="profile-img-lg" src={post.creator.profileImg} alt=""/>
+                                </div>  
                             </Link>
                             <h3>
                                 <Link className="post-feed-link" to={`/user/${post.creator._id}`}>@ {post.creator.username} </Link>
