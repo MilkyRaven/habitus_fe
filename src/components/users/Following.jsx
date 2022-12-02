@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './FindUsers.css'
 import NavMenue from '../navigation/NavMenue';
 import gathering from '../../assets/images/9.png'
@@ -34,8 +34,8 @@ export default function Following() {
         <div className='all-container-users'>
 
             <div className='fix-header-container'>
-                <Link className="feed-links" to={"/followers"}>Followers</Link>
-                <Link className="feed-links" to={"/following"}>Following</Link>
+                <NavLink className="feed-links" to={"/followers"}>Followers</NavLink>
+                <NavLink className="feed-links" to={"/following"}>Following</NavLink>
             </div>
 
             <h3> Souls that you follow</h3>
