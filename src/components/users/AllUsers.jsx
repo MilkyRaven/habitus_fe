@@ -54,7 +54,9 @@ export default function AllUsers() {
                     {userSearch && userSearch.map((user) => {
                         return (
                             <div className='user-container' key={user._id}>
-                                <img alt='user' src={user.profileImg} />
+                                <div className="profile-img-container-smw">
+                                    <img className="profile-img-lg" alt='user' src={user.profileImg} />
+                                </div>
                                 <h3><Link to={`/user/${user._id}`}>@{user.username}</Link></h3>
                             </div>
                         )
