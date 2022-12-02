@@ -17,7 +17,7 @@ export default function PopularPosts() {
             try {
                 const res = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` } });
                 setPopularPosts(res.data)
-                console.log(popularPosts)
+                
             } catch (error) {
                 console.log(error)
             }

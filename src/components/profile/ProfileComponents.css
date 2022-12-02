@@ -1,7 +1,7 @@
 #profile-header{
     position: relative;
     background-color: #C07D4E;
-    height: 250px;
+    height: 120px;
     display: flex; 
     align-items: flex-end;
     padding: 20px 30px;
@@ -12,7 +12,7 @@
 #edit-profile-header {
     position: relative;
     background-color: #C07D4E;
-    height: 150px;
+    height: 120px;
     display: flex; 
     align-items: flex-end;
     padding: 20px 30px;
@@ -68,7 +68,7 @@
 }
 
 .category-checkbox-container {
-    padding:20px 40px;
+    padding: 5px 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;

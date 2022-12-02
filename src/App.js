@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import ErrorPage from './pages/ErrorPage';
 import Signup from './pages/auth/Signup';
 import Login from './pages/auth/Login';
+import Onboarding from './pages/auth/Onboarding';
 import PrivateView from './pages/PrivateView';
 import IsPrivate from './components/IsPrivate';
 import CreateProfile from './pages/profile/CreateProfile';
@@ -31,6 +32,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/onboarding" element={<IsPrivate><Onboarding /></IsPrivate>}/>
             <Route path="/private" element={<IsPrivate><PrivateView /></IsPrivate>} />
             <Route path="/create-profile" element={<CreateProfile />} />
             <Route path="/profile" element={<IsPrivate><ProfilePage /></IsPrivate>} />

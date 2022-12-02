@@ -71,7 +71,6 @@ export default function CreatePostForm (props) {
             categories: select,
             image: image
         }
-        console.log(obj, "Submit")
 
          try {
             await axios.post(`${process.env.REACT_APP_API_URL}/api/feed/new-post`, obj, {headers: {Authorization: `Bearer ${storedToken}`}})

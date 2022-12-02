@@ -6,7 +6,7 @@
     margin-top: 100px; 
 }
 .form {
-    margin: 40px;
+    margin: 30px 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,4 +56,12 @@
     font-size: 24px;
 }
 
+.homepage-section p {
+    font-size: 20px;
+    width: 85%;
+    text-align: center;
+}
 
+#img-onboarding {
+    width: 155vw;
+}

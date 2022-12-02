@@ -5,6 +5,7 @@ import SearchUsersBar from './SearchUsersBar';
 import { Link } from 'react-router-dom';
 import './FindUsers.css'
 import NavMenue from '../navigation/NavMenue';
+import PlainHeader from '../../components/common/PlainHeader';
 
 
 export default function AllUsers() {
@@ -18,7 +19,7 @@ export default function AllUsers() {
             const token = localStorage.getItem("authToken");
 
             const res = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` } })
-            console.log(res.data);
+
             setUsers(res.data)
             setUserSearch(res.data)
         }
@@ -40,9 +41,15 @@ export default function AllUsers() {
 
     return (
         <div>
-            <div className='search-container'>
-                <div className='all-users-container'>
-                    <SearchUsersBar onSearch={handleSearch} > </SearchUsersBar>
+
+        <PlainHeader></PlainHeader>
+            
+            <div className='all-container-users'>
+
+                <SearchUsersBar onSearch={handleSearch} > </SearchUsersBar>
+
+                <div className="all-users-container">
+
                     {!userSearch && <h1>Loading users...</h1>}
                     {userSearch && userSearch.map((user) => {
                         return (
@@ -51,8 +58,10 @@ export default function AllUsers() {
                                 <h3><Link to={`/user/${user._id}`}>{user.username}</Link></h3>
                             </div>
                         )
-                    })}
+                    })} 
+                    
                 </div>
+            
             </div>
             <NavMenue></NavMenue>
         </div>
