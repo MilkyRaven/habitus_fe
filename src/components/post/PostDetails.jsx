@@ -27,7 +27,6 @@ export default function PostDetails() {
             try {
                 const res = await axios.get(apiEndpoint + postId, { headers: { Authorization: `Bearer ${token}` }});
                 
-                console.log(res.data, "DATA")
                 setPostsDetails(res.data)
                 setUpvotes(res.data.upvotes.length)
                 setDownvotes(res.data.downvotes.length)
@@ -52,12 +51,15 @@ export default function PostDetails() {
         }
     }
 
+    const refreshPage = () => {
+        window.location.reload(false);
+      }
 
     const upvoteHandler = async () => {
         try {
             const upvotingDb = await axios.put(`http://localhost:8000/api/feed/${postId}/upvote`,{}, { headers: { Authorization: `Bearer ${token}` }});
-            setUpvotes(upvotingDb.data.upvotes.length, "just added an upvote")
-            
+            setUpvotes(upvotingDb.data.upvotes.length)
+            refreshPage()
         } catch (error) {
             console.log(error)
         }
@@ -67,11 +69,11 @@ export default function PostDetails() {
         try {
             const downvotingDb = await axios.put(`http://localhost:8000/api/feed/${postId}/downvote`,{}, { headers: { Authorization: `Bearer ${token}` }});
             setDownvotes(downvotingDb.data.downvotes.length)
+            refreshPage()
         } catch (error) {
             console.log(error)
         }
     }
-
 
 
   return (
@@ -80,7 +82,7 @@ export default function PostDetails() {
             <ProfileHeader
                 profileHeadline={user.username}
                 userImage={user.profileImg}> 
-                {postDetails.creator && <div><Link  to={`/user/${postDetails.creator._id}`} ><i className="fa-solid fa-circle-chevron-right"></i></Link></div>}
+                {postDetails.creator && <div><Link to={`/user/${postDetails.creator._id}`} ><i className="fa-solid fa-circle-chevron-right link-icon"></i></Link></div>}
 
             </ProfileHeader>
             }

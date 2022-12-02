@@ -25,13 +25,12 @@ export default function MyPosts() {
     const deleteApiEndpoint = "http://localhost:8000/api/my-profile/";
     const deletePost = async (id) => {
         const token = localStorage.getItem("authToken");
-        console.log(id);
+
         try {
             const res = await axios.put(deleteApiEndpoint + id + "/delete", {}, { headers: { Authorization: `Bearer ${token}` }}); 
             const newPosts = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` }});
-            setMyPosts(newPosts.data)
+            setMyPosts(newPosts.data, res)
 
-            console.log(res);
         } catch (error) {
             console.log(error)
         }
@@ -39,7 +38,7 @@ export default function MyPosts() {
 
     return (
         <div>
-            {myPosts.map((post)=> {
+            {myPosts[0] ? myPosts.map((post)=> {
                    return (
 
                     <div className="post-container" key={post._id}> 
@@ -48,7 +47,7 @@ export default function MyPosts() {
                                 <Link className="post-feed-link" to={`/post/${post._id}`}> {post.title}</Link>
                             </h3>
 
-                            <p>{post.createdAt}</p>
+                            <p className="date-absolute">{post.createdAt.substring(0,10)}</p>
                         </div>
 
                         <img className="img-post" src={post.image} alt=""></img>
@@ -58,7 +57,11 @@ export default function MyPosts() {
 
                     </div>
                    )
-                })}
+                }) :
+                    <div className="no-posts-containter">
+                        <p>You have no posts yet</p>
+                    </div>
+                }
         </div>
     )
 }

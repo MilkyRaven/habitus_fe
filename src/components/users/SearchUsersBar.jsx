@@ -4,7 +4,7 @@ import './FindUsers.css'
 export default function SearchUsersBar(props) {
     const { onSearch } = props
     return (
-        <div className='search-bar-container'>
+        <div className='fix-header-container'>
             <div className='search-bar'>
                 <input className='input'
                     type="text"
@@ -12,7 +12,8 @@ export default function SearchUsersBar(props) {
                     onChange={(event) => onSearch(event.target.value)}
                 >
                 </input>
-                <i class="fa-solid fa-magnifying-glass"></i>
+                
+                <i className="fa-solid fa-magnifying-glass search-icon"></i>
             </div>
         </div>
     )

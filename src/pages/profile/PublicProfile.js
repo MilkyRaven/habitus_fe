@@ -20,7 +20,6 @@ export default function PublicProfile() {
             try {
                 const res = await axios.get((apiEndpoint) + (userId), { headers: { Authorization: `Bearer ${token}` }});
                 setUserProfile(res.data)
-                console.log(res.data)
                 
             } catch (error) {
                 console.log(error)
@@ -36,10 +35,10 @@ export default function PublicProfile() {
 
             <section>
                 <ProfileHeader
-                profileHeadline={userProfile.username}
-                userImage={userProfile.profileImg}>
+                    profileHeadline={userProfile.username}
+                    userImage={userProfile.profileImg}>
                     <FollowButton
-                        userId={userId}
+                            userId={userId}
                     />
                 </ProfileHeader>
 
@@ -54,27 +53,18 @@ export default function PublicProfile() {
                             )
                         })}  
                     </ul>}
-
-                    {/* {!userProfile.myPreferences !== undefined && <p><strong>{userProfile.username}</strong> hasn't set any interests yet!</p>}  */}
                 </div>
 
                 <div id="goals" className="profile-container">
                     <h3>Goals:</h3>
-                    {userProfile.goals? <p>{userProfile.goals}</p> : <p>Haven't set any goals yet!</p>}
+                    {userProfile.goals ? <p>{userProfile.goals}</p> : <p>Haven't set any goals yet!</p>}
 
                     <div className="curved corner-b-left cc-goals"></div>
-                </div>
-
-                <div id="follower" className="profile-container">
-                
-
-                    <div className="curved corner-b-left cc-follower"></div>
                 </div>
 
                 <div id="post" className="profile-container nav-margin">
                     <h3>Posts</h3>
                     <div>
-                        {console.log(userProfile.myPosts)}
 
                     {userProfile.myPosts && 
                     userProfile.myPosts.map((post, index) => {
@@ -85,7 +75,7 @@ export default function PublicProfile() {
                                         <Link className="post-feed-link" to={`/post/${post._id}`}> {post.title}</Link>
                                     </h3>
 
-                                    <p>{post.createdAt}</p>
+                                    <p className="date-absolute">{post.createdAt.substring(0,10)}</p>
                                 </div>
 
                                 <img className="img-post" src={post.image} alt=""></img>

@@ -1,7 +1,7 @@
 #profile-header{
     position: relative;
     background-color: #C07D4E;
-    height: 250px;
+    height: 120px;
     display: flex; 
     align-items: flex-end;
     padding: 20px 30px;
@@ -12,7 +12,7 @@
 #edit-profile-header {
     position: relative;
     background-color: #C07D4E;
-    height: 150px;
+    height: 120px;
     display: flex; 
     align-items: flex-end;
     padding: 20px 30px;
@@ -68,7 +68,7 @@
 }
 
 .category-checkbox-container {
-    padding:20px 40px;
+    padding: 5px 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -125,4 +125,30 @@
     border: none;
     font-size: 10px;
     font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.btn-follow-op {
+    background-color: #48535a;
+    color: white;
+    min-width: 80px;
+    text-align: center;
+    line-height: 25px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    font-size: 10px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.link-icon {
+    background-color: white;
+    color: #48535a;
+    font-size: 24px;
+    padding:2px;
+    border-radius: 50%;
+    margin-bottom: 6px;
+
 }

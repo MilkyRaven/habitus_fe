@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import axios from "axios";
+import PlainHeader from '../../components/common/PlainHeader';
+import NavMenue from '../../components/navigation/NavMenue'
+import '../../components/feed/PostFeed.css'
+import gathering from '../../assets/images/2.png'
+
 
 const apiEndpoint = "http://localhost:8000/api/my-profile/library";
 
@@ -20,35 +26,65 @@ export default function LibraryPage() {
     const deleteApiEndpoint = "http://localhost:8000/api/my-profile/library/";
     const deletePost = async (id) => {
         const token = localStorage.getItem("authToken");
-        console.log(id);
+
         try {
             const res = await axios.put(deleteApiEndpoint + id + "/delete", {}, { headers: { Authorization: `Bearer ${token}` }}); 
             const newLibrary = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` }});
-            setLibrary(newLibrary.data)
+            setLibrary(newLibrary.data, res)
 
-            console.log(res);
         } catch (error) {
             console.log(error)
         }
     }
 
 
-    // console.log(library)
-
     return (
         <div>
-            <h1>This is my Library</h1>
-            {library.map((post) => {
+            <PlainHeader>
+            </PlainHeader>
+
+            <div className="feeds-page">
+
+            <div className="feed-container">
+            { library[0] ? library.map((post) => {
                 return (
-                    <div key={post._id}>
-                        <p>{post.creator.name}</p>
-                        <p>{post.title}</p>
-                        <img width={200} alt="post" src={post.image}></img>
-                        <p>{post.createdAt}</p>
-                        <button onClick={() => deletePost(post._id)}>Delete from library</button>
+
+                    <div className="post-container" key={post._id}>
+                        <p className="date-absolute">{post.createdAt.substring(0,10)}</p>
+                        
+                        <div>
+                            <h1>
+                                <Link className="post-feed-link" to={`/post/${post._id}`}> {post.title}</Link>
+                            </h1>
+                        </div>
+
+                        <div className="post-feed-user-container">
+                            <Link to={`/user/${post.creator._id}`}>
+                                <img className="img-post-feed-user" src={post.creator.profileImg} alt=""/>
+                            </Link>
+                            
+                            <h3>
+                                <Link className="post-feed-link" to={`/user/${post.creator._id}`}> {post.creator.username} </Link>
+                            </h3>
+                        </div>
+
+                        <p>{post.description}</p>
+                        <img className="img-post" alt="post" src={post.image}></img>
+
+                        <button className="vote-button" onClick={() => deletePost(post._id)}><i className="fa-solid fa-trash-can vote-icon"></i></button>
+
                     </div>
                 )
-            })}
+            }) :
+                <div className="no-saved-posts-containter">
+                    <p>You have no posts saved</p>
+                    <img id="img-women-gathering" src={gathering} alt="women working img"/>
+               </div>
+            }
+            </div>
+
+            </div>
+            <NavMenue></NavMenue>
         </div>
     )
 }

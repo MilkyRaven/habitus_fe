@@ -20,6 +20,10 @@ export default function CreatePostForm () {
             }
         })
     }
+
+    const refreshPage = () => {
+        window.location.reload(false);
+      }
         
     const submitHandler = async (event) => {
         event.preventDefault()
@@ -29,7 +33,8 @@ export default function CreatePostForm () {
         }
          try {
             await axios.post(`http://localhost:8000/api/feed/${postId}/new-comment`, obj, {headers: {Authorization: `Bearer ${storedToken}`}})
-
+            setInput({content: ""})
+            refreshPage()
         } catch (err) {
             console.log(err)
         } 

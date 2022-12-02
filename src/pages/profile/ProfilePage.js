@@ -42,8 +42,9 @@ export default function ProfilePage() {
 
        {currentUser &&
             <main>
-
+            
                 <div id="habit-interest" className="start-container">
+                
                     <h3>Habit Interests:</h3>
 
                     {currentUser.myPreferences !== [] && 
@@ -56,6 +57,8 @@ export default function ProfilePage() {
                     </ul>}
 
                     {!currentUser.myPreferences[0] && <p>You havn't set any Interests, yet!</p>} 
+    
+                    <div className="curved corner-b-left cc-habits"></div>
                 </div>
 
                 <div id="goals" className="profile-container">

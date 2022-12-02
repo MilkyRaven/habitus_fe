@@ -17,7 +17,7 @@ export default function FriendsPosts() {
             try {
                 const res = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` }});
                 setFriendsPosts(res.data)
-                console.log(friendsPosts)
+
             } catch (error) {
                 console.log(error)
             }
@@ -31,32 +31,28 @@ export default function FriendsPosts() {
             {friendsPosts.map((post) => {
                 return (
                     <div className="post-container" key={post._id}>
-                        <div className="post-title">
-                            <h1>
-                                <Link className="post-feed-link" to={`/post/${post._id}`}> {post.title} </Link>
-                            </h1>
-
-                            <p>{post.createdAt}</p>
-                        </div>
+                        <p className="date-absolute">{post.createdAt.substring(0,10)}</p>
 
                         <div className="post-feed-user-container">
                             <Link to={`/user/${post.creator._id}`}>
                                 <img className="img-post-feed-user" src={post.creator.profileImg} alt=""/>
                             </Link>
-                            
                             <h3>
-                                <Link className="post-feed-link" to={`/user/${post.creator._id}`}> {post.creator.username} </Link>
+                                <Link className="post-feed-link" to={`/user/${post.creator._id}`}>@ {post.creator.username} </Link>
                             </h3>
                         </div>
-                        <img className="img-post" src={post.image} alt="" />
 
+                        <div className="post-title">
+                            <h1>
+                                <Link className="post-feed-link" to={`/post/${post._id}`}> {post.title}
+                                <img className="img-post" src={post.image} alt="" /></Link>
+                            </h1>
+                        </div>
                         <div className="post-social-container">
-                            {/* <p>upvotes: {post.upvotes} downvotes: {post.downvotes}</p> */}
                             <SaveButton 
                                 postId={post._id}
                             />
                         </div>
-                        
                     </div>
                 )
             })}

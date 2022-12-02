@@ -34,9 +34,8 @@ export default function FollowButton(props) {
     const followHandler = async () => {
 
         try {
-            setFollowed("unfollow")
             const resFollowing = await axios.put(`${apiEndpoint}${userId}/follow`,{}, { headers: { Authorization: `Bearer ${token}` }});
-            console.log(resFollowing, "Data-unfollow")
+            setFollowed(resFollowing, "unfollow")
 
         } catch (error) {
             console.log(error)
@@ -46,9 +45,8 @@ export default function FollowButton(props) {
     const unfollowHandler = async () => {
 
         try {
-            setFollowed("follow")
             const resFollowing = await axios.put(`${apiEndpoint}${userId}/unfollow`,{}, { headers: { Authorization: `Bearer ${token}` }});
-            console.log(resFollowing, "Data-follow")
+            setFollowed(resFollowing, "follow")
 
         } catch (error) {
             console.log(error)
@@ -57,7 +55,7 @@ export default function FollowButton(props) {
 
     return (
         <div>
-            {followed === "follow"? <button className="btn-follow" onClick={() => followHandler()}>Follow</button> : <button className="btn-follow" onClick={() => unfollowHandler()}>UnFollow</button> }
+            {followed === "follow"? <button className="btn-follow" onClick={() => followHandler()}>Follow</button> : <button className="btn-follow-op" onClick={() => unfollowHandler()}>UnFollow</button> }
         </div>
     )
 }

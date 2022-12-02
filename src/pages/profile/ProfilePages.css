@@ -17,17 +17,20 @@
     margin: 5px 5px;
 }
 
+#habit-interest {
+    /* background-color: burlywood; */
+} 
 
 #goals {
     background-color: burlywood;
 } 
 
 #follower {
-    background-color: orange;
+    background-color: #BF928C;
 } 
 
 #post {
-    background-color: lightcoral;
+    background-color: #F5ECE4;
 } 
 
 .profile-container {
@@ -51,7 +54,7 @@
     padding-bottom: 100px;
 }
 .start-container {
-    padding: 10px 20px 70px 20px;
+    padding: 10px 20px 80px 20px;
 }
 
 
@@ -59,15 +62,19 @@
 /* CURVED COLOR CSS Classes: 
 --> later to be located in App.css */
 
+.cc-habits {
+    color: burlywood;
+}
+
 .cc-goals:before {
     color: burlywood;
 }
 .cc-follower {
-    color: orange;
+    color: #BF928C;
 } 
 
 .cc-post {
-    color: lightcoral;
+    color: #F5ECE4;
 } 
 
 
@@ -88,4 +95,14 @@
     justify-content: center;
 }
 
+
+#img-create-profile {
+    height: 120%;
+}
+
+#img-container {
+    display: flex;
+    justify-content: center;
+    height: 120px;
+}
 

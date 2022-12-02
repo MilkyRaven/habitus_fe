@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, {  useState } from 'react'
 import './CreatePostForm.css'
+import defualtImg from '../../assets/images/default-input-img.jpeg'
 
 
 export default function CreatePostForm (props) {
@@ -71,7 +72,6 @@ export default function CreatePostForm (props) {
             categories: select,
             image: image
         }
-        console.log(obj, "Submit")
 
          try {
             await axios.post(`${process.env.REACT_APP_API_URL}/api/feed/new-post`, obj, {headers: {Authorization: `Bearer ${storedToken}`}})
@@ -169,7 +169,7 @@ export default function CreatePostForm (props) {
             </section>
 
             <div className="media-upload-container">
-                <img className="preview-img" src={input.image} alt="psot"></img>
+                {input.image ? <img className="preview-img" src={input.image} alt="psot"></img> : <img className="preview-img" src={defualtImg} alt="psot"></img> }
                 <label className="label-subtitle">Post-Image</label>
                 <input type="file" name="image" onChange={(event) => handleFileUpload(event)} />            
             </div>

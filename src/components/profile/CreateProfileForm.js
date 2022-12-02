@@ -95,6 +95,7 @@ export default function CreateProfileForm () {
                     <textarea name="goals" onChange={onChangeGoalsHandler} placeholder="My Goals are to ..."></textarea>
                 </div>
             </section>
+            
             <CurveContainerRight className="category-checkbox-container">
                 <h3>Interests</h3>
                 <section className="category-flex-container">
