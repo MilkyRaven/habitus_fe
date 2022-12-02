@@ -41,12 +41,12 @@ export default function Followers() {
 
             <h3>Souls that follow you</h3>
 
-            <div className='user-container'>
+            <div>
 
                 {followers[0] ? followers.map((user)=> {
                 return (<div className='user-container' key={user.username}>
                     <img alt='user profile' width={50} src={user.profileImg}></img>
-                    <p><Link to={`/user/${user._id}`}>{user.username}</Link></p>
+                    <p><Link to={`/user/${user._id}`}>@{user.username}</Link></p>
                     </div>)
                 }): 
 

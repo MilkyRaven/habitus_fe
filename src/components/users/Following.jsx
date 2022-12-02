@@ -40,12 +40,12 @@ export default function Following() {
 
             <h3> Souls that you follow</h3>
 
-            <div className='user-container'>
+            <div>
             
                 {following[0] ? following.map((user)=> {
                     return (<div className='user-container' key={user._id}>
                         <img alt='user profile' width={50} src={user.profileImg}></img>
-                        <p><Link to={`/user/${user._id}`}>{user.username}</Link></p>
+                        <p><Link to={`/user/${user._id}`}>@{user.username}</Link></p>
                         </div>)
                     }) : 
                     <div className='users-box'>
