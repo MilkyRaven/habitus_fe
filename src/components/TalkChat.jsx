@@ -5,6 +5,7 @@ import { AuthContext } from '../context/AuthContext';
 import NavMenue from './navigation/NavMenue';
 import './TalkChat.css'
 import gathering from '../assets/images/women-gathering.png'
+import PlainHeader from '../components/common/PlainHeader';
 
 
 export default function TalkChat() {
@@ -31,7 +32,6 @@ export default function TalkChat() {
     // console.log(mutuals)
 
     const handleUserChat = (props) => {
-        console.log(props)
 
         //start session
         Talk.ready.then(() => markTalkLoaded(true));
@@ -74,6 +74,8 @@ export default function TalkChat() {
 
     return (
         <div>
+        <PlainHeader></PlainHeader>
+        <div className='all-container-users'>
             <div className='contacts-container'>
                 <h2>My Contacts</h2>
                 {mutuals[0] ? <div> {mutuals.map((user) => {
@@ -92,6 +94,7 @@ export default function TalkChat() {
                 </div>}
             </div>
             <div className='chat-box' ref={chatboxEl} />
+            </div>
             <NavMenue></NavMenue>
         </div>
     )
