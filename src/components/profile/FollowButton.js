@@ -55,7 +55,7 @@ export default function FollowButton(props) {
 
     return (
         <div>
-            {followed === "follow"? <button className="btn-follow" onClick={() => followHandler()}>Follow</button> : <button className="btn-follow" onClick={() => unfollowHandler()}>UnFollow</button> }
+            {followed === "follow"? <button className="btn-follow" onClick={() => followHandler()}>Follow</button> : <button className="btn-follow-op" onClick={() => unfollowHandler()}>UnFollow</button> }
         </div>
     )
 }

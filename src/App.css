@@ -164,3 +164,6 @@ a.active {
 a.menue-icon-container.active {
     background-color: #48535a;
 }
+a:hover {
+    opacity: 0.6;
+}

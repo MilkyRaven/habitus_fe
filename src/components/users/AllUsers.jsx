@@ -55,7 +55,7 @@ export default function AllUsers() {
                         return (
                             <div className='user-container' key={user._id}>
                                 <img alt='user' src={user.profileImg} />
-                                <h3><Link to={`/user/${user._id}`}>{user.username}</Link></h3>
+                                <h3><Link to={`/user/${user._id}`}>@{user.username}</Link></h3>
                             </div>
                         )
                     })} 

@@ -9,8 +9,13 @@ import { NavLink } from 'react-router-dom';
 export default function Feed (props) {
     const [isOpen, setIsOpen] = useState(false)
 
+    const refreshPage = () => {
+        window.location.reload(false);
+      }
+
     const closeModal = () => {
         setIsOpen(false)
+        refreshPage()
     }
 
     return (

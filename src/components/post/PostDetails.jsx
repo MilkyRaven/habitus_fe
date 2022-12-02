@@ -51,11 +51,15 @@ export default function PostDetails() {
         }
     }
 
+    const refreshPage = () => {
+        window.location.reload(false);
+      }
 
     const upvoteHandler = async () => {
         try {
             const upvotingDb = await axios.put(`http://localhost:8000/api/feed/${postId}/upvote`,{}, { headers: { Authorization: `Bearer ${token}` }});
             setUpvotes(upvotingDb.data.upvotes.length)
+            refreshPage()
         } catch (error) {
             console.log(error)
         }
@@ -65,6 +69,7 @@ export default function PostDetails() {
         try {
             const downvotingDb = await axios.put(`http://localhost:8000/api/feed/${postId}/downvote`,{}, { headers: { Authorization: `Bearer ${token}` }});
             setDownvotes(downvotingDb.data.downvotes.length)
+            refreshPage()
         } catch (error) {
             console.log(error)
         }
