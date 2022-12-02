@@ -56,8 +56,7 @@ export default function PostDetails() {
     const upvoteHandler = async () => {
         try {
             const upvotingDb = await axios.put(`http://localhost:8000/api/feed/${postId}/upvote`,{}, { headers: { Authorization: `Bearer ${token}` }});
-            setUpvotes(upvotingDb.data.upvotes.length, "just added an upvote")
-            
+            setUpvotes(upvotingDb.data.upvotes.length)
         } catch (error) {
             console.log(error)
         }
@@ -71,7 +70,6 @@ export default function PostDetails() {
             console.log(error)
         }
     }
-
 
 
   return (

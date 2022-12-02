@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, {  useState } from 'react'
 import './CreatePostForm.css'
+import defualtImg from '../../assets/images/default-input-img.jpeg'
 
 
 export default function CreatePostForm (props) {
@@ -169,7 +170,7 @@ export default function CreatePostForm (props) {
             </section>
 
             <div className="media-upload-container">
-                <img className="preview-img" src={input.image} alt="psot"></img>
+                {input.image ? <img className="preview-img" src={input.image} alt="psot"></img> : <img className="preview-img" src={defualtImg} alt="psot"></img> }
                 <label className="label-subtitle">Post-Image</label>
                 <input type="file" name="image" onChange={(event) => handleFileUpload(event)} />            
             </div>
