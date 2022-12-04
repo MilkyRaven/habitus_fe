@@ -7,6 +7,9 @@ import './TalkChat.css'
 import gathering from '../assets/images/women-gathering.png'
 import PlainHeader from '../components/common/PlainHeader';
 
+const TALK_JS_TOKEN =
+   process.env.TALK_JS_TOKEN
+
 
 export default function TalkChat() {
 
