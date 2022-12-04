@@ -5,7 +5,9 @@ import { AuthContext } from '../../context/AuthContext'
 export default function Mutuals(props) {
     const {user} = useContext(AuthContext);
 
-    const apiEndpoint = "http://localhost:8000/api/user/mutuals";
+    // const apiEndpoint = "http://localhost:8000/api/user/mutuals";
+    const apiEndpoint = `${process.env.REACT_APP_API_URL}/api/user/mutuals`;
+
     const [mutuals, setMutuals] = useState([]);
     const [userChat, setUserChat] = useState({});
 

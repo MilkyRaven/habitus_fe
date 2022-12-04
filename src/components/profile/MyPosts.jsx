@@ -3,7 +3,9 @@ import axios from 'axios';
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 
-const apiEndpoint = "http://localhost:8000/api/my-profile/my-posts";
+// const apiEndpoint = "http://localhost:8000/api/my-profile/my-posts";
+
+const apiEndpoint = `${process.env.REACT_APP_API_URL}/api/my-profile/my-posts`;
 
 export default function MyPosts() {
 
@@ -22,7 +24,10 @@ export default function MyPosts() {
         apiCall()
     }, [])
 
-    const deleteApiEndpoint = "http://localhost:8000/api/my-profile/";
+    // const deleteApiEndpoint = "http://localhost:8000/api/my-profile/";
+
+    const deleteApiEndpoint = `${process.env.REACT_APP_API_URL}/api/my-profile/`;
+
     const deletePost = async (id) => {
         const token = localStorage.getItem("authToken");
 

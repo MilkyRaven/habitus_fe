@@ -7,7 +7,9 @@ import '../../components/feed/PostFeed.css'
 import gathering from '../../assets/images/2.png'
 
 
-const apiEndpoint = "http://localhost:8000/api/my-profile/library";
+// const apiEndpoint = "http://localhost:8000/api/my-profile/library";
+
+const apiEndpoint = `${process.env.REACT_APP_API_URL}/api/my-profile/library`;
 
 export default function LibraryPage() {
 
@@ -23,7 +25,10 @@ export default function LibraryPage() {
         apiCall()
     }, [])
 
-    const deleteApiEndpoint = "http://localhost:8000/api/my-profile/library/";
+    // const deleteApiEndpoint = "http://localhost:8000/api/my-profile/library/";
+    
+    const deleteApiEndpoint = `${process.env.REACT_APP_API_URL}/api/my-profile/library`;
+    
     const deletePost = async (id) => {
         const token = localStorage.getItem("authToken");
 

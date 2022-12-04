@@ -7,14 +7,11 @@ import './TalkChat.css'
 import gathering from '../assets/images/women-gathering.png'
 import PlainHeader from '../components/common/PlainHeader';
 
-const TALK_JS_TOKEN =
-   process.env.TALK_JS_TOKEN
-
-
 export default function TalkChat() {
 
     const { user } = useContext(AuthContext);
-    const apiEndpoint = "http://localhost:8000/api/user/mutuals";
+
+    const apiEndpoint = `${process.env.REACT_APP_API_URL}/api/user/mutuals`;
     const [mutuals, setMutuals] = useState([]);
     const chatboxEl = useRef();
     const [talkLoaded, markTalkLoaded] = useState(false);
@@ -30,7 +27,7 @@ export default function TalkChat() {
             }
         }
         apiCall();
-    }, []);
+    }, [apiEndpoint]);
 
     // console.log(mutuals)
 
@@ -44,7 +41,6 @@ export default function TalkChat() {
                 id: user._id,
                 name: user.username,
                 photoUrl: user.profileImg,
-                welcomeMessage: 'Hello!',
                 role: 'default',
             });
 
@@ -52,11 +48,10 @@ export default function TalkChat() {
                 id: props._id,
                 name: props.username,
                 photoUrl: props.profileImg,
-                welcomeMessage: 'Hello!',
                 role: 'default',
             });
             const session = new Talk.Session({
-                appId: TALK_JS_TOKEN,
+                appId: "tFQa8Bsf",
                 me: currentUser,
             });
             const conversationId = Talk.oneOnOneId(currentUser, otherUser);

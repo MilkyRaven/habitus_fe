@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import './PostFeed.css'
 import SaveButton from '../common/SaveButton';
 
-const apiEndpoint = "http://localhost:8000/api/feed/all";
+// const apiEndpoint = "http://localhost:8000/api/feed/all";
+
+const apiEndpoint = `${process.env.REACT_APP_API_URL}/api/feed/all`;
 
 export default function AllPosts() {
 

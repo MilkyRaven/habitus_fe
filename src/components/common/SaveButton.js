@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
+const apiEndpointFeed = `${process.env.REACT_APP_API_URL}/api/feed/`;
+const apiEndpoint = `${process.env.REACT_APP_API_URL}/api`;
+
 
 export default function SaveButton(props) {
     const {postId} = props
@@ -12,7 +15,7 @@ export default function SaveButton(props) {
         const apiCall = async () => {
             
             try {
-                const currentUser = await axios.get("http://localhost:8000/api/my-profile", { headers: { Authorization: `Bearer ${token}` }})
+                const currentUser = await axios.get(`${apiEndpoint}/my-profile`, { headers: { Authorization: `Bearer ${token}` }})
                 setSaved(() => {
                     if (currentUser.data.mySavedPosts.includes(postId)) {
                         return "unsave"
@@ -31,7 +34,7 @@ export default function SaveButton(props) {
     const saveHandler = async () => {
 
         try {
-            const userData = await axios.put(`http://localhost:8000/api/feed/${postId}/save`,{}, { headers: { Authorization: `Bearer ${token}` }});
+            const userData = await axios.put(`${apiEndpointFeed}${postId}/save`,{}, { headers: { Authorization: `Bearer ${token}` }});
             setSaved(userData, "unsave")
 
         } catch (error) {
@@ -42,7 +45,7 @@ export default function SaveButton(props) {
     const unsaveHandler = async () => {
 
         try {
-            const userData = await axios.put(`http://localhost:8000/api/feed/${postId}/unsave`,{}, { headers: { Authorization: `Bearer ${token}` }});
+            const userData = await axios.put(`${apiEndpointFeed}${postId}/unsave`,{}, { headers: { Authorization: `Bearer ${token}` }});
             setSaved(userData, "save")
 
         } catch (error) {
