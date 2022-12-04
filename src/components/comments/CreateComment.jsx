@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, {  useState } from 'react'
 import { useParams } from 'react-router-dom'
 
+const apiEndpoint = `${process.env.REACT_APP_API_URL}/api/feed/`;
+
 
 export default function CreatePostForm () {
     const { postId } = useParams()
@@ -32,7 +34,7 @@ export default function CreatePostForm () {
             content: content
         }
          try {
-            await axios.post(`http://localhost:8000/api/feed/${postId}/new-comment`, obj, {headers: {Authorization: `Bearer ${storedToken}`}})
+            await axios.post(`${apiEndpoint}${postId}/new-comment`, obj, {headers: {Authorization: `Bearer ${storedToken}`}})
             setInput({content: ""})
             refreshPage()
         } catch (err) {

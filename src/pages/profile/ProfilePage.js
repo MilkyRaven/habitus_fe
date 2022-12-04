@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import MyPosts from '../../components/profile/MyPosts'
 import axios from 'axios'
 
+const apiEndpoint = `${process.env.REACT_APP_API_URL}/api/my-profile`;
+
 
 export default function ProfilePage() {
 
@@ -19,7 +21,7 @@ export default function ProfilePage() {
             const token = localStorage.getItem("authToken");
 
             try {
-                const userData = await axios.get("http://localhost:8000/api/my-profile", { headers: { Authorization: `Bearer ${token}` }});
+                const userData = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` }});
                 setCurrentUser(userData.data)
             } catch (error) {
                 console.log(error)

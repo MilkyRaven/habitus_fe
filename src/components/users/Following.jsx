@@ -6,7 +6,9 @@ import NavMenue from '../navigation/NavMenue';
 import gathering from '../../assets/images/9.png'
 import PlainHeader from '../../components/common/PlainHeader';
 
-const apiEndpoint = "http://localhost:8000/api/user/following"
+// const apiEndpoint = "http://localhost:8000/api/user/following"
+
+const apiEndpoint = `${process.env.REACT_APP_API_URL}/api/user/following`;
 
 export default function Following() {
 

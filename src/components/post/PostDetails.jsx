@@ -10,7 +10,8 @@ import SaveButton from '../common/SaveButton';
 
 import { AuthContext } from '../../context/AuthContext';
 
-const apiEndpoint = "http://localhost:8000/api/feed/"
+// const apiEndpoint = "http://localhost:8000/api/feed/"
+const apiEndpoint = `${process.env.REACT_APP_API_URL}/api/feed/`;
 
 export default function PostDetails() {
 
@@ -43,7 +44,7 @@ export default function PostDetails() {
     const deleteComment = async (commentId) => {
         
         try {
-            await axios.delete(`http://localhost:8000/api/feed/${commentId}/delete`, { headers: { Authorization: `Bearer ${token}` }});
+            await axios.delete(`${apiEndpoint}${commentId}/delete`, { headers: { Authorization: `Bearer ${token}` }});
             const res = await axios.get(apiEndpoint + postId, { headers: { Authorization: `Bearer ${token}` }});
                 setPostsDetails(res.data)
         } catch (error) {
@@ -57,7 +58,7 @@ export default function PostDetails() {
 
     const upvoteHandler = async () => {
         try {
-            const upvotingDb = await axios.put(`http://localhost:8000/api/feed/${postId}/upvote`,{}, { headers: { Authorization: `Bearer ${token}` }});
+            const upvotingDb = await axios.put(`${apiEndpoint}${postId}/upvote`,{}, { headers: { Authorization: `Bearer ${token}` }});
             setUpvotes(upvotingDb.data.upvotes.length)
             refreshPage()
         } catch (error) {
@@ -67,7 +68,7 @@ export default function PostDetails() {
 
     const downvoteHandler = async () => {
         try {
-            const downvotingDb = await axios.put(`http://localhost:8000/api/feed/${postId}/downvote`,{}, { headers: { Authorization: `Bearer ${token}` }});
+            const downvotingDb = await axios.put(`${apiEndpoint}${postId}/downvote`,{}, { headers: { Authorization: `Bearer ${token}` }});
             setDownvotes(downvotingDb.data.downvotes.length)
             refreshPage()
         } catch (error) {

@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './ProfileComponents.css'
 
-const apiEndpoint = "http://localhost:8000/api/user/"
+// const apiEndpoint = "http://localhost:8000/api/user/"
+
+const apiEndpoint = `${process.env.REACT_APP_API_URL}/api/user/`;
+const apiEndpointProfile = `${process.env.REACT_APP_API_URL}/api/my-profile`;
 
 
 export default function FollowButton(props) {
@@ -15,7 +18,7 @@ export default function FollowButton(props) {
         const apiCall = async () => {
             
             try {
-                const currentUser = await axios.get("http://localhost:8000/api/my-profile", { headers: { Authorization: `Bearer ${token}` }})
+                const currentUser = await axios.get(apiEndpointProfile, { headers: { Authorization: `Bearer ${token}` }})
                 setFollowed(() => {
                     if (currentUser.data.following.includes(userId)) {
                         return "unfollow"

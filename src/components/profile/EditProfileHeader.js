@@ -4,6 +4,8 @@ import defaultUser from '../../assets/images/default-user-placeholder.png'
 import axios from 'axios'
 import ModalModule from '../common/ModalModule'
 
+const apiEndpoint = `${process.env.REACT_APP_API_URL}/api/my-profile`;
+
 export default function EditProfileHeader(props) {
 
     const storedToken = localStorage.getItem('authToken')
@@ -18,7 +20,7 @@ export default function EditProfileHeader(props) {
             const token = localStorage.getItem("authToken");
 
             try {
-                const userData = await axios.get("http://localhost:8000/api/my-profile", { headers: { Authorization: `Bearer ${token}` }});
+                const userData = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` }});
                 setProfileImage(userData.data.profileImg)
             } catch (err) {
                 console.log(err)

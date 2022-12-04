@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import './PostFeed.css'
 import SaveButton from '../common/SaveButton';
 
-const apiEndpoint = "http://localhost:8000/api/feed/fresh";
+// const apiEndpoint = "http://localhost:8000/api/feed/fresh";
+const apiEndpoint = `${process.env.REACT_APP_API_URL}/api/feed/fresh`;
 
 export default function FreshPosts() {
     
