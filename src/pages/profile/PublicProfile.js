@@ -26,7 +26,7 @@ export default function PublicProfile() {
             }
         }
         apiCall();
-    }, [])
+    }, [userId])
 
 
     return (

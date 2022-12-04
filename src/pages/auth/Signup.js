@@ -41,7 +41,7 @@ export default function Signup() {
       e.preventDefault();
       try {
 
-         const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/auth/signup`, { username: user.username, email: user.email, password });
+         await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/auth/signup`, { username: user.username, email: user.email, password });
         
          const login = await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/auth/login`, {email: user.email, password});
          storeToken(login.data.authToken);
