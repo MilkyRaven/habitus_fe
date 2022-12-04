@@ -53,7 +53,7 @@ export default function TalkChat() {
                 role: 'default',
             });
             const session = new Talk.Session({
-                appId: 'tFQa8Bsf',
+                appId: TALK_JS_TOKEN,
                 me: currentUser,
             });
             const conversationId = Talk.oneOnOneId(currentUser, otherUser);

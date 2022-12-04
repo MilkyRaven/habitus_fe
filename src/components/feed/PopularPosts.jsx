@@ -23,7 +23,7 @@ export default function PopularPosts() {
             }
         }
         apiCall();
-    }, [])
+    }, [token])
 
 
     return (
