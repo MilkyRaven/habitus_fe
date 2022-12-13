@@ -79,11 +79,11 @@ export default function PostDetails() {
 
   return (
          <div className="">
-         {user &&
+         {postDetails.creator &&
             <ProfileHeader
-                profileHeadline={user.username}
-                userImage={user.profileImg}> 
-                {postDetails.creator && <div><Link to={`/user/${postDetails.creator._id}`} ><i className="fa-solid fa-circle-chevron-right link-icon"></i></Link></div>}
+                profileHeadline={postDetails.creator.username}
+                userImage={postDetails.creator.profileImg}> 
+                <div><Link to={`/user/${postDetails.creator._id}`} ><i className="fa-solid fa-circle-chevron-right link-icon"></i></Link></div>
 
             </ProfileHeader>
             }
