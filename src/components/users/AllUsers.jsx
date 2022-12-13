@@ -10,7 +10,10 @@ import PlainHeader from '../../components/common/PlainHeader';
 
 export default function AllUsers() {
 
-    const apiEndpoint = "http://localhost:8000/api/user/all";
+    // const apiEndpoint = "http://localhost:8000/api/user/all";
+
+    const apiEndpoint = `${process.env.REACT_APP_API_URL}/api/user/all`;
+
     const [users, setUsers] = useState(null);
     const [userSearch, setUserSearch] = useState(users);
 
@@ -24,7 +27,7 @@ export default function AllUsers() {
             setUserSearch(res.data)
         }
         apiCall()
-    }, [])
+    }, [apiEndpoint])
 
     const handleSearch = (value) => {
         let correctValue = value.toLowerCase()

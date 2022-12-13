@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 import './PostFeed.css'
 import SaveButton from '../common/SaveButton';
 
-const apiEndpoint = "http://localhost:8000/api/feed"
+// const apiEndpoint = "http://localhost:8000/api/feed"
+const apiEndpoint = `${process.env.REACT_APP_API_URL}/api/feed`;
 
 export default function PopularPosts() {
 
@@ -23,7 +24,7 @@ export default function PopularPosts() {
             }
         }
         apiCall();
-    }, [])
+    }, [token])
 
 
     return (

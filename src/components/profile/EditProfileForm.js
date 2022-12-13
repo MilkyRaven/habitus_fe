@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import CurveContainerRight from '../common/CurveContainerRight';
 
+const apiEndpoint = `${process.env.REACT_APP_API_URL}/api/my-profile`;
+
 
 
 export default function CreateProfileForm () {
@@ -27,7 +29,7 @@ export default function CreateProfileForm () {
             const token = localStorage.getItem("authToken");
 
             try {
-                const userData = await axios.get("http://localhost:8000/api/my-profile", { headers: { Authorization: `Bearer ${token}` }});
+                const userData = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${token}` }});
 
                 setUser(userData.data)
                 setUsername(userData.data.username)

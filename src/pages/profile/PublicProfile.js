@@ -6,8 +6,7 @@ import axios from 'axios'
 import ProfileHeader from '../../components/profile/ProfileHeader'
 import FollowButton from '../../components/profile/FollowButton'
 
-const apiEndpoint = "http://localhost:8000/api/user/"
-
+const apiEndpoint = `${process.env.REACT_APP_API_URL}/api/user/`;
 
 export default function PublicProfile() {
 
@@ -18,7 +17,7 @@ export default function PublicProfile() {
         const apiCall = async () => {
             const token = localStorage.getItem("authToken");
             try {
-                const res = await axios.get((apiEndpoint) + (userId), { headers: { Authorization: `Bearer ${token}` }});
+                const res = await axios.get(apiEndpoint + (userId), { headers: { Authorization: `Bearer ${token}` }});
                 setUserProfile(res.data)
                 
             } catch (error) {
@@ -26,7 +25,7 @@ export default function PublicProfile() {
             }
         }
         apiCall();
-    }, [])
+    }, [userId])
 
 
     return (
