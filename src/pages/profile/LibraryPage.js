@@ -27,7 +27,7 @@ export default function LibraryPage() {
 
     // const deleteApiEndpoint = "http://localhost:8000/api/my-profile/library/";
     
-    const deleteApiEndpoint = `${process.env.REACT_APP_API_URL}/api/my-profile/library`;
+    const deleteApiEndpoint = `${process.env.REACT_APP_API_URL}/api/my-profile/library/`;
     
     const deletePost = async (id) => {
         const token = localStorage.getItem("authToken");
