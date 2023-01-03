@@ -52,30 +52,36 @@ export default function PostDetails() {
         }
     }
 
-    const refreshPage = () => {
-        window.location.reload(false);
-      }
-
     const upvoteHandler = async () => {
         try {
             const upvotingDb = await axios.put(`${apiEndpoint}${postId}/upvote`,{}, { headers: { Authorization: `Bearer ${token}` }});
             setUpvotes(upvotingDb.data.upvotes.length)
-            refreshPage()
+            const res = await axios.get(apiEndpoint + postId, { headers: { Authorization: `Bearer ${token}` }});
+                setPostsDetails(res.data)
+                setUpvotes(res.data.upvotes.length)
+                setDownvotes(res.data.downvotes.length)
+            setPostsDetails(res.data);
         } catch (error) {
             console.log(error)
         }
     }
+    
+
+    
 
     const downvoteHandler = async () => {
         try {
             const downvotingDb = await axios.put(`${apiEndpoint}${postId}/downvote`,{}, { headers: { Authorization: `Bearer ${token}` }});
             setDownvotes(downvotingDb.data.downvotes.length)
-            refreshPage()
+            const res = await axios.get(apiEndpoint + postId, { headers: { Authorization: `Bearer ${token}` }});
+                setPostsDetails(res.data)
+                setUpvotes(res.data.upvotes.length)
+                setDownvotes(res.data.downvotes.length)
+            setPostsDetails(res.data);
         } catch (error) {
             console.log(error)
         }
     }
-
 
   return (
          <div className="">
@@ -105,7 +111,6 @@ export default function PostDetails() {
             </section>
             
             <section id="comment-section">
-                
             {postDetails.commentsId && user._id  && 
                 <div>
                 {commentsArray.length > 0 ? <h3>Comments:</h3> : <h3>Be the first to leave a comment!</h3>}
